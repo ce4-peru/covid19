@@ -6,16 +6,17 @@ library(tidyr)
 library(tidyverse)
 library(lubridate)
 ## set directory
-setwd("~/covid19PE-LIEZ/")
+setwd("~/covid19")
 
 
 ## Call data
-# covid_ind <- fread("~/ce4-peru.github.io/data/crudas/covidPE_IND_20200326_MD.csv")
-# covid_ind <- fread("~/ce4-peru.github.io/data/crudas/covidPE_IND_20200327_MD.csv")
-covid_ind <- fread("~/ce4-peru.github.io/data/crudas/covidPE_IND_20200331_MD.csv")
+# covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200326_MD.csv")
+# covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200327_MD.csv")
+#covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200331_MD.csv")
+covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200401_MD.csv")
 
 ## Checar base
-str(covid_ind) # 850 obs. of  20 variables
+str(covid_ind) # 1064 obs. of  20 variables
 names(covid_ind)
 # [1] "CASO_ID"              "FECHA"                "REGION"              
 # [4] "PROVINCIA"            "DISTRITO"             "DIRECCION"           

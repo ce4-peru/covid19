@@ -151,18 +151,25 @@ tmp1 <- sh_peru
 tmp1_map <- tmp1
 tmp1_map@data <- join(sh_peru@data,region_values, by="NAME_1") # shp with data
 tmp1_map_df <- tmp1_map@data
-tmp1_map@data$NUMERO_CASOS[is.na(tmp1_map@data$NUMERO_CASOS)]<-0 #
-# tmp1_map@data$brks <- cut(tmp1_map@data$Casos, 
-#                           breaks=c(-0.1, 0.9, 1.9, 5, 10, 20, 30, 35), 
-#                           labels=c("0", "1", "2 - 5", "6 - 10", 
-#                                    "11 - 20", "21 - 30", "> 30"))
+tmp1_map@data$NUMERO_CASOS[is.na(tmp1_map@data$NUMERO_CASOS)]<-0
+tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
+tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
+tmp1_map_df <- tmp1_map@data
+tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
+                           breaks=c(-0.1, 0.0, 1, 2, 3, 4, 5, 6), 
+                           labels=c("Sin casos reportados", "0 a 1", "1 a 2", "2 a 3", 
+                                    "3 a 4", "4 a 5", "5 a 6"))
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
 
 # Create the map qtm
-col <- c("ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
-         "royalblue", "blue2", "navyblue", "black")
+col <- c("white", "ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
+         "royalblue", #"blue2", 
+         "navyblue", "black")
+
+# col <- c("ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
+#          "royalblue", "blue2", "navyblue", "black")
 # try snow2 too
 
 # interactive view
@@ -185,7 +192,7 @@ qtm <- qtm(tmp1_map, fill = "incidencerate_100",
   
 print(qtm)
  tmap_save(qtm, 
-          paste("outputs_covid19/20200331_Dep_COVID19_Incidencerate",".png", sep=""), 
+          paste("outputs_covid19/20200331_Dep_COVID19_Incidencerate_v3",".png", sep=""), 
          width=2300, height=1380)
 
 ## 
