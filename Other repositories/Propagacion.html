@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Propagacion</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="Fuentes.html">Fuentes Oficiales</a>
+</li>
+<li>
+  <a href="Fake.html">Noticias Falsas</a>
+</li>
+<li>
+  <a href="Propagacion.html">Propagación</a>
+</li>
+<li>
+  <a href="Investigaciones.html">Investigaciones Científicas</a>
+</li>
+<li>
+  <a href="Noticias_historias.html">Notas periodisticas</a>
+</li>
+<li>
+  <a href="Proyectos.html">Proyectos</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Propagacion</h1>
+
+</div>
+
+
+<div id="casos-reportados" class="section level2">
+<h2><span class="header-section-number">0.1</span> Casos Reportados</h2>
+</div>
+<div id="paneles-conjunto" class="section level2">
+<h2><span class="header-section-number">0.2</span> Paneles conjunto</h2>
+<p>Para los gráficos he adaptado del post de Gabriel Carrasco Escobar (<a href="http://gcarrasco.rbind.io/blog/covid19_viz/" class="uri">http://gcarrasco.rbind.io/blog/covid19_viz/</a>)</p>
+<p><img src="panel2.png" width="100%" /></p>
+<p><img src="panel3.png" width="100%" /></p>
+</div>
+<div id="mapa" class="section level2">
+<h2><span class="header-section-number">0.3</span> Mapa</h2>
+<p><img src="Propagacion_files/figure-html/Map-1.png" width="672" /></p>
+</div>
+<div id="graficos-individuales" class="section level2">
+<h2><span class="header-section-number">0.4</span> Gráficos Individuales</h2>
+<div id="numero-de-pacientes-positivos" class="section level3">
+<h3><span class="header-section-number">0.4.1</span> Número de pacientes positivos</h3>
+<p><img src="Propagacion_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="proporcion-del-total" class="section level3">
+<h3><span class="header-section-number">0.4.2</span> Proporción del total</h3>
+<p><img src="Propagacion_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="proporcion-de-positivos-por-pruebas-aplicadas-en-el-dia" class="section level3">
+<h3><span class="header-section-number">0.4.3</span> Proporción de positivos por pruebas aplicadas en el día</h3>
+<p><img src="Propagacion_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="pruebas" class="section level3">
+<h3><span class="header-section-number">0.4.4</span> Pruebas</h3>
+<p><img src="Propagacion_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="tendencias-acumuladas" class="section level3">
+<h3><span class="header-section-number">0.4.5</span> Tendencias acumuladas</h3>
+<p><img src="Propagacion_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Propagacion_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="tabla" class="section level2">
+<h2><span class="header-section-number">0.5</span> Tabla</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Dia
+</th>
+<th style="text-align:right;">
+Positivos
+</th>
+<th style="text-align:right;">
+Pruebas_aplicadas
+</th>
+<th style="text-align:right;">
+Pruebas_XDia
+</th>
+<th style="text-align:right;">
+Nuevos_Positivos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2020-03-06
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-07
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+219
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-08
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-09
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+318
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-10
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+346
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-11
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+714
+</td>
+<td style="text-align:right;">
+368
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-12
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+855
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-13
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+1232
+</td>
+<td style="text-align:right;">
+377
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-14
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+1545
+</td>
+<td style="text-align:right;">
+313
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-15
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+1822
+</td>
+<td style="text-align:right;">
+277
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-16
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+2315
+</td>
+<td style="text-align:right;">
+493
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-17
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:right;">
+2680
+</td>
+<td style="text-align:right;">
+365
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-18
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+3075
+</td>
+<td style="text-align:right;">
+395
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-19
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+3841
+</td>
+<td style="text-align:right;">
+766
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03-20
+</td>
+<td style="text-align:right;">
+263
+</td>
+<td style="text-align:right;">
+4298
+</td>
+<td style="text-align:right;">
+457
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="fuentes" class="section level2">
+<h2><span class="header-section-number">0.6</span> Fuentes</h2>
+<p>Para la construcción de la tabla he usado la información difundida por MINSA en su cuenta oficial de twitter <span class="citation">[@Minsa_Peru]</span>(<a href="https://twitter.com/Minsa_Peru" class="uri">https://twitter.com/Minsa_Peru</a>). Existe también la página <a href="https://www.gob.pe/8662" class="uri">https://www.gob.pe/8662</a>.</p>
+<p>03/20</p>
+<div id="casos" class="section level3">
+<h3><span class="header-section-number">0.6.1</span> Casos</h3>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en Perú hasta las 12:00 horas del 20 de marzo. <a href="https://twitter.com/hashtag/Per%C3%BAEst%C3%A1EnNuestrasManos?src=hash&amp;ref_src=twsrc%5Etfw">#PerúEstáEnNuestrasManos</a><br><br>Para más información, visita: <a href="https://t.co/F4GaDrvulE">https://t.co/F4GaDrvulE</a> <a href="https://t.co/Kg7Gr2QRRL">pic.twitter.com/Kg7Gr2QRRL</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1241080637622292482?ref_src=twsrc%5Etfw">March 20, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🔴COMUNICADO | El <a href="https://twitter.com/hashtag/Minsa?src=hash&amp;ref_src=twsrc%5Etfw">#Minsa</a> informa que, a las 9:17 horas de hoy, viernes 20 de marzo, se registró la muerte de una persona con <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en territorio peruano. Expresamos nuestras más sentidas condolencias a sus familiares. <a href="https://t.co/B8MEz7alXR">pic.twitter.com/B8MEz7alXR</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1241048470955458560?ref_src=twsrc%5Etfw">March 20, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/19</p>
+Casos:
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en Perú hasta las 12:00 horas del 19 de marzo. Se registran dos altas. <a href="https://twitter.com/hashtag/Per%C3%BAEst%C3%A1EnNuestrasManos?src=hash&amp;ref_src=twsrc%5Etfw">#PerúEstáEnNuestrasManos</a><br><br>Para más información, visita: <a href="https://t.co/F4GaDrN5dc">https://t.co/F4GaDrN5dc</a> <a href="https://t.co/zYppUus7Ip">pic.twitter.com/zYppUus7Ip</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1240706791366733824?ref_src=twsrc%5Etfw">March 19, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Fallecidos:</p>
+Segundo y tercero
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🔴 URGENTE | El <a href="https://twitter.com/hashtag/Minsa?src=hash&amp;ref_src=twsrc%5Etfw">#Minsa</a> lamenta informar la sensible muerte de dos ciudadanos por coronavirus <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en territorio peruano. Extendemos nuestras condolencias a sus familias. <a href="https://t.co/UF5X1ukqtR">pic.twitter.com/UF5X1ukqtR</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1240818095280869377?ref_src=twsrc%5Etfw">March 20, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Primero</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🔴COMUNICADO | El <a href="https://twitter.com/hashtag/Minsa?src=hash&amp;ref_src=twsrc%5Etfw">#Minsa</a> lamenta informar que, a las 15:00 horas de hoy, jueves 19 de marzo, se registró el primer fallecimiento por <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a>. <a href="https://t.co/sgC0nhk87b">pic.twitter.com/sgC0nhk87b</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1240761528007221249?ref_src=twsrc%5Etfw">March 19, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/18</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en Perú hasta las 7:00 horas del 18 de marzo. <a href="https://twitter.com/hashtag/Per%C3%BAEst%C3%A1EnNuestrasManos?src=hash&amp;ref_src=twsrc%5Etfw">#PerúEstáEnNuestrasManos</a><br><br>Para más información, visita: <a href="https://t.co/F4GaDrvulE">https://t.co/F4GaDrvulE</a> <a href="https://t.co/pPPwxu13dG">pic.twitter.com/pPPwxu13dG</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1240305962256343040?ref_src=twsrc%5Etfw">March 18, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/17</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en Perú hasta las 8:20 horas del 17 de marzo. <a href="https://twitter.com/hashtag/Per%C3%BAEst%C3%A1EnNuestrasManos?src=hash&amp;ref_src=twsrc%5Etfw">#PerúEstáEnNuestrasManos</a><br><br>Para más información, visita: <a href="https://t.co/F4GaDrvulE">https://t.co/F4GaDrvulE</a> <a href="https://t.co/8yojgp7eYw">pic.twitter.com/8yojgp7eYw</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1239982787404455940?ref_src=twsrc%5Etfw">March 17, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/16</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> en Perú hasta las 8:46 horas del 16 de marzo. <a href="https://twitter.com/hashtag/Per%C3%BAEst%C3%A1EnNuestrasManos?src=hash&amp;ref_src=twsrc%5Etfw">#PerúEstáEnNuestrasManos</a><br><br>Para más información, visita: <a href="https://t.co/F4GaDrvulE">https://t.co/F4GaDrvulE</a> <a href="https://t.co/fsY4PTgtFL">pic.twitter.com/fsY4PTgtFL</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1239569760704253952?ref_src=twsrc%5Etfw">March 16, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/15</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 13:10 horas del 15 de marzo. <br><br>Para más información, visita: <a href="https://t.co/F4GaDrvulE">https://t.co/F4GaDrvulE</a> <a href="https://t.co/HUR87UVlxQ">pic.twitter.com/HUR87UVlxQ</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1239264360549224449?ref_src=twsrc%5Etfw">March 15, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/14</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 19:20 horas del 14 de marzo. <br><br>Para más información, visita: <a href="https://t.co/F4GaDrvulE">https://t.co/F4GaDrvulE</a> <a href="https://t.co/102MJF7uPE">pic.twitter.com/102MJF7uPE</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1238994119646744578?ref_src=twsrc%5Etfw">March 15, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/13</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 16:00 horas del 13 de marzo. <br><br>Para más información, visita: <a href="https://t.co/ATXAITDSWN">https://t.co/ATXAITDSWN</a> <a href="https://t.co/ERDFeBV7Tq">pic.twitter.com/ERDFeBV7Tq</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1238579158852263936?ref_src=twsrc%5Etfw">March 13, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/12</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 9:55 horas del 12 de marzo. <br><br>Para más información, visita: <a href="https://t.co/ATXAITDSWN">https://t.co/ATXAITDSWN</a> <a href="https://t.co/Yr2gGdPc1f">pic.twitter.com/Yr2gGdPc1f</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1238126203485270022?ref_src=twsrc%5Etfw">March 12, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/11</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 20:00 horas del 11 de marzo. <br><br>Para más información, visita: <a href="https://t.co/ATXAITDSWN">https://t.co/ATXAITDSWN</a> <a href="https://t.co/RgArH78FMz">pic.twitter.com/RgArH78FMz</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1237916429975945217?ref_src=twsrc%5Etfw">March 12, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/10</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 8:00 horas del 10 de marzo. <br><br>Para más información, visita: <a href="https://t.co/Mv594Y83Y2">https://t.co/Mv594Y83Y2</a> <a href="https://t.co/y5o2DZffuL">pic.twitter.com/y5o2DZffuL</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1237366697591541766?ref_src=twsrc%5Etfw">March 10, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/09</p>
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">
+🗓 Reporte │ Esta es la situación del coronavirus en Perú hasta las 8:30 horas del 9 de marzo. <br><br>Para más información, visita: <a href="https://t.co/ATXAITDSWN">https://t.co/ATXAITDSWN</a> <a href="https://t.co/VUWdMFaJkJ">pic.twitter.com/VUWdMFaJkJ</a>
+</p>
+— Ministerio de Salud (<span class="citation">@Minsa_Peru</span>) <a href="https://twitter.com/Minsa_Peru/status/1237064965468667904?ref_src=twsrc%5Etfw">March 9, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>03/08</p>
+<p><a href="https://www.americatv.com.pe/noticias/actualidad/minsa-confirma-nuevo-caso-coronavirus-peru-n407677?hootPostID=e28f310a3c6b843dce1663d1e934ffed" class="uri">https://www.americatv.com.pe/noticias/actualidad/minsa-confirma-nuevo-caso-coronavirus-peru-n407677?hootPostID=e28f310a3c6b843dce1663d1e934ffed</a></p>
+<p>Este tweet fue RT por el Minsa, por eso asumo que es la información oficial. MINSA no publicó ningún reporte como en los dias anteriores o posteriores.</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

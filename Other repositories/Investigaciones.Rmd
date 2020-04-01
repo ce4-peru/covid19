@@ -1,0 +1,45 @@
+---
+title: "Investigaciones"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Papers/links/findings de revistas científicas.
+
+# Links útiles 
+
+## Biblioteca de UPC: Artículos sobre coronavirus
+[Biblioteca-UPC-Coronavirus](https://biblioteca.upc.edu.pe/covid-19/)
+
+## Jstor (Open access)
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">You can search all open access content on JSTOR without a login - there&#39;s more than 6,000 ebooks and over 150 journals: <a href="https://t.co/qEbqqRjN6E">https://t.co/qEbqqRjN6E</a></p>&mdash; JSTOR (@JSTOR) <a href="https://twitter.com/JSTOR/status/1240306471168028674?ref_src=twsrc%5Etfw">March 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+# Artículos y resumenes
+
+## Modelos sobre contagio
+
+[Nowcasting and forecasting the potential domestic and international spread of the 2019-nCoV outbreak originating in Wuhan, China: a modelling study](https://www.thelancet.com/pdfs/journals/lancet/PIIS0140-6736(20)30260-9.pdf)
+
+## Cuanto dura el SARS-COV-2 (Coronavirus) en superficies
+
+[Aerosol and Surface Stability of SARS-CoV-2 as Compared with SARS-CoV-1](https://www.nejm.org/doi/full/10.1056/NEJMc2004973)
+
+## Sobre el origen del virus
+
+[The proximal origin of SARS-COV-2](https://www.nature.com/articles/s41591-020-0820-9?utm_source=twitter&utm_medium=social&utm_content=organic&utm_campaign=NGMT_USG_JC01_GL_NRJournals)
+
+## Coronavirus puts drugs repurposing on the fast track [link](https://www.nature.com/articles/d41587-020-00003-1) 
+
+Resumen elaborado por **Cleidy Osorio**:
+
+La empresa Ascletis Pharma fue autorizada por el gobierno chino para probar medicamentos contra el VIH para el tratamiento del nuevo COVID-19. Kaletra es una de estos medicamentos, con la cual se reportó que un paciente con COVID-19 mejoró rápidamente con dicho fármaco. Por otro lado, la empresa BrightGene Bio-Medical Technology anunció que a inicios de febrero fabricaría el antiviral remdesivir. Este medicamento tiene acción para diversos virus, entre ellos MERS Y SARS, los cuales son virus biológicamente parecidos a Covid-19, y por tal motivo podría tener un efecto positivo para tratar esta nueva pandemia. De hecho, el primer paciente en los Estados Unidos con COVID-19 confirmado mejoró después de haber sido durante un día con remdesivir, y aunque no se ha podido demostrar si este medicamento tuvo un efecto directo en la recuperación, lo cierto es que las pruebas con medicamente ya conocidos que son parte del tratamiento de otros virus similares al COVID-19, podrían ayudar a tener una respuesta rápida en el tratamiento de los infectados.
+Por otro lado, el conocimiento de la estructura de diferentes proteínas del COVID-19, que también son similares en otros virus, son también de suma importancia para confirmar mediante la predicción con herramientas computacionales, la reutilización de fármacos ya conocidos.
+ En palabras de Bryan Mounce, profesor asistente del Departamento de Microbiología e Inmunología, Universidad de Loyola, Chicago: "Los agentes (medicamentos) de amplio espectro (amplia acción) son ideales para situaciones de brotes [epidémicos] en las que no sabemos completamente a qué nos enfrentamos…"
+
+## Startups están desarrollando pruebas rápidas para el diagnostico de SARS-CoV-2 (Coronavirus) [link](https://www.medrxiv.org/content/10.1101/2020.03.06.20032334v1) 
+
+
+

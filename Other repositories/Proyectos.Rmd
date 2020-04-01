@@ -1,0 +1,45 @@
+---
+title: "Proyectos"
+---
+IDEAS
+
+Ideas y proyectos en algunos casos te puedes sumar a ellos, revisa la información de contacto en cada entrada. 
+
+## Lista de proyectos 
+
+Base de datos de proyectos (hardware, software, bio) para la población general y personal de salud
+
+[Google Docs con la lista de proyectos](https://docs.google.com/spreadsheets/d/1b6pNTaSLhot0tKwDuhXCh9glBSZZ7TR2QPnloMGLS-Q/edit#gid=1567877262)
+
+
+## Voluntariados/Servicios
+
+### Para sesiones de consejería virtuales 
+
+Detalles 
+
+```{r echo=FALSE, out.width='60%'}
+knitr::include_graphics('./Imagenes/proyecto1.jpg')
+```
+
+[REPO GITHUB](https://github.com/BenjiSantos/callme-for-covit19)
+
+### Lista de personal medico
+
+Pierre Padilla-Huamantinco organizó una lista de personal médico voluntario que está disponible para atender consultas.  [Post-Facebook](https://www.facebook.com/pierre.padilla/posts/10218763295786247?comment_id=10218775110481607&notif_id=1584453404437361&notif_t=mentions_comment)
+
+Puedes consultar o agregar información a la lista.  [Lista de google-docs](https://docs.google.com/spreadsheets/d/1Ol06VJ6KD0GcRtjmWy_e58ZxY2yngEawJN9S8GW26Mw/edit?fbclid=IwAR2PS3VXDh2ZEcbzOArZWVD-3bpQdNyPoxt-kI3rAN_8k6BtrBIu7te0QK4#gid=0)
+
+
+## Simulaciones
+
+@fjsistemas compartió esta simulación inspirada en el artículo de washington post. Si estas interesado en colaborar con esto mándale un DM. 
+
+<blockquote class="twitter-tweet"><p lang="es" dir="ltr">¿Saben por qué funciona el aislamiento social? Porque evita que mucha gente se contagie. Inspirado en la simulación de este artículo: <a href="https://t.co/kHabGyBrNf">https://t.co/kHabGyBrNf</a> hice la siguiente simulación agregando una mortalidad de 1% y un tope en la capacidad de atención. <a href="https://twitter.com/hashtag/COVID%E3%83%BC19?src=hash&amp;ref_src=twsrc%5Etfw">#COVIDー19</a> <a href="https://t.co/Xht1ZuOvkR">pic.twitter.com/Xht1ZuOvkR</a></p>&mdash; FJ RA (@fjsistemas) <a href="https://twitter.com/fjsistemas/status/1239390168848707585?ref_src=twsrc%5Etfw">March 16, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Repositorios 
+
+Vizualize the WHO COVID-19 sitreps per Country de (Twitter: @avallecam)
+[covid19viz](https://github.com/avallecam/covid19viz)
+
+

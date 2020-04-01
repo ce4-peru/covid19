@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <meta lang="es" />
+        <meta charset="utf-8" />
+        <title>Coronavirus</title>
+        <script type="text/javascript" src="js/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="./js/jquery-csv.js"></script>    
+        <script type="text/javascript" src="js/custom.js"></script>
+        <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" />
+        
+    </head>
+    <body>
+        <div id="categorias">
+            <div>
+                <img class="logo" src="./logo-upch.png" alt="logo-upch">
+                <h1 class="title">Consorcio en Epidemiología y Ecología Espacial de Enfermedades - CE4</h1>
+            </div>
+            
+            <ul>
+                <li><a href="#cat1">Inicio</a></li>
+                <li><a href="#cat2">Covid-19</a></li>
+                <li><a href="#cat3">Otras Enfermedades</a></li>
+                <li><a href="#cat4">Integrantes</a></li>
+            </ul>
+            <div id="cat1">
+                <!--AQUI COLOCAR TEXTO REFERIDO AL HOME-->
+                <p>Esta iniciativa parte de la necesidad de entender problemas complejos (brotes epidémicos, ecología de las enfermedades) desde una mirada multidisciplinaria.  Esperamos que los recursos brindados de forma abierta en esta página pueda aportar a la toma de decisiones basada en la evidencia. La información y resultados presentados son en muchos casos <b>trabajo en progreso.</b></p>
+                <p>CE4 esta basado en la Universidad Peruana Cayetano Heredia, con la colaboración de diversas Unidades de Investigación y de investigadores de diversas instituciones peruanas y extranjeras. Conoce a sus integrantes <b id="clic-aqui"><u>aquí</u></b></p>
+                
+                <!--FIN DE HOME-->
+            </div>
+            <div id="cat2">
+                <!--AQUI COLOCAR TEXTO REFERIDO A COVID-19-->
+                <p>La información y resultados presentados en esta sección son mayormente <b>trabajos en progreso.</b> Las limitaciones de los estudios están descritas de una manera clara, pero breve. Para un mayor detalle de las limitaciones descargue los PDF que acompañan cada estudio.</p>
+                <p>Los estudios están acompañados de un <b>mensaje práctico resumiendo la evidencia disponible.</b> Para más detalles técnicos de los análisis o los resultados descargue los PDF que acompañan cada estudio.</p>
+                <div id="publicaciones"></div>
+                <!--FIN DE COVID-19-->
+            </div>
+            <div id="cat3">
+                <!--AQUI COLOCAR TEXTO REFERIDO A APPS-->
+                <h4>Desigualdad espacial en el riesgo de rabia humana y acceso a servicios de salud</h4>
+                <ul class="listas">
+                	<li>El riesgo de rabia humana transmitida por mordeduras de perro varía considerablemente dentro de la ciudad de Arequipa.</li>
+					<li>Las comunidades periurbanas experimentan un riesgo mucho mayor que las comunidades urbanas, principalmente porque reportan una tasa de mordedura tres veces mayor que en zonas urbanas.</li>
+					<li>Además solo 22% de las personas mordidas en zonas periurbanas buscán atención médica versus 39% en personas mordidas en zonas urbanas.</li>
+					<li>La falta de servicios de salud en zonas peri-urbanas esta relacionado a la búsqueda de atención médica para atender mordeduras de perro. </li>
+					<a href="https://www.medrxiv.org/content/10.1101/2020.02.07.20020727v1.full.pdf">Descargar aquí el pdf</a>
+				</ul>
+
+				<h4>Rastreo de perros con GPS e impacto de los canales de agua en la transmisión de rabia</h4>
+				<ul class="listas">
+					<li>En medio de un brote de rabia canina en Arequipa, la presencia de casos de rabia cerca a canales de agua secos sugiere que estos canales tienen un rol ecológico en la transmisión del virus.</li>
+					<li>Con collares GPS rastreamos el movimiento de 23 perros deambulantes en la ciudad de Arequipa.</li>
+					<li>Los perros que pasan más tiempo dentro de los canales tienden a recorrer distancias más largas, moverse más rapido, y tener ámbitos hogareños más amplios.</li>
+					<li>Los canales de agua secos en la ciudad de Arequipa funcionan como corredores ecológicos acercando individuos o jaurías que de otra forma no estarían en contacto.</li>
+					<a href="https://www.biorxiv.org/content/10.1101/684381v3.full.pdf">Descargar aquí el pdf</a>
+				</ul>
+
+                <!--FIN DE APPS-->
+            </div>
+            <div id="cat4">
+                <!--AQUI COLOCAR TEXTO REFERIDO A ABOUT-->
+				<ul>
+					<li class="grupo">
+						<a href="http://www.upch.edu.pe/faspa/index.php/es/unidad-de-una-salud">Unidad de Una Salud - Facultad de Salud Pública y Administración</a>
+						<ul class="listas">
+							<li >Ricardo Castillo Neyra (Médico Veterinario, Master en Salud Internacional, PhD en Epidemiología de Enfermedades Infecciosas)</li>
+							<li >Claudia Arevalo Nieto (Bióloga, Maestra en Salud Pública, y Doctorando en Epidemiología Clínica)</li>
+							<li >Gian Franco Condori Luna (Ingeniero de Sistemas)</li>
+							<li >Micaela De la Puente ( Médico Veterinaria, Master en Ecología de las Enfermedades, y Doctorando en Epidemiologia)</li>
+							<li >Elvis Diaz (Médico Veterinario)</li>
+						</ul>
+					</li>
+					<li class="grupo">
+						<a href="https://investigacion.cayetano.edu.pe/catalogo/biotecnologia/innov-lab">Laboratorio de Innovación en Salud (Inst. Med. Tropical)</a>
+						<ul class="listas">
+							<li>Gabriel Carrasco Escobar</li>
+							<li>Edgar Manrique Valverde</li>
+							<li>Jorge Ruiz Cabrejos</li>
+							<li>Cesar Aybar Camacho</li>
+						</ul>
+					</li>
+					<li class="grupo">
+						<a href="https://imtavh.cayetano.edu.pe/es/">Instituto de Medicina Tropical Alexander von Humboldt</a>
+						<ul class="listas">
+							<li>Cesar Ugarte-Gil (Médico, MSc Epidemiología, PhD en Epidemiología y Control de Enfermedades Globales)</li>
+						</ul>
+					</li>
+				</ul>
+                <!--FIN DE ABOUT-->
+            </div>
+        </div>    
+
+    </body>
+</html>
