@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/">
+<rdf:Description rdf:about="http://www.inei.gob.pe/media/MenuRecursivo/censos/cenana/Documento_metodologico/Ficha_Tecnica.pdf"><rdf:label><![CDATA[Ficha Técnica del Censo de Mercados de Abastos 2016]]></rdf:label><dc:title><![CDATA[Ficha Técnica del Censo de Mercados de Abastos 2016]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Questionnaire [doc/qst]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[La ficha técnica es un documento que detalla de manera simplificada la finalidad, objetivos, procesamiento y otros procedimientos relacionado al Censo Nacional de Mercados de Abastos 2016 (CENAMA 2016). El documento contiene 6 páginas.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+1. Objetivos del censo
+1.1 Objetivo general
+1.2 Objetivos específicos
+2. Características técnicas del censo
+2.1 Cobertura geográfica
+2.2 Cobertura temática
+2.3 Periodo de referencia
+2.4 Unidad estadística
+2.5 Unidad informante
+2.6 Método de recolección
+2.7 Confidencialidad de la Información
+2.8 Periodicidad Definida
+2.9 Personal Requerido
+2.10 Presupuesto
+2.11 Cronograma de actividades]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="http://www.inei.gob.pe/media/MenuRecursivo/censos/cenana/Documento_metodologico/Resolucion-Jefatural-400_2016_inei.pdf"><rdf:label><![CDATA[Resolución Jefatural del Censo Nacional de Mercados de Abastos 2016]]></rdf:label><dc:title><![CDATA[Resolución Jefatural del Censo Nacional de Mercados de Abastos 2016]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Other [doc/oth]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[La Resolución Jefatural del Censo Nacional de Mercados de Abastos 2016 representa la autorización de la ejecución del censo. El documento contiene 1 páginas.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento contiene la siguiente estructura:
+
+1. Considerando
+2. Se Resuelve
+    - Artículo 1°
+    - Artículo 2°
+    - Artículo 3°]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="http://www.inei.gob.pe/media/MenuRecursivo/censos/cenana/Documento_metodologico/Manual_del_Empadronador-2016.pdf"><rdf:label><![CDATA[Manual del empadronador del Censo Nacional de Mercados de Abastos 2016]]></rdf:label><dc:title><![CDATA[Manual del empadronador del Censo Nacional de Mercados de Abastos 2016]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Other [doc/oth]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El presente documento denominado MANUAL DEL EMPADRONADOR DEL CENSO NACIONAL DE MERCADOS DE ABASTOS 2016, tiene como finalidad conocer el número, información socioeconómica e infraestructura de los mercados de abastos en el país que permita establecer una línea de base de variables de carácter estructural para la implementación de encuestas continuas. El documento contiene 123 páginas.]]></dc:description><dcterms:tableOfContents><![CDATA[El Manual tiene la siguiente estructura:
+
+1. Finalidad y objetivos del censo
+2. Características técnicas del censo
+    2.1 Cobertura geográfica
+    2.2 Cobertura temporal
+    2.3 Cobertura temática
+    2.4 Unidad estadística
+    2.5 Unidad informante
+    2.6 Método de recolección
+    2.7 Periodo de referencia
+3. Organización del empadronamiento
+4. La entrevista
+5. El empadronador
+6. Tareas del empadronador
+7. Identificación de los mercados de abastos
+8. Descripción e instrucciones generales para el diligenciamiento de la cédula censal
+9. Instrucciones específicas]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="http://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1448/libro.pdf"><rdf:label><![CDATA[Informe Final del Censo Nacional de Mercados de Abastos 2016]]></rdf:label><dc:title><![CDATA[Informe Final del Censo Nacional de Mercados de Abastos 2016]]></dc:title><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:contributor><![CDATA[Ministerio de la Producción]]></dc:contributor><dc:type><![CDATA[Documento, Técnico [doc/tec]]]></dc:type><dc:description><![CDATA[Este documento está dividida en cuatro capítulos. El primer capítulo, proporciona información respecto al número, tipo, antigüedad y giros de negocio de los mercados de abastos en todo el país; el segundo, sobre la infraestructura, equipamiento, instalaciones y servicios de estos centros de expendio.
+El tercer capítulo, ofrece información respecto a la gestión administrativa de los mercados de abastos, como los servicios con los que cuenta, organización de los puestos de venta, personal ocupado y capacitación a los trabajadores; el cuarto capítulo, relacionado a la gestión financiera, ingresos, egresos, financiamiento e inversiones realizadas.]]></dc:description><dcterms:tableOfContents><![CDATA[El documento tiene la siguiente estructura:
+
+Presentación
+Antecedentes
+Resumen Ejecutivo1
+
+Capítulo I: Características de los mercados de abastos
+Capítulo II: Infraestructura, equipamiento y servicios
+           2.1. Acceso a servicios básicos 
+           2.2. Material predominante en las paredes, pisos y techos del local 
+           2.3. Generación de residuos sólidos, frecuencia de recojo y manejo de residuos 
+           2.4. Equipamiento e instalaciones 
+           2.5. Fumigación, aplicación de plaguicidas y limpieza del local comercial
+
+Capítulo III: Gestión administrativa 
+           3.1. Servicios de seguridad, limpieza, carga y descarga
+           3.2. Organización de los puestos de venta 
+           3.3. Personal ocupado en la administración del mercado 
+           3.4. Capacitación recibida por los socios y/o comerciantes
+
+Capítulo IV: Gestión financiera 
+           4.1. Inversiones realizadas
+           4.2. Acceso a créditos del sistema financiero 
+           4.3. Ingresos recaudados 
+           4.4. Egresos de los mercados de abastos 
+
+Anexo: Cuadros Estadísticos 
+Anexo: Cédula Censal 
+Anexo: Ficha Técnica]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="http://www.inei.gob.pe/media/MenuRecursivo/censos/cenana/Documento_metodologico/Cedula_Censal_Cenama_final.pdf"><rdf:label><![CDATA[Cédula Censal]]></rdf:label><dc:title><![CDATA[Cédula Censal]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Questionnaire [doc/qst]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[La Cédula censal es el documento donde se detallan todas las preguntas que se aplicará a los responsables (Gerente/Administrador) de cada mercado de abastos. El documento contiene 8 páginas.]]></dc:description><dcterms:tableOfContents><![CDATA[Esta Cédula Censal está compuesto por los siguientes capítulos:
+
+Capítulo I. Localización del Mercado
+Capítulo II. Identificación del Mercado e Informante
+               I. Identificación del Mercado
+               II. Identificación del Informante
+Capítulo III. Entrevista y Supervisión
+Capítulo IV. Características del Mercado
+Capítulo V. Infraestructura, Instalaciones, Equipamiento y otros servicios del mercado
+              Sección  I: Infraestructura
+              Sección II: Instalaciones, equipamiento y otros servicios
+Capítulo VI. Gestión administrativa y financiera
+              Sección I: Gestión Administrativa
+              Sección II: Gestión financiera]]></dcterms:tableOfContents></rdf:Description>
+</rdf:RDF>

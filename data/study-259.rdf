@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/">
+<rdf:Description rdf:about="http://www.inei.gob.pe/media/MenuRecursivo/cedulacensal_2007_1.pdf"><rdf:label><![CDATA[Cédula Censal]]></rdf:label><dc:title><![CDATA[Cédula Censal]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Questionnaire [doc/qst]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Es el documento que contiene las preguntas que se realizó al informante para recolectar información sobre las características demográficas, económicas, culturales y sociales de todos los habitantes del país en un momento determinado. Asimismo, recopilar información sobre la cantidad y características de las viviendas y de otros locales destinados a la habitación humana que existen en un área geográfica (urbano y rural).]]></dc:description><dcterms:tableOfContents><![CDATA[Este Formulario está compuesto por las siguientes secciones:
+
+- Primera sección: Localización de la vivienda y número de hogares, contiene 14 preguntas.
+- Segunda sección: Características y servicios de la vivienda, contiene 6 preguntas.
+- Tercera sección: Características del hogar, 1 pregunta.
+- Cuarta sección: Personas que conforman el hogar, 2 preguntas.
+- Quinta sección: Características de la población, 8 preguntas.]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Los Censos de Población y Vivienda producen información relevante para la definición de políticas públicas y la toma de decisiones de inversión, provenientes de la iniciativa privada o de los diversos niveles de gobierno, convirtiéndose en la única fuente de referencia nacional que brinda información sobre la situación de vida de la población hasta el menor nivel de desagregación geográfica como son los Centros Poblados del país.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="http://censos.inei.gob.pe/Censos2007/redatam/doc/FichaTecnicaCensos2007.pdf"><rdf:label><![CDATA[Ficha Técnica]]></rdf:label><dc:title><![CDATA[Ficha Técnica]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática (INEI)]]></dc:publisher><dc:contributor><![CDATA[Dirección Nacional de Censos y Encuestas (DNCE)]]></dc:contributor><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[La ficha técnica es un documento en forma de sumaria que contiene información sobre diversos aspectos del Censo Nacional 2007: XI de Población y VI de Vivienda como los objetivos y características de la investigación, los recursos necesarios para su ejecución y cronograma de las actividades, de tal forma que sea de utilidad para los funcionarios de la encuesta que participaron en el planeamiento, ejecución, procesamiento y difusión de esta investigación.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por las siguientes secciones:
+
+1. Finalidad
+
+2. Objetivos
+    - Objetivos generales
+    - Objetivos específicos
+    
+3. Características técnicas
+    -Tipo de censo
+    - Cobertura del censo
+    - Unidades de investigación
+    - Períodos de referencia
+    - Períodos de empadronamiento
+    - Método de entrevista
+4. Capacitación
+
+5. Operación de campo
+    - Periodo de ejecución
+    
+6. Procesos post censales
+    - Recepción, inventario, clasificación y archivo
+    - Consistencia básica
+    - Entrada de datos
+    - Consistencia de datos
+    - Consistencia interna, externa y tabulados
+    
+7. Productos obtenidos]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Los Censos Nacionales 2007, brindarán la información siguiente:
+- Cantidad de hombres y mujeres que habitan un área geográfica determinada (país, departamento, provincia, distrito, centro poblado, etc.), la edad que tienen, nivel educativo que han alcanzado, idiomas que hablan, lugar donde han nacido y donde viven en la actualidad, pertenencia o no a algún pueblo indígena u originario, la ocupación, actividad a la que se dedican y otras características.
+- Cantidad de viviendas, los materiales con las que están construidas, los servicios que poseen (luz, agua, teléfono, alcantarillado, y otras características).]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="http://censos.inei.gob.pe/censos2007/Documentos/RJ_011_2007_INEI.pdf"><rdf:label><![CDATA[Resolución Jefatural]]></rdf:label><dc:title><![CDATA[Resolución Jefatural]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Other [doc/oth]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Documento donde se autoriza la ejecución de los Censos Nacionales 2007: XI de Población y VI de Vivienda que se aplicó en todo el territorio peruano. Este documento contiene 2 páginas.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento contiene la siguiente estructura:
+
+1. Considerando
+2. Se Resuelve
+    - Artículo 1°
+    - Artículo 2°]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="http://censos.inei.gob.pe/censos2007/documentos/Resultado_CPV2007.pdf"><rdf:label><![CDATA[Perú: Crecimiento y distribución de la población, 2007]]></rdf:label><dc:title><![CDATA[Perú: Crecimiento y distribución de la población, 2007]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Other [doc/oth]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El documento "PERÚ: CRECIMIENTO Y DISTRIBUCIÓN DE LA POBLACIÓN, 2007", presenta los resultados definitivos de las principales características demográficas de la población, así como su ubicación y magnitud, información que permite cuantificar su evolución a través del tiempo.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación 
+
+I. Crecimiento de la población 
+   1.1 Población a través de los censos 
+   1.2 Crecimiento de la población 
+   1.3 Densidad poblacional 
+   1.4 Población en América del Sur y América Latina 
+   1.5 Densidad poblacional en América del Sur y América Latina 
+
+II. Distribución espacial de la población por región natural 
+   2.1 Distribución de la población 
+   2.2. Tasa de crecimiento promedio anual 
+
+III. Distribución espacial de la población por departamento 
+   3.1 Distribución de la población por departamento 
+   3.2. Tasa de crecimiento promedio anual por departamento 
+   3.3 Densidad poblacional por departamento 
+
+IV. Distribución espacial de la población por provincia 
+   4.1 Provincias más pobladas 
+
+V. Estructura y composición de la población por edad y sexo 
+   5.1 Estructura de la población 
+   5.2 Composición de la población por sexo 
+   5.3 Índice de masculinidad 
+
+Anexo 
+Comisión Consultiva de los Censos Nacionales 2007 
+Apoyo de las Fuerzas Armadas y Policiales a los Censos Nacionales 2007]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[El presente documento presenta los resultados de los Censos Nacionales 2007, como: Crecimiento de la población, distribución de la población, tasa de crecimiento promedio anual, distribución de la población por departamento y estructura y composición de la población por edad y sexo.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Plan_Directriz_CPV2007.pdf"><rdf:label><![CDATA[Plan Directriz]]></rdf:label><dc:title><![CDATA[Plan Directriz]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[En el presente documento, se incluyó un capítulo denominado “Objetivos Estratégicos del Proceso Censal”, que implicó compromisos institucionales de carácter nacional, a fin de brindar confianza del proceso censal y confiabilidad en sus resultados. Así mismo, se incluyó otro capítulo titulado “Objetivos de los Censos Nacionales”; además, para cada actividad se describió las estrategias generales y específicas consideradas en el planeamiento de los Censos Nacionales 2007.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Introducción
+
+I. El proceso censal
+      1.1 Importancia de los censos nacionales 
+      1.2 Características técnicas del proceso censal 
+II. Objetivos de los censos nacionales
+      2.1 Objetivo general
+      2.2 Objetivos específicos
+III. Objetivos estratégicos del proceso censal
+      3.1 Contenido de los censos
+      3.2 Sensibilización del público en general
+      3.3 Sensibilización de los funcionarios censales
+      3.4 Resultados de los censos 
+      3.5 Eficacia en función del costo
+IV. Estrategias censales
+      4.1 En la etapa preparatoria 
+      4.2 En la etapa de empadronamiento
+      4.3 En la etapa de post empadronamiento
+V. Planeamiento general de los censos nacionales
+     5.1 Dirección y Gerencia
+     5.2 Métodos y Documentos
+     5.3 Segmentación
+     5.4 Capacitación Para el Empadronamiento
+     5.5 Promoción Censal
+     5.6 Logística y Archivo
+     5.7 Reclutamiento del Personal Para el Empadronamiento
+     5.8 Empadronamiento 
+     5.9 Procesamiento de Datos 
+     5.10 Control de Calidad de las Actividades Censales
+     5.11 Consistencia de la Información Censal
+     5.12 Análisis de Resultados
+     5.13 Publicación de Resultados
+     5.14 Análisis y Evaluación del Proceso Censal
+VI. Calendario de ejecución de actividades y tareas
+]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="http://censos.inei.gob.pe/censos2007/Documentos/PlanCensal_PlandeComunicaciones.pdf"><rdf:label><![CDATA[Plan de Comunicaciones]]></rdf:label><dc:title><![CDATA[Plan de Comunicaciones]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El presente documento, Plan de Comunicaciones, expone los lineamientos principales a través de los cuales se planificó, ejecutó y supervisó las actividades que comprende la Promoción Censal. El objetivo principal de la elaboración del Plan lo constituye la necesidad de desarrollar en la opinión pública una “cultura de censos”, dando a conocer de manera gradual y sistemática las características principales de los Censos Nacionales 2007, de manera que permita la participación masiva de la población en las actividades del proceso censal, fundamentalmente durante el proceso de empadronamiento. Asimismo, el Plan contempla un conjunto de acciones con la finalidad de lograr el apoyo de autoridades políticas y administrativas en el gobierno, organismos internacionales, autoridades regionales y locales, personalidades, líderes de opinión, empresas privadas y estudiantes, que coadyuven al desarrollo de las actividades censales.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+INTRODUCCIÓN
+
+I. Objetivos
+      1.1 Objetivo General 
+      1.2 Objetivos Específicos
+II. Público
+      2.1 Público Primario
+      2.2 Público Secundario 
+      2.3 Aliados
+III. Planeamiento
+      3.1 Estrategias Globales 
+      3.2 Líneas de Intervención
+IV. Ejecución del Plan de Comunicaciones
+      4.1 Estrategias Globales 
+      4.2 Campañas del Plan de Comunicaciones
+            4.2.1 Campaña de Prensa
+            4.2.2 Campaña Publicitaria
+            4.2.3 Campaña de Relaciones Públicas
+V. Mensajes Claves
+      5.1 Mensaje por etapas del Censo
+VI. Escenarios de Intervención
+VII. Organización del Área de Comunicaciones
+       7.1 Organización
+       7.2 Funciones
+VIII. Asistencia Técnica, Monitoreo y Evaluación
+         8.1 Asistencia Técnica
+         8.2 Monitoreo y Evaluación
+IX. Cronograma Mínimo de Actividades
+X. Programación Máxima de Actividades
+XI. Requerimientos Presupuestales
+
+Anexo
+
+Anexo 1 - Ficha de Monitoreo]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Tomando en cuenta la diversidad de medios e instrumentos de comunicación y las características diferenciadas de los diversos sectores de la población, el Plan de Comunicaciones, considera el desarrollo de tres campañas simultáneas y complementarias: La Campaña de Prensa, Campaña Publicitaria y Campaña de Relaciones Públicas.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_Jefe_Departamental_CPV2007.pdf "><rdf:label><![CDATA[Manual del Jefe Departamental]]></rdf:label><dc:title><![CDATA[Manual del Jefe Departamental]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El presente manual contiene las normas técnicas y administrativas que el Jefe Departamental de los Censos debió tener en consideración, en la realización de cada una de las actividades, que tuvo bajo su dirección y responsabilidad. Este documento consta de 66 páginas.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes secciones:
+
+Presentación
+
+1. Características de los Censos Nacionales 2007
+2. Estrategias de los censos en el departamento 
+3. Organización censal
+4. Jefe departamental
+5. Descripción de las tareas del jefe departamental 
+6. Programación de las tareas y sub-tareas del jefe departamental
+7. Instrucciones para el buen uso y diligenciamiento de documentos auxiliares.
+
+Anexo]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[En la estructura orgánica del Proyecto de los Censos, el Jefe Departamental de los Censos, es el funcionario censal de más alto nivel en el Departamento, y sobre quien recae la responsabilidad de la organización y ejecución de las actividades de las etapas censales divididas en: antes, durante y después del empadronamiento.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_del_Jefe_Distrital_CPV2007.pdf"><rdf:label><![CDATA[Manual Jefe Distrital]]></rdf:label><dc:title><![CDATA[Manual Jefe Distrital]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El presente manual que contiene las normas técnicas y administrativas que el Jefe Distrital debe tener en consideración, para realizar cada una de las actividades, que tiene bajo su dirección y responsabilidad. El Jefe Distrital de los Censos, es el funcionario censal de más alto nivel en el Distrito, y sobre quien recae la responsabilidad de la organización y ejecución de las actividades de las etapas censales divididas en: antes, durante y después del empadronamiento.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+I. Características de los Censos Nacionales 2007: XI de población y VI de vivienda
+II. Estrategias de los censos en el distrito
+III. Organización del empadronamiento censal
+      3.1 Organización Funcional 
+      3.2 Oficina Distrital 
+      3.3 Comité Distrital de Cooperación y Apoyo a los Censos
+      3.4 Estratificación Geográfica Operativa de los Censos 
+IV. Definiciones censales básicas
+V. Jefe distrital / sub distrital 
+     5.1 Jefe Distrital
+     5.2 Jefe Sub Distrital 
+     5.3 Funciones
+     5.4 Obligaciones
+     5.5 Prohibiciones
+     5.6 Jurisdicción del Jefe Distrital / Sub Distrital
+VI. Descripción de las tareas del jefe distrital / sub distrital
+     6.1 Tareas Antes del Empadronamiento
+     6.2 Tareas Durante el Empadronamiento
+     6.3 Tareas Después del Empadronamiento
+VII. Programación de las tareas y sub tareas del jefe distrital / sub distrital 
+VIII. Instrucciones específicas para el diligenciamiento del doc.cpv.08.07 “Resumen del empadronamiento en el distrito / sub distrito"
+Anexos]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Mediante Decreto Supremo Nº 093-2006-PCM, del 27 de diciembre del 2006, se declara de prioridad nacional la ejecución de los Censos Nacionales 2007: XI de Población y VI de Vivienda. El referido dispositivo legal, decreta que el Instituto Nacional de Estadística e Informática (INEI), como órgano responsable de la conducción y ejecución de los Censos Nacionales, emitirá las normas técnicas que regirán los referidos censos.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_Jefe_Empadronador_Comunidad_IndigenaD_CPV2007.pdf "><rdf:label><![CDATA[Manual Jefe Empadronamiento Comunidad Indígena]]></rdf:label><dc:title><![CDATA[Manual Jefe Empadronamiento Comunidad Indígena]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Dentro de la estructura orgánica del Proyecto de los Censos, el Jefe de Empadronamiento de Comunidades Indígenas es el funcionario de más alto nivel en el ámbito de su competencia y sobre el recae la responsabilidad de la organización y ejecución de las actividades de las etapas censales divididas en antes, durante y después del empadronamiento. Se elaboró el “Manual del Jefe del Empadronamiento de Comunidades Indígenas”, que es el instrumento de referencia y consulta necesario para efectuar la supervisión del empadronamiento, lo que permitirá la aplicación sistemática y homogénea de los mismos criterios y pautas a nivel nacional, a fin de que la información recopilada sea de calidad.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+Empadronamiento de Comunidades Indígenas
+
+1. Censo de Comunidades Indígenas
+2. Importancia del II censo de comunidades indígenas 
+3. Estrategias a implementarse 
+4. Estrategias para el empadronamiento
+    4.1 Generales 
+    4.2 Específicas 
+5. Definiciones censales básicas 
+6. Organización censal
+     6.1 Organización Funcional para el Empadronamiento de Comunidades Indígenas 
+     6.2 Jefe Distrital 
+     6.3 Jefe de Empadronamiento de Comunidades Indígenas 
+     6.4 Jefe de Sección Rural de Comunidades Indígenas
+     6.5 Empadronador Rural de Comunidades Indígenas 
+7. Jefe de empadronamiento de comunidades indígenas
+     7.1 Funciones 
+     7.2 Prohibiciones 
+8. Descripción de las tareas 
+     8.1 Antes del Empadronamiento
+     8.2 Durante el Empadronamiento
+     8.3 Después del Empadronamiento]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Las Comunidades Indígenas, son poblaciones étnicas de selva y ceja de selva, que están organizadas por un conjunto de familias en forma de núcleos, con vínculos de idioma o lengua, características culturales y sociales con dominio territorial. En consecuencia, el Censo de Comunidades Indígenas comprenderá un conjunto de operaciones dirigidas a recopilar elaborar, evaluar, analizar y publicar datos relacionados con las características de las comunidades indígenas de la Amazonia Peruana. El Censo de Comunidades Indígenas será la segunda experiencia que se levantará en el país, el primero se llevó a cabo en 1993, el segundo se implementará dentro del marco de los Censos Nacionales 2007: IX de Población y IV de Vivienda.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="http://censos.inei.gob.pe/censos2007/PagCensos_DocsMetodologicos1.asp#"><rdf:label><![CDATA[Manual Empadronador Comunidad Indígena]]></rdf:label><dc:title><![CDATA[Manual Empadronador Comunidad Indígena]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Se ha elaborado el “Manual del Empadronador de Comunidades Indígenas”, con la finalidad de proporcionar al Empadronador las instrucciones para el desarrollo de la operación de campo y el llenado de la Cédula. Este Manual, será utilizado por el Empadronador como documento de consulta, para así homogenizar criterios a nivel de los 11 departamentos en los cuales se encuentran asentadas las Comunidades Indígenas de la Amazonía Peruana.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos: 
+
+Presentación
+
+I. Características generales de la comunidad 
+     1.1 ¿Qué es Comunidad Indígena? 
+     1.2 ¿Qué es un Censo de Comunidades Indígenas? 
+     1.3 ¿Cuáles son los Objetivos del Censo de Comunidades Indígenas? 
+     1.4 ¿Cómo se organizará el Empadronamiento de Comunidades Indígenas? 
+II. El empadronador 
+     2.1 ¿Quién es el Empadronador de Comunidades Indígenas? 
+     2.2 ¿Cuáles son tus Obligaciones? 
+     2.3 ¿Cuáles son tus Prohibiciones? 
+     2.4 ¿Qué Documentos y Materiales utilizarás? 
+III. Tareas del empadronador 
+     3.1 Antes del Empadronamiento 
+     3.2 Durante el Empadronamiento 
+     3.3 Después del Empadronamiento 
+IV. La Cédula del II Censo de Comunidades Indígenas 
+     4.1 ¿Qué es la Cédula? 
+     4.2 Estructura de la Cédula 
+     4.3 Instrucciones Generales 
+V. Instrucciones específicas para el llenado de la cédula de comunidades indígenas 
+    5.1 Primera Sección: Localización y nombre de la comunidad 
+    5.2 Segunda Sección: Características generales de la comunidad
+    5.3 Tercera Sección: Organización de la comunidad 
+    5.4 Cuarta Sección: Educación
+    5.5 Quinta Sección: Salud y medicina tradicional 
+    5.6 Sexta Sección: Características económicas de la comunidad
+    5.7 Sétima Sección: Migración 
+    
+Anexo
+- Cédula del II Censo de Comunidades Indígenas]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[¿Qué es Comunidad Indígena?
+Son grupos tribales de la Selva y Ceja de Selva, constituidos por un conjunto de familias vinculadas por los elementos principales siguientes: Idioma o lengua, caracteres culturales y sociales, tenencia y usufructo común y permanente de un mismo territorio, con asentamiento nucleado o disperso.
+
+¿Qué es un Censo de Comunidades Indígenas?
+Es el conjunto de actividades interrelacionadas, con la finalidad de recopilar información de las principales características de las Comunidades Indígenas de la Amazonía Peruana.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_Jefe_Provincial_CPV2007.pdf"><rdf:label><![CDATA[Manual Jefe Provincial]]></rdf:label><dc:title><![CDATA[Manual Jefe Provincial]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El presente manual contiene las normas técnicas que el Jefe Provincial debe tener en consideración, en cada una de las actividades, que tiene bajo su dirección y responsabilidad. Dicho Jefe Provincial de los Censos (Jefe Provincial), es el funcionario censal, cuya jerarquía funcional es el más alto en el ámbito de la provincia, y sobre él recae la responsabilidad de la organización, dirección y ejecución de las actividades de las etapas censales divididas en: antes, durante y después del empadronamiento.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+I. Características de los censos nacionales 2007 
+II. Estrategias de los censos en la provincia
+III. Organización censal en la provincia
+      3.1 Organización Funcional
+      3.2 Oficina Censal 
+      3.3 Comité Provincial de Cooperación y Apoyo a los Censos 
+      3.4 Organización Territorial 
+      3.5 Estratificación Geográfica Operativa de los Censos
+IV. Jefe provincial / sub provincial
+     4.1 Jefe Provincial 
+     4.2 Jefe Sub Provincial 
+     4.3 Funciones
+     4.4 Obligaciones
+     4.5 Prohibiciones
+     4.6 Jurisdicción del Jefe Provincial / Sub Provincial
+V. Descripción de las tareas del jefe provincial / sub PROVINCIAL
+    5.1 Antes del Empadronamiento
+    5.2 Durante el Empadronamiento
+    5.3 Después del Empadronamiento
+VI. Programación de las tareas y sub tareas del jefe provincial/sub provincial 
+VII. Instrucciones específicas para el diligenciamiento del DOC.CPV. 08.08: resumen del empadronamiento de la provincia/sub  provincia
+Anexos]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Los Censos Nacionales de Población y Vivienda son investigaciones estadísticas que permiten:
+
+- Recopilar información sobre las características demográficas, económicas, culturales y sociales de todos los habitantes de un área en un momento determinado.
+- Recopilar información sobre la cantidad y características de las viviendas y de otros locales destinados a la habitación humana que existen en un área geográfica y en un momento determinado.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_Jefe_de_Zona_CPV2007.pdf"><rdf:label><![CDATA[Manual Jefe de Zona]]></rdf:label><dc:title><![CDATA[Manual Jefe de Zona]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El presente manual contiene las normas técnicas y administrativas que el Jefe de Zona debe tener en consideración, para realizar cada una de las actividades que tiene bajo su dirección y responsabilidad. El Jefe de Zona es el funcionario censal de más alto nivel en la zona censal, y sobre quien recae la responsabilidad de la organización y ejecución de las actividades de las etapas censales divididas en antes, durante y después del empadronamiento.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+I. Características de los Censos Nacionales 2007: XI de Población y VI de Vivienda 
+      1.1 Censos Nacionales 2007
+      1.2 Información que darán los Censos de Población y Vivienda 2007
+      1.3 Apoyo para la Organización y Ejecución de los Censos
+II. Organización del empadronamiento censal 
+      2.1 Organización Funcional 
+      2.2 Estratificación Geográfica Operativa de los Censos
+III. Definiciones censales básicas
+IV. Jefe de zona / sub zona 
+      4.1 Jefe de Zona
+      4.2 Jefe de Sub Zona 
+      4.3 Funciones 
+      4.4 Obligaciones 
+      4.5 Prohibiciones 
+      4.6 Jurisdicción del Jefe de Zona / Sub Zona.
+V. Descripción de las tareas del jefe de zona / sub zona 
+      5.1 Tareas antes del empadronamiento
+      5.2 Tareas durante el empadronamiento 
+      5.3 Tareas después del empadronamiento
+VI. Programación de las tareas del jefe de zona / sub zona 
+VII. Instrucciones específicas para el diligenciamiento del DOC.CPV.08.06 “Resumen del Empadronamiento en la Zona / sub zona”.
+]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Mediante Decreto Supremo N° 093-2006-PCM, del 27 de diciembre del 2006, se declara de prioridad nacional la ejecución de los Censos Nacionales 2007: XI de Población y VI de Vivienda. El referido dispositivo legal, decreta que el Instituto Nacional de Estadística e Informática (INEI), como órgano responsable de la conducción y ejecución de los Censos Nacionales, emitirá las normas técnicas que regirán los referidos censos.
+]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_del_Jefe_de_Seccion_Urbano_CPV2007.pdf"><rdf:label><![CDATA[Manual Jefe de Sección Urbano]]></rdf:label><dc:title><![CDATA[Manual Jefe de Sección Urbano]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Dentro de la estructura orgánica del Proyecto de los Censos, el Jefe de Sección Urbano es el funcionario censal de más alto nivel en la Sección Censal Urbana, y sobre quien recae la responsabilidad de la organización y ejecución de las actividades de las etapas censales divididas en antes, durante y después del empadronamiento. En tal sentido, el presente manual contiene las normas técnicas y administrativas que el Jefe de Sección Urbano debe tener en consideración, para realizar cada una de las actividades que tiene bajo su dirección y responsabilidad.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+I. Características de los Censos Nacionales 2007: XI de Población y VI de Vivienda
+      1.1 Censos Nacionales 2007 
+      1.2 Información que darán los Censos de Población y Vivienda 2007
+      1.3 Apoyo para la organización y ejecución de los Censos
+II. Organización del empadronamiento censal
+      2.1 Organización Funcional 
+      2.2 Estratificación Geográfica Operativa de los Censos
+III. Definiciones censales básicas 
+IV. Jefe de sección urbano
+      4.1 Nombramiento y Dependencia 
+      4.2 Funciones 
+      4.3 Obligaciones 
+      4.4 Prohibiciones 
+V. Descripción de las tareas del jefe de sección urbano 
+      5.1 Tareas Antes del Empadronamiento
+      5.2 Tareas Durante el Empadronamiento 
+      5.3 Tareas Después del Empadronamiento
+VI. Programación de las tareas y sub / tareas del jefe de sección urbano
+VII. Instrucciones específicas para el diligenciamiento del doc.cpv.08.05 “Resumen del Empadronamiento en la Sección Censal” 
+Anexos
+]]></dcterms:tableOfContents></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_del_Jefe_de_Seccion_Rural_CPV2007.pdf"><rdf:label><![CDATA[Manual Jefe de Sección Rural]]></rdf:label><dc:title><![CDATA[Manual Jefe de Sección Rural]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Dentro de la estructura orgánica del Proyecto de los Censos, el Jefe de Sección Rural es el funcionario censal de más alto nivel en la Sección Censal Rural, y sobre quien recae la responsabilidad de la organización y ejecución de las actividades de las etapas censales divididas en antes, durante y después del empadronamiento.
+En tal sentido, se elaboró el presente manual, que contiene las normas técnicas y administrativas que el Jefe de Sección Rural debe tener en consideración, para realizar cada una de las actividades que tiene bajo su dirección y responsabilidad.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+I. Características de los Censos Nacionales 2007: XI de Población y VI de Vivienda
+      1.1 Censos Nacionales 2007 
+      1.2 Información que darán los Censos de Población y Vivienda 2007 
+      1.3 Apoyo para la Organización y Ejecución de los Censos 
+II. Organización del empadronamiento censal
+      2.1 Organización Funcional
+      2.2 Estratificación Geográfica Operativa de los Censos
+III. Definiciones censales básicas
+IV. Jefe de sección rural
+      4.1 Nombramiento y Dependencia 
+      4.2 Funciones 
+      4.3 Obligaciones 
+      4.4 Prohibiciones 
+V. Descripción de las tareas del jefe de sección rural 
+      5.1 Tareas Antes del Empadronamiento
+      5.2 Tareas Durante el Empadronamiento
+      5.3 Tareas Después del Empadronamiento
+      5.4 Ejecución del Empadronamiento en Comunidades Indígenas 
+      5.5 Ejecución del Empadronamiento Especial en Viviendas Colectivas 
+VI. Programación de las tareas y sub tareas del jefe de sección rural
+VII. Instrucciones específicas para el diligenciamiento de los documentos auxiliares 
+      7.1 Doc.CPV.08.05 “Resumen del Empadronamiento en la Sección Censal” 
+      7.2 Doc.CPV.08.32 “Plan de Recorrido del Jefe de Sección Rural"]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[Será convocado y designado por el Jefe Distrital / Sub Distrital. Dependerá directamente del Jefe Distrital / Sub Distrital, a quien informará permanentemente y en forma oportuna, el desarrollo de sus labores. Generalmente tendrá a su cargo 3 empadronadores rurales.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_de_Empadronador_CPV2007.pdf"><rdf:label><![CDATA[Manual del Empadronador]]></rdf:label><dc:title><![CDATA[Manual del Empadronador]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[El Manual del Empadronador, es un instrumento de consulta. En él se encuentran las instrucciones y procedimientos adecuados para el desarrollo del trabajo de campo y especialmente para el llenado de la Cédula Censal.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Capítulo 1: CensosNacionales 2007: XI Censo dePoblación y VI Censo deVivienda 
+  1.1 ¿Qué es un Censo de Población y Vivienda? 
+  1.2 ¿Para qué se hace un Censo de Población y Vivienda? 
+  1.3 ¿Qué tipo de Censo se ejecutará? 
+  1.4 ¿Cómo será la Organización Censal Distrital?
+
+Capítulo 2: El Empadronador 
+  2.1 ¿Quién es el Empadronador? 
+  2.2 ¿Cuáles son los documentos y materiales que utilizarás? 
+  2.3 ¿Cuáles son las tareas que realizarás como Empadronador? 
+
+Capítulo 3: Instrucciones Generales para el Llenado de la Cédula Censal
+  3.1 ¿Qué es la Cédula Censal? 
+  3.2 Instrucciones Generales
+
+Capítulo 4: Instrucciones Específicas para el Llenado de la Primera Sección “Localización de la Vivienda y Número de Hogares”
+Capítulo 5: Instrucciones Específicas para el Llenado de la Segunda Sección “Características y Servicios de la Vivienda”
+Capítulo 6: Instrucciones Específicas para el Llenado de la Cuarta Sección “Personas que Conforman el Hogar”
+Capítulo 7: Instrucciones Específicas para el Llenado de la Quinta Sección “Características de la Población”
+Capítulo 8: Instrucciones para el Uso y Diligenciamiento de los Documentos Auxiliares
+Capítulo 9 Resumen del Empadronamiento
+  9.1 Plan de Recorrido del Empadronador Rural 
+  9.2 Resumen del Empadronamiento
+
+Capítulo 10 : Recorrido del Área de Empadronamiento 
+  10.1 Empadronador Urbano 
+  10.2 Empadronador Rural 
+
+ANEXOS
+]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[El presente documento contiene las características de los Censos Nacionales 2007, características del empadronador, instrucciones generales y específicas que debe tener en cuenta el empadronador durante el desarrollo de sus funciones. Asimismo, servirá de consulta para el personal de los distintos niveles jerárquicos que participarán en la ejecución de los Censos Nacionales 2007.]]></dcterms:abstract></rdf:Description>
+<rdf:Description rdf:about="https://www.inei.gob.pe/media/MenuRecursivo/censos/2007/Manual_de_Empadronamiento_Especial_CPV2007.pdf "><rdf:label><![CDATA[Manual de Empadronamiento Especial]]></rdf:label><dc:title><![CDATA[Manual de Empadronamiento Especial]]></dc:title><dc:creator><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:creator><dc:publisher><![CDATA[Instituto Nacional de Estadística e Informática - INEI]]></dc:publisher><dc:format><![CDATA[Document, PDF [application/pdf]]]></dc:format><dc:type><![CDATA[Document, Technical [doc/tec]]]></dc:type><dcterms:spatial><![CDATA[Perú [per]]]></dcterms:spatial><dc:description><![CDATA[Dentro de la cobertura del empadronamiento nacional, también se incorpora el empadronamiento de personas que permanecen o se alojan en viviendas colectivas,
+personas que trabajan el “Día del Censo”, transeúntes y personas que no tienen vivienda; que en conjunto son denominados casos especiales del empadronamiento.
+En tal sentido, se elaboró el “Manual del Empadronamiento Especial”, que tiene como propósito dar a conocer las instrucciones y procedimientos para la ejecución del Empadronamiento Especial.]]></dc:description><dcterms:tableOfContents><![CDATA[Este documento está compuesto por los siguientes capítulos:
+
+Presentación
+
+I. Características generales
+      1.1 Empadronamiento Especial
+      1.2 Población Objetivo del Empadronamiento Especial 
+II. Organización distrital del empadronamiento especial 
+      2.1 Jefe Distrital 
+      2.2 Jefe de Empadronamiento Especial 
+      2.3 Jefe de Sección del Empadronamiento Especial
+      2.4 Empadronador Especial
+III. Funciones del jefe de empadronamiento especial
+      3.1 Documentos y Materiales a utilizar 
+      3.2 Antes del Empadronamiento Especial 
+      3.3 Durante el Empadronamiento
+      3.4 Después del Empadronamiento
+IV. Funciones del jefe de sección del empadronamiento especial 
+      4.1 Documentos y Materiales a Utilizar 
+      4.2 Antes del Empadronamiento
+      4.3 Durante el Empadronamiento
+      4.4 Después del Empadronamiento
+V. Funciones del empadronador especial
+      5.1 Antes del Empadronamiento
+      5.2 Durante el Empadronamiento
+      5.3 Después del Empadronamiento
+VI. Procedimientos para la ejecución del empadronamiento especial 
+      6.1 Empadronamiento de las Personas que Trabajan el "Día del Censo"
+      6.2 Empadronamiento de Transeúntes en el Distrito Censal
+      6.3 Empadronamiento de Personas Sin Vivienda (Indigentes) 
+      6.4 Empadronamiento de Personas que permanecen o se alojan en viviendas colectivas
+      6.5 Empadronamiento Especial en Área Rural
+VII. Programación de las tareas para el empadronamiento especial
+VIII. Instrucciones específicas para el llenado de la cédula para el empadronamiento especial
+IX. Instrucciones específicas para el diligenciamiento de documentos auxiliares
+      9.1 Instrucciones Específicas para el Diligenciamiento del Doc.CPV.08.04 "Resumen del Empadronamiento" 
+      9.2 Instrucciones Específicas para el Diligenciamiento del Doc.CPV.08.05 "Resumen del Empadronamiento en 
+          la Sección Censal" 
+      9.3 Instrucciones Específicas para el Diligenciamiento del Doc.CPV.08.10 "Resumen del Empadronamiento 
+          Especial en el Distrito".]]></dcterms:tableOfContents><dcterms:abstract><![CDATA[El Empadronamiento Especial es la recopilación de información de los datos censales de las personas que por diferentes motivos no se encuentran en sus viviendas el “Día del Censo”.  Población objetivo del empadronamiento especial:
+
+• Personas que trabajan el “Día del Censo”.
+• Personas transeúntes.
+• Personas sin vivienda.
+• Personas que permanecen o se alojan en viviendas colectivas.]]></dcterms:abstract></rdf:Description>
+</rdf:RDF>
