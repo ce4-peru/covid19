@@ -14,7 +14,7 @@ library(plyr)
 library(tmap)
 library(dplyr)
 
-setwd("~/ce4-peru.github.io/")
+setwd("~/covid19/")
 
 ## Call data
 # shapefile de peru por regiones
@@ -22,10 +22,10 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-caso_covid <- fread("~/ce4-peru.github.io/data/modificadas/covidPE_IND_20200327_MD_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200331_MD_clean.csv")
 
 # tabla de poblacion por regiones
-pob_region <- read.csv("data/Poblacion por region.csv")
+pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
 
 ## Check the neighborhood shapefile data and plot
 sh_peru@data$NAME_1
@@ -115,6 +115,37 @@ region_values$incidencerate_100 <-(region_values$incidencia*100000)
 setnames(region_values, old = "REGION",new = "NAME_1")
 levels(region_values$NAME_1)
 
+## Create labels that does not occupy 
+region_values$NAME_LABEL <- region_values$NAME_1
+str(region_values$NAME_LABEL)
+
+region_values$NAME_LABEL <- revalue(region_values$NAME_LABEL, 
+                                    c("ANCASH"="ANC", 
+                                      "AREQUIPA"="AQP",
+                                      "AYACUCHO" ="AYA",
+                                      "CAJAMARCA"="CAJ",
+                                      "CALLAO"="CAL",
+                                      "CUSCO" ="CUS",
+                                      "HUANUCO" ="HCO",
+                                      "ICA" ="ICA",
+                                      "JUNIN" ="JUN",
+                                      "LA LIBERTAD" ="LAL",
+                                      "LAMBAYEQUE" ="LAM",
+                                      "LIMA" ="LIM",
+                                      "LORETO"="LOR",
+                                      "MADRE DE DIOS"="MDD",
+                                      "PASCO" ="PAS",
+                                      "PIURA"="PIU",
+                                      "SAN MARTIN"="SAM", 
+                                      "TACNA" ="TAC",
+                                      "TUMBES" ="TUM", 
+                                      "AMAZONAS" ="AMA", 
+                                      "MOQUEGUA"="MOQ", 
+                                      "APURIMAC"="APU", 
+                                      "HUANCAVELICA"="HUV", 
+                                      "PUNO"="PUN", 
+                                      "UCAYALI"="UCA"))
+                             
 ## Merge data with shapefile 
 tmp1 <- sh_peru
 tmp1_map <- tmp1
@@ -128,13 +159,14 @@ tmp1_map@data$NUMERO_CASOS[is.na(tmp1_map@data$NUMERO_CASOS)]<-0 #
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
+
 # Create the map qtm
 col <- c("ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
          "royalblue", "blue2", "navyblue", "black")
 # try snow2 too
 
 # interactive view
-tmap_mode("view")
+#tmap_mode("view")
 
 # crear mapa
 qtm <- qtm(tmp1_map, fill = "incidencerate_100", 
@@ -143,8 +175,8 @@ qtm <- qtm(tmp1_map, fill = "incidencerate_100",
   # tm_text("NAME_3", size="0.008", scale=1, root=4, 
   #         size.lowerbound = .1, bg.color="white", bg.alpha = .15, 
   #         legend.size.show = FALSE) +
-    tm_text("NAME_1",size = 0.45)+
-    tm_layout(paste("Casos por Departamento COVID19 "), 
+    tm_text("NAME_LABEL",size = 0.5)+
+    tm_layout(paste("Casos por \nregión \nCOVID19 "), title.size = 1,
               legend.title.size = 0.8, 
             legend.text.size = .6, legend.bg.color = "white",
             legend.position = c("left","bottom")) #+ 
@@ -153,9 +185,11 @@ qtm <- qtm(tmp1_map, fill = "incidencerate_100",
   
 print(qtm)
  tmap_save(qtm, 
-          paste("outputs_covid19/20200327_Dep_COVID19_Incidencerate_v2",".png", sep=""), 
+          paste("outputs_covid19/20200331_Dep_COVID19_Incidencerate",".png", sep=""), 
          width=2300, height=1380)
 
+## 
+##
 # Loop para plotear por dia
 unique(caso_covid$FECHA)
 
