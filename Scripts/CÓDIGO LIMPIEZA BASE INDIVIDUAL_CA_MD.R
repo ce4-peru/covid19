@@ -118,16 +118,24 @@ levels(covid_ind$REGION) <- c(levels(covid_ind$REGION),
                               "JUNIN", "SAN MARTIN"))
 
 covid_ind$REGION[covid_ind$REGION == "HUáNUCO"] <- "HUANUCO"
+covid_ind$REGION[covid_ind$REGION == ""] <- NA
 unique(covid_ind$REGION) # ok
 
 
 ## Provincia
 str(covid_ind$PROVINCIA) # chr 
 unique(covid_ind$PROVINCIA)
-# [1] "LIMA"       "AREQUIPA"   "HUANUCO"    "CHINCHA"    "CUSCO"      ""          
-# [7] "SANTA"      "CALLAO"     "TRUJILLO"   "CHICLAYO"   "PIURA"      "MAYNAS"    
-# [13] "TAMBOPATA"  "SAN MARTIN" "HUANCAYO"   "FERREñAFE" "SULLANA"    "ICA"       
-# [19] "TUMBES"     "CAJAMARCA"
+# [1] "LIMA"                   "AREQUIPA"               "HUANUCO"               
+# [4] "CHINCHA"                "CUSCO"                  ""                      
+# [7] "SANTA"                  "CALLAO"                 "TRUJILLO"              
+# [10] "CHICLAYO"               "PIURA"                  "MAYNAS"                
+# [13] "TAMBOPATA"              "SAN MARTIN"             "HUANCAYO"              
+# [16] "FERRENAFE"              "SULLANA"                "ICA"                   
+# [19] "TUMBES"                 "CAJAMARCA"              "PAITA"                 
+# [22] "DANIEL ALCIDES CARRION" "ZARUMILLA"              "MARISCAL CACERES"      
+# [25] "HUAMANGA"               "CONVENCION"             "FERREñAFE"            
+# [28] "TACNA"                  "MOYOBAMBA"              "RIOJA"                 
+# [31] "LEONCIO PRADO"          "LAMBAYEQUE"
 # Hay  ""
 #  "FERREñAFE" con n.
 
@@ -160,9 +168,23 @@ unique(covid_ind$DISTRITO)
 # [29] "MARIANO MELGAR"                "CARMEN DE LA LEGUA"           
 # [31] "ICA"                           "LAREDO"                       
 # [33] "ANDRES ARUAJO MORAN"           "CERCADO DE TUMBES"            
-# [35] "CAJAMARCA"                     "ATE VITARTE"
-
+# [35] "CAJAMARCA"                     "ATE VITARTE"                  
+# [37] "TAMBO REAL"                    "CHINCHA ALTA"                 
+# [39] "EL PORVENIR"                   "PAITA"                        
+# [41] "HUANUCO"                       "FERRENAFE"                    
+# [43] "TAPUC"                         "AGUAS VERDES"                 
+# [45] "LA ESPERANZA"                  "PUEBLO NUEVO"                 
+# [47] "JUANJUI"                       "CARMEN ALTO"                  
+# [49] "SANTA ANA"                     "CHICLAYO"                     
+# [51] "JOSE LEONARDO ORTIZ"           "SANTA ROSA"                   
+# [53] "TARAPOTO"                      "GREGORIO ALBARRACIN"          
+# [55] "ZARUMILLA"                     "VICTOR LARCO"                 
+# [57] "MOYOBAMBA"                     "NUEVA CAJAMARCA"              
+# [59] "RUPA RUPA"                     "FERREñAFE"                   
+# [61] "REQUE"                         "LAMBAYEQUE"                   
+# [63] "CIUDAD ETEN"                   "TACNA"
 # Hay  ""
+covid_ind$DISTRITO[covid_ind$DISTRITO == "FERREñAFE"] <- "FERRENAFE"
 covid_ind$DISTRITO[covid_ind$DISTRITO == ""] <- NA
 unique(covid_ind$DISTRITO)
 
@@ -184,67 +206,24 @@ covid_ind$EDAD_A[covid_ind$EDAD_A == ""] <- NA
 str(covid_ind$SEXOM1H0) # int
 table(covid_ind$SEXOM1H0) # 0 and 1
 # 0  1 
-# 78 54
+# 92 66 
 
 ## Hospitalizado
 str(covid_ind$HOSPITALIZADOS1N0) # int
 table(covid_ind$HOSPITALIZADOS1N0) # 0 and 1
 # 0  1 
-# 93 27 
+# 108  31 
 
 ## AisladoDomicil
 str(covid_ind$AISLADODOMICILS1N0) # int
 table(covid_ind$AISLADODOMICILS1N0) # 0 and 1
 # 0  1 
-# 26 93 
+# 31 107
 
 ## cONTACTO
 str(covid_ind$CONTACTO) # CHR
 unique(covid_ind$CONTACTO) 
-# [1] "EUROPA (RECORRIO FRANCIA, ESPAñA Y REPUBLICA CHECA)"
-# [2] "FAMILIAR DEL CASO 1"                                 
-# [3] "AMIGO DEL CASO 1"                                    
-# [4] "REINO UNIDO (LONDRES, INGLATERRA)"                   
-# [5] "ENTORNO DEL CASO 1"                                  
-# [6] "ESPANA"                                              
-# [7] "ESPANA E ITALIA"                                     
-# [8] "FAMILIAR DEL CASO 6"                                 
-# [9] ""                                                    
-# [10] "ITALIA"                                              
-# [11] "ALEMANIA Y ESPANA"                                   
-# [12] "ESPANA Y LONDRES"                                    
-# [13] "EEUU (WASHINGTON DC)"                                
-# [14] "ESPANA (MADRID)"                                     
-# [15] "ESPAñA E ITALIA"                                    
-# [16] "ESPAñA"                                             
-# [17] "ESTADOS UNIDOS"                                      
-# [18] "CONTACTO CON EXTRANJEROS"                            
-# [19] "CONTACTO CON TURISTAS"                               
-# [20] "RELACIONADO AL PRIMER CASO DE ACASH"                 
-# [21] "HERMANA DEL CASO DEL 17/03/2020"                     
-# [22] "FAMILIAR DEL CASO DEL 17/03/2020"                    
-# [23] "LIMA"                                                
-# [24] "CONTACTO CON TURISTAS HOLANDESES"                    
-# [25] "TURISTA ALEMAN"                                      
-# [26] "TURISTA"                                             
-# [27] "CONTACTO CON CASO DEL 17/03/2020"                    
-# [28] "RELACIONADO AL CASO 3 DE ANCASH"                     
-# [29] "ESPAñA Y FRANCIA"                                   
-# [30] "ECUADOR"                                             
-# [31] "EN INVESTIGACIóN"                                   
-# [32] "FAMILIAR DEL CASO 1 DE LAS LOMAS"                    
-# [33] "CONTACTO CON FAMILIAR QUE VINO DEL EXTRANGERO"       
-# [34] "CONTACTO CON EL CASO 1 DE LAS LOMAS"                 
-# [35] "MADRID Y BARCELONA"                                  
-# [36] "FRANCIA (PARIS)"                                     
-# [37] "CONTACTO CON TURISTAS EUROPEO"                       
-# [38] "CONTACTO CON TURISTAS EXTRANGEROS"                   
-# [39] "FAMILIAR DE CASO 3"                                  
-# [40] "CONTACTO CON CIUDADANOS ESPAñOLES"                  
-# [41] "COLOMBIA"                                            
-# [42] "TURISTA MEXICANO"                                    
-# [43] "TURISTA EUROPEO"                                     
-# [44] "TURISTA SUDAMERICANO"
+# ya est� desagregado en m�s variables
 
 # Dividir en 3 o 4 columnas esta inforamci[on como se indic[o en el googlesheet.
 covid_ind$CONTACTO[covid_ind$CONTACTO == ""] <- NA
@@ -374,4 +353,4 @@ names(covid_ind)
 
 # Save csv.
 # CHANGE NAME! DONT FORGET!
-write.csv(covid_ind, "data/modificadas/covidPE_IND_20200331_MD_clean.csv")
+write.csv(covid_ind, "data/modificadas/covidPE_IND_20200401_MD_clean.csv")
