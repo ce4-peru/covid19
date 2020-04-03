@@ -22,7 +22,7 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200331_MD_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200402_MD_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -155,25 +155,25 @@ tmp1_map@data$NUMERO_CASOS[is.na(tmp1_map@data$NUMERO_CASOS)]<-0
 tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
 tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
-tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
-                           breaks=c(-0.1, 0.0, 1, 2, 3, 4, 5, 6), 
-                           labels=c("Sin casos reportados", "0 a 1", "1 a 2", "2 a 3", 
-                                    "3 a 4", "4 a 5", "5 a 6"))
+# tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
+#                            breaks=c(-0.1, 0.0, 1, 2, 3, 4, 5, 6), 
+#                            labels=c("Sin casos reportados", "0 a 1", "1 a 2", "2 a 3", 
+#                                     "3 a 4", "4 a 5", "5 a 6"))
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
 
 # Create the map qtm
-col <- c("white", "ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
-         "royalblue", #"blue2", 
-         "navyblue", "black")
+# col <- c("white", "ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
+#          "royalblue", #"blue2", 
+#          "navyblue", "black")
 
-# col <- c("ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
-#          "royalblue", "blue2", "navyblue", "black")
+col <- c("ivory2", "lightcyan1", "lightblue2", #"lightskyblue", 
+          "royalblue", "blue2", "navyblue", "black")
 # try snow2 too
 
 # interactive view
-#tmap_mode("view")
+tmap_mode("view")
 
 # crear mapa
 qtm <- qtm(tmp1_map, fill = "incidencerate_100", 
@@ -191,8 +191,12 @@ qtm <- qtm(tmp1_map, fill = "incidencerate_100",
    # tm_view(set.view = c(zoom = 10))
   
 print(qtm)
- tmap_save(qtm, 
-          paste("outputs_covid19/20200331_Dep_COVID19_Incidencerate_v3",".png", sep=""), 
+
+# RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
+# Poner el # luego de guardar grafico
+
+tmap_save(qtm, 
+          paste("outputs_covid19/20200402_Dep_COVID19_Incidencerate",".png", sep=""), 
          width=2300, height=1380)
 
 ## 
