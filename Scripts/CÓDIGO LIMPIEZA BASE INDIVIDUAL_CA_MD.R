@@ -360,5 +360,6 @@ names(covid_ind)
 # [22] "ENLACES2"             "ENLACES3"             "OBSERVACIONES" 
 
 # Save csv.
-# CHANGE NAME! DONT FORGET!
-write.csv(covid_ind, "data/modificadas/covidPE_IND_20200402_MD_clean.csv")
+# CAMBIA EL NOMBRE! NO TE OLVIDES!
+# Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
+#write.csv(covid_ind, "data/modificadas/covidPE_IND_20200402_MD_clean.csv")
