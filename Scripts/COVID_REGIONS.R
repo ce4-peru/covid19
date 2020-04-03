@@ -151,9 +151,9 @@ tmp1 <- sh_peru
 tmp1_map <- tmp1
 tmp1_map@data <- join(sh_peru@data,region_values, by="NAME_1") # shp with data
 tmp1_map_df <- tmp1_map@data
-tmp1_map@data$NUMERO_CASOS[is.na(tmp1_map@data$NUMERO_CASOS)]<-0
-tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
-tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
+# tmp1_map@data$NUMERO_CASOS[is.na(tmp1_map@data$NUMERO_CASOS)]<-0
+# tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
+# tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
 # tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
 #                            breaks=c(-0.1, 0.0, 1, 2, 3, 4, 5, 6), 
@@ -196,9 +196,13 @@ print(qtm)
 # Poner el # luego de guardar grafico
 
 tmap_save(qtm, 
-          paste("outputs_covid19/20200402_Dep_COVID19_Incidencerate",".png", sep=""), 
-         width=2300, height=1380)
+           paste("outputs_covid19/20200402_Dep_COVID19_Incidencerate",".png", sep=""), 
+          width=2300, height=1380)
 
+
+
+# CORRER SOLO HASTA AQUI. LO QUE SIGUE ES PARA PLOTEAR POR DIA.
+###################################################################################
 ## 
 ##
 # Loop para plotear por dia
