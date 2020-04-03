@@ -10,7 +10,7 @@ setwd('~/covid19/outputs_covid19/')
 ####casos_acumulado por semana#####
 ### weekly incidense #####
 
-acumulado_dep<-fread("~/covid19/data/modificadas/covidPE_IND_20200331_MD_clean.csv")
+acumulado_dep<-fread("~/covid19/data/modificadas/covidPE_IND_20200402_MD_clean.csv")
 #acumulado_dep <- mutate_if(acumulado_dep, is.character, toupper)
 #acumulado_dep<-acumulado_dep %>%
 #  mutate(Fecha = as.Date(as.character(Fecha), format = "%d/%m/%y"))
@@ -26,8 +26,8 @@ my_theme <- theme_bw(base_size = 12) +
                                    hjust = 1, vjust = 0.5, color = "black")) 
 
 # save plot
-png(filename="20200331_weekly_incid_COVID19.png")
-plot(i.7.group, border = "white", ylab="Incidencia semanal") +
+png(filename="2020042_weekly_incid_COVID19.png")
+plot(i.7.group, border = "white", ylab="Numero de casos semanales") +
   my_theme +
   # theme(legend.position = "topleft")
  theme(legend.position = c(-1.0, -1.0))
@@ -44,8 +44,8 @@ my_theme <- theme_bw(base_size = 12) +
   theme(axis.text.x = element_text(angle = 90, 
                                    hjust = 1, vjust = 0.5, color = "black"))
 
-png(filename="20200331_daily_incid_COVID19.png")
-plot(i.7.group, border = "white", ylab="Incidencia diaria") +
+png(filename="20200402_daily_incid_COVID19.png")
+plot(i.7.group, border = "white", ylab="Número de casos por día") +
   my_theme +
   # theme(legend.position = "topleft")
   theme(legend.position = c(-1.0, -1.0))
