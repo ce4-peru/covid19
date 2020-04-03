@@ -12,8 +12,9 @@ setwd("~/covid19")
 ## Call data
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200326_MD.csv")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200327_MD.csv")
-#covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200331_MD.csv")
-covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200401_MD.csv")
+# covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200331_MD.csv")
+# covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200401_MD.csv")
+covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200402_MD.csv")
 
 ## Checar base
 str(covid_ind) # 1064 obs. of  20 variables
@@ -109,7 +110,8 @@ unique(covid_ind$REGION)
 # [1] "LIMA"          "AREQUIPA"      "HUáNUCO"      "ICA"           "CUSCO"        
 # [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
 # [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
-# [16] "CAJAMARCA"    
+# [16] "CAJAMARCA"     "HUANUCO"       "PASCO"         "AYACUCHO"      "TACNA"        
+# [21] "HUANCAVELICA"  ""  
 # "Huánuco" con tilde
 
 # Cambiar Huanuco
@@ -135,13 +137,15 @@ unique(covid_ind$PROVINCIA)
 # [22] "DANIEL ALCIDES CARRION" "ZARUMILLA"              "MARISCAL CACERES"      
 # [25] "HUAMANGA"               "CONVENCION"             "FERREñAFE"            
 # [28] "TACNA"                  "MOYOBAMBA"              "RIOJA"                 
-# [31] "LEONCIO PRADO"          "LAMBAYEQUE"
+# [31] "LEONCIO PRADO"          "LAMBAYEQUE"             "HUARAZ"                
+# [34] "JAEN"                   "ACOBAMABA"              "ASCOPE"                
+# [37] "SECHURA"                "CONTRALMIRANTE VILLAR" 
 # Hay  ""
 #  "FERREñAFE" con n.
 
 levels(covid_ind$PROVINCIA) <- c(levels(covid_ind$PROVINCIA), 
                               c("APURIMAC", "HUANUCO", 
-                                "JUNIN", "SAN MARTIN", "FERRENAAFE"))
+                                "JUNIN", "SAN MARTIN", "FERRENAFE"))
 
 covid_ind$PROVINCIA[covid_ind$PROVINCIA == "FERREñAFE"] <- "FERRENAFE"
 covid_ind$PROVINCIA[covid_ind$PROVINCIA == ""] <- NA
@@ -173,16 +177,20 @@ unique(covid_ind$DISTRITO)
 # [39] "EL PORVENIR"                   "PAITA"                        
 # [41] "HUANUCO"                       "FERRENAFE"                    
 # [43] "TAPUC"                         "AGUAS VERDES"                 
-# [45] "LA ESPERANZA"                  "PUEBLO NUEVO"                 
-# [47] "JUANJUI"                       "CARMEN ALTO"                  
-# [49] "SANTA ANA"                     "CHICLAYO"                     
+# [45] "PUEBLO NUEVO"                  "JUANJUI"                      
+# [47] "CARMEN ALTO"                   "SANTA ANA"                    
+# [49] "LA ESPERANZA"                  "CHICLAYO"                     
 # [51] "JOSE LEONARDO ORTIZ"           "SANTA ROSA"                   
 # [53] "TARAPOTO"                      "GREGORIO ALBARRACIN"          
-# [55] "ZARUMILLA"                     "VICTOR LARCO"                 
-# [57] "MOYOBAMBA"                     "NUEVA CAJAMARCA"              
-# [59] "RUPA RUPA"                     "FERREñAFE"                   
+# [55] "ZARUMILLA"                     "MOYOBAMBA"                    
+# [57] "NUEVA CAJAMARCA"               "RUPA RUPA"                    
+# [59] "VICTOR LARCO"                  "FERREñAFE"                   
 # [61] "REQUE"                         "LAMBAYEQUE"                   
-# [63] "CIUDAD ETEN"                   "TACNA"
+# [63] "CIUDAD ETEN"                   "TACNA"                        
+# [65] "INDEPENDENCIA"                 "POMACOCHA"                    
+# [67] "RAZURI"                        "MONSEFU"                      
+# [69] "SECHURA"                       "TUMBES"                       
+# [71] "ZORRITOS"                
 # Hay  ""
 covid_ind$DISTRITO[covid_ind$DISTRITO == "FERREñAFE"] <- "FERRENAFE"
 covid_ind$DISTRITO[covid_ind$DISTRITO == ""] <- NA
@@ -206,19 +214,19 @@ covid_ind$EDAD_A[covid_ind$EDAD_A == ""] <- NA
 str(covid_ind$SEXOM1H0) # int
 table(covid_ind$SEXOM1H0) # 0 and 1
 # 0  1 
-# 92 66 
+# 107  78 
 
 ## Hospitalizado
 str(covid_ind$HOSPITALIZADOS1N0) # int
 table(covid_ind$HOSPITALIZADOS1N0) # 0 and 1
 # 0  1 
-# 108  31 
+# 131  35  
 
 ## AisladoDomicil
 str(covid_ind$AISLADODOMICILS1N0) # int
 table(covid_ind$AISLADODOMICILS1N0) # 0 and 1
 # 0  1 
-# 31 107
+#  36 129 
 
 ## cONTACTO
 str(covid_ind$CONTACTO) # CHR
@@ -231,7 +239,7 @@ covid_ind$CONTACTO[covid_ind$CONTACTO == ""] <- NA
 ## IMPORTADO
 str(covid_ind$IMPORTADO) # int
 unique(covid_ind$IMPORTADO) 
-# [1] "1"    "0"    ""     "LINK"
+# [1] "1"    "0"    NA
 covid_ind$IMPORTADO[covid_ind$IMPORTADO == "LINK"] <- NA
 covid_ind$IMPORTADO[covid_ind$IMPORTADO == ""] <- NA
 
@@ -272,7 +280,7 @@ covid_ind$ORIGEN_NACIONAL[covid_ind$ORIGEN_NACIONAL == ""] <- NA
 
 ## Double check "" and count NAs
 unique(covid_ind$CASO_ID)
-sum(is.na(covid_ind$CASO_ID)) # 816 NAs
+sum(is.na(covid_ind$CASO_ID)) # 1378 NAs
 
 unique(covid_ind$FECHA)
 sum(is.na(covid_ind$FECHA)) # 0 NAs
@@ -293,40 +301,40 @@ unique(covid_ind$PROVINCIA)
 sum(is.na(covid_ind$PROVINCIA)) # 650 NAs
 
 unique(covid_ind$DISTRITO)
-sum(is.na(covid_ind$DISTRITO)) # 717 NAs
+sum(is.na(covid_ind$DISTRITO)) # 1213 NAs
 
 unique(covid_ind$DIRECCION)
-sum(is.na(covid_ind$DIRECCION)) # 850 NAs
+sum(is.na(covid_ind$DIRECCION)) # 1412 NAs
 
 unique(covid_ind$EDAD_A_n)
-sum(is.na(covid_ind$EDAD_A_n)) # 747 NAs
+sum(is.na(covid_ind$EDAD_A_n)) # 1263 NAs
 
 unique(covid_ind$SEXOM1H0)
 sum(is.na(covid_ind$SEXOM1H0)) # 718 NAs
 
 unique(covid_ind$HOSPITALIZADOS1N0)
-sum(is.na(covid_ind$HOSPITALIZADOS1N0)) # 730 NAs
+sum(is.na(covid_ind$HOSPITALIZADOS1N0)) #1227 NAs
 
 unique(covid_ind$AISLADODOMICILS1N0)
-sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 731 NAs
+sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 1247 NAs
 
 unique(covid_ind$CONTACTO)
-sum(is.na(covid_ind$CONTACTO)) # 746 NAs
+sum(is.na(covid_ind$CONTACTO)) # 1278 NAs
 
 unique(covid_ind$IMPORTADO)
-sum(is.na(covid_ind$IMPORTADO)) # 815 NAs
+sum(is.na(covid_ind$IMPORTADO)) # 1377 NAs
 
 unique(covid_ind$ORIGEN_INTERNACIONAL)
-sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 833 NAs
+sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 1395 NAs
 
 unique(covid_ind$CASO_CONTACTO)
-sum(is.na(covid_ind$CASO_CONTACTO)) # 832 NAs
+sum(is.na(covid_ind$CASO_CONTACTO)) # 1394 NAs
 
 unique(covid_ind$RELACION_CONTACTO)
-sum(is.na(covid_ind$RELACION_CONTACTO)) # 832 NAs
+sum(is.na(covid_ind$RELACION_CONTACTO)) # 1394 NAs
 
 unique(covid_ind$ORIGEN_NACIONAL)
-sum(is.na(covid_ind$ORIGEN_NACIONAL)) # 815 NAs
+sum(is.na(covid_ind$ORIGEN_NACIONAL)) # 1377 NAs
 
 
 # Save dataset
@@ -353,4 +361,4 @@ names(covid_ind)
 
 # Save csv.
 # CHANGE NAME! DONT FORGET!
-write.csv(covid_ind, "data/modificadas/covidPE_IND_20200401_MD_clean.csv")
+write.csv(covid_ind, "data/modificadas/covidPE_IND_20200402_MD_clean.csv")
