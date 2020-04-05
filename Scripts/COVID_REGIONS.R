@@ -23,7 +23,8 @@ sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
 #caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200402_MD_clean.csv")
-caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200403_MD_clean.csv")
+# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200403_MD_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200404_MD_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -67,22 +68,25 @@ plot(sh_peru)
 sh_peru[[6]] <- toupper(sh_peru[[6]])
 str(sh_peru@data$NAME_1)
 unique(sh_peru@data$NAME_1)
-# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
-# [6] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANUCO"       "HUANCAVELICA" 
-# [11] "ICA"           "JUNIN"         "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"         
-# [16] "LORETO"        "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
-# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"        "UCAYALI" 
-
+# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"     
+# [5] "AYACUCHO"      "CAJAMARCA"     "CALLAO"        "CUSCO"        
+# [9] "HUANUCO"       "HUANCAVELICA"  "ICA"           "JUNIN"        
+# [13] "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"          "LORETO"       
+# [17] "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
+# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"       
+# [25] "UCAYALI"  
 
 ## Check data of cases
 names(caso_covid)
 colnames(caso_covid)[1] <- "CE4_ID"
 colnames(caso_covid)[7] <- "NAME_1"
 unique(caso_covid$NAME_1)
-# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
-# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
-# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
-# [16] "CAJAMARCA"
+# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"          
+# [5] "CUSCO"         "ANCASH"        "CALLAO"        "LA LIBERTAD"  
+# [9] "LAMBAYEQUE"    "PIURA"         "LORETO"        "MADRE DE DIOS"
+# [13] "SAN MARTIN"    "JUNIN"         "TUMBES"        "CAJAMARCA"    
+# [17] "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
+# [21] "APURIMAC"
 
 # Eliminar NAs
 #caso_covid <- caso_covid[caso_covid$NAME_1 != ""]
@@ -184,7 +188,7 @@ qtm <- qtm(tmp1_map, fill = "incidencerate_100",
   #         size.lowerbound = .1, bg.color="white", bg.alpha = .15, 
   #         legend.size.show = FALSE) +
     tm_text("NAME_LABEL",size = 0.5)+
-    tm_layout(paste("Casos por \nregión \nCOVID19 "), title.size = 1,
+    tm_layout(paste("Casos COVID19 \npor región"), title.size = 1,
               legend.title.size = 0.8, 
             legend.text.size = .6, legend.bg.color = "white",
             legend.position = c("left","bottom")) #+ 
@@ -194,10 +198,10 @@ qtm <- qtm(tmp1_map, fill = "incidencerate_100",
 print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
-# Poner el # luego de guardar grafico
 tmap_save(qtm, 
-           paste("outputs_covid19/20200403_Dep_COVID19_Incidencerate",".png", sep=""), 
-          width=2300, height=1380)
+            paste("outputs_covid19/20200404_Dep_COVID19_Incidencerate",".png", sep=""), 
+           width=2300, height=1380)
+# Poner el # luego de guardar grafico
 
 
 
