@@ -1,0 +1,72 @@
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(lubridate)
+library(ggplot2)
+library(directlabels)
+
+######## ploting national cases with overlaping line ##########
+
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200405_CA_clean.csv") 
+
+
+setwd("~/covid19/outputs_covid19/")
+png(filename="20200406_pruebas_vs_positivos_COVID19.png")
+ggplot() +
+  theme_classic()+
+  # scale_fill_manual(values = pal1)+
+  # scale_x_date(breaks=seq(min(acumulado$FECHA)-1, max(acumulado$FECHA)+1, 1))+
+  geom_line(data = acumulado, aes(x= acumulado$FECHA,y=acumulado$TOTAL_POSITIVOS,group=1), color="red")+
+  geom_line(data = acumulado , aes( x=acumulado$FECHA,y =acumulado$TOTAL_PRUEBAS,group=1 ), color = "blue")+
+   annotate("text", x = "2020-03-26", y = 2000,
+            label = " Casos positivos", size = 2.5,color="red")+
+   annotate("text", x = "2020-03-22", y = 8000,
+            label = " Pruebas totales", size = 2.5,color="blue")+
+  # scale_y_continuous(name="Casos positivos", sec.axis=sec_axis(~./1, name="Pruebas totales")) +
+  # scale_x_date(name = "Fecha" )
+  #   theme(
+  #   axis.title.y.left=element_text(color="red"),
+  #   axis.text.y.left=element_text(color="red"),
+  #   axis.title.y.right=element_text(color="blue"),
+  #   axis.text.y.right=element_text(color="blue")
+  # )+
+  labs(title="Peru COVID19", y="Casos positivos y pruebas realizadas", x="Fecha", caption="Source :varios")+
+  # theme(axis.line.y.right = element_line(color = "red"), 
+  #       axis.ticks.y.right = element_line(color = "red"),
+  #       axis.text.y.right = element_text(color = "red"), 
+  #       axis.title.y.right = element_text(color = "red")
+  # )+
+  geom_vline(xintercept = "2020-03-06") +
+  geom_vline(xintercept = "2020-03-11") +
+  geom_vline(xintercept = "2020-03-12") +
+  geom_vline(xintercept = "2020-03-15") +
+  geom_vline(xintercept = "2020-03-31") +
+  geom_vline(xintercept = "2020-04-02") +
+  annotate("text", x = "2020-03-07", y = 3000,
+           label = " Primer Caso", size = 2.5)+
+  annotate("text", x = "2020-03-11", y = 4000,
+           label = " Cierre colegios", size = 2.5)+
+  annotate("text", x = "2020-03-12", y = 5000,
+           label = " Cierre universidades", size = 2.5)+
+   annotate("text", x = "2020-03-15", y = 5500,
+            label = " inicio de cuarentena", size = 2.5)+
+   annotate("text", x = "2020-03-31", y = 6000,
+           label = " Extension cuarentena", size = 2.5)+
+  annotate("text", x = "2020-04-02", y = 7000,
+           label = " Restriccion por sexo", size = 2.5)+
+   annotate("text", x = "2020-03-31", y = 8000,
+            label = " toque de queda 18pm-5am", size = 2.5)+
+ # annotate("text", x = "2020-04-02", y = 7000,
+ #          label = " Restriccion por sexo", size = 2.5)+
+ #   # ylab("Casos Positivos") +
+  # theme_minimal() +
+  theme(axis.text.x = element_text(angle=90)
+        )
+
+
+
+dev.off()
+
+
+
