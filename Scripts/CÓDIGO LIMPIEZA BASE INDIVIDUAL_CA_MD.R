@@ -15,7 +15,8 @@ setwd("~/covid19")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200401_MD.csv")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200402_MD.csv")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200403_MD.csv")
-covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200404_MD.csv")
+#covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200404_MD.csv")
+covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_202004005_CA.csv")
 
 ## Checar base
 str(covid_ind) # 1595 obs. of  20 variables
@@ -190,7 +191,7 @@ unique(covid_ind$DISTRITO)
 # [53] "TARAPOTO"                      "GREGORIO ALBARRACIN"          
 # [55] "ZARUMILLA"                     "MOYOBAMBA"                    
 # [57] "NUEVA CAJAMARCA"               "RUPA RUPA"                    
-# [59] "VICTOR LARCO"                  "FERREÃ±AFE"                   
+# [59] "VICTOR LARCO"                  "FERREÃ‘AFE"                    
 # [61] "REQUE"                         "LAMBAYEQUE"                   
 # [63] "CIUDAD ETEN"                   "TACNA"                        
 # [65] "INDEPENDENCIA"                 "POMACOCHA"                    
@@ -199,8 +200,9 @@ unique(covid_ind$DISTRITO)
 # [71] "ZORRITOS"                      "NAUTA"                        
 # [73] "CORRALES"                      "MAJES"                        
 # [75] "KAQUIABAMBA"                   "PUNCHANA"                     
-# [77] "SAN JUAN BAUTISTA"    
-# Hay  ""
+# [77] "SAN JUAN BAUTISTA"             "ILLIMO"                       
+# [79] "BELEN"                       
+# # Hay  ""
 covid_ind$DISTRITO[covid_ind$DISTRITO == "FERREÃ±AFE"] <- "FERRENAFE"
 covid_ind$DISTRITO[covid_ind$DISTRITO == ""] <- NA
 unique(covid_ind$DISTRITO)
@@ -222,25 +224,25 @@ covid_ind$EDAD_A[covid_ind$EDAD_A == ""] <- NA
 ## Sexo
 str(covid_ind$SEXOM1H0) # int
 table(covid_ind$SEXOM1H0) # 0 and 1
-# 0  1 
-# 127  92 
+# 0   1 
+# 139  96 
 
 ## Hospitalizado
 str(covid_ind$HOSPITALIZADOS1N0) # int
 table(covid_ind$HOSPITALIZADOS1N0) # 0 and 1
-# 0  1 
-# 153  38 
+# 0   1 
+# 163  40  
 
 ## AisladoDomicil
 str(covid_ind$AISLADODOMICILS1N0) # int
 table(covid_ind$AISLADODOMICILS1N0) # 0 and 1
-# 0  1 
-#   41 149 
+# 0   1 
+# 43 159
 
 ## cONTACTO
 str(covid_ind$CONTACTO) # CHR
 unique(covid_ind$CONTACTO) 
-# ya está desagregado en más variables
+# ya est? desagregado en m?s variables
 
 # Dividir en 3 o 4 columnas esta inforamci[on como se indic[o en el googlesheet.
 covid_ind$CONTACTO[covid_ind$CONTACTO == ""] <- NA
@@ -288,7 +290,7 @@ covid_ind$ORIGEN_NACIONAL[covid_ind$ORIGEN_NACIONAL == ""] <- NA
 
 ## Double check "" and count NAs
 unique(covid_ind$CASO_ID)
-sum(is.na(covid_ind$CASO_ID)) # 1378 NAs
+sum(is.na(covid_ind$CASO_ID)) # 1713 NAs
 
 unique(covid_ind$FECHA)
 sum(is.na(covid_ind$FECHA)) # 0 NAs
@@ -306,43 +308,43 @@ unique(covid_ind$REGION)
 sum(is.na(covid_ind$REGION)) # 0 NAs
 
 unique(covid_ind$PROVINCIA)
-sum(is.na(covid_ind$PROVINCIA)) # 1247 NAs
+sum(is.na(covid_ind$PROVINCIA)) # 1356 NAs
 
 unique(covid_ind$DISTRITO)
-sum(is.na(covid_ind$DISTRITO)) # 1360 NAs
+sum(is.na(covid_ind$DISTRITO)) # 1471 NAs
 
 unique(covid_ind$DIRECCION)
-sum(is.na(covid_ind$DIRECCION)) # 1595 NAs
+sum(is.na(covid_ind$DIRECCION)) # 1747 NAs
 
 unique(covid_ind$EDAD_A_n)
-sum(is.na(covid_ind$EDAD_A_n)) # 1415 NAs
+sum(is.na(covid_ind$EDAD_A_n)) # 1555 NAs
 
 unique(covid_ind$SEXOM1H0)
-sum(is.na(covid_ind$SEXOM1H0)) # 1376 NAs
+sum(is.na(covid_ind$SEXOM1H0)) # 1512 NAs
 
 unique(covid_ind$HOSPITALIZADOS1N0)
-sum(is.na(covid_ind$HOSPITALIZADOS1N0)) # 1404 NAs
+sum(is.na(covid_ind$HOSPITALIZADOS1N0)) # 1544 NAs
 
 unique(covid_ind$AISLADODOMICILS1N0)
-sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 1405 NAs
+sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 1545 NAs
 
 unique(covid_ind$CONTACTO)
-sum(is.na(covid_ind$CONTACTO)) # 1435 NAs
+sum(is.na(covid_ind$CONTACTO)) # 1576 NAs
 
 unique(covid_ind$IMPORTADO)
-sum(is.na(covid_ind$IMPORTADO)) # 1560 NAs
+sum(is.na(covid_ind$IMPORTADO)) # 1712 NAs
 
 unique(covid_ind$ORIGEN_INTERNACIONAL)
-sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 1578 NAs
+sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 1730 NAs
 
 unique(covid_ind$CASO_CONTACTO)
 sum(is.na(covid_ind$CASO_CONTACTO)) #  1577 NAs
 
 unique(covid_ind$RELACION_CONTACTO)
-sum(is.na(covid_ind$RELACION_CONTACTO)) #  1577 NAs
+sum(is.na(covid_ind$RELACION_CONTACTO)) #  1729 NAs
 
 unique(covid_ind$ORIGEN_NACIONAL)
-sum(is.na(covid_ind$ORIGEN_NACIONAL)) # 1560 NAs
+sum(is.na(covid_ind$ORIGEN_NACIONAL)) # 1712 NAs
 
 
 # Save dataset
@@ -371,6 +373,7 @@ names(covid_ind)
 # CAMBIA EL NOMBRE! NO TE OLVIDES!
 #write.csv(covid_ind, "data/modificadas/covidPE_IND_20200403_MD_clean.csv")
 #write.csv(covid_ind, "data/modificadas/covidPE_IND_20200404_MD_clean.csv")
+#write.csv(covid_ind, "data/modificadas/covidPE_IND_20200405_CA_clean.csv")
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
