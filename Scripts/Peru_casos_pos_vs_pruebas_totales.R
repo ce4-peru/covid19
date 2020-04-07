@@ -41,7 +41,7 @@ ggplot() +
   geom_vline(xintercept = "2020-03-11") +
   geom_vline(xintercept = "2020-03-12") +
   geom_vline(xintercept = "2020-03-15") +
-  geom_vline(xintercept = "2020-03-31") +
+  geom_vline(xintercept = "2020-03-26") +
   geom_vline(xintercept = "2020-04-02") +
   annotate("text", x = "2020-03-07", y = 3000,
            label = " Primer Caso", size = 2.5)+
