@@ -221,7 +221,7 @@ qtm <- qtm(tmp1_map, #fill = "incidencerate_100",
   #         size.lowerbound = .1, bg.color="white", bg.alpha = .15, 
   #         legend.size.show = FALSE) +
     tm_text("NAME_LABEL",size = 0.5)+
-    tm_layout(paste("Casos COVID19 \npor región"), title.size = .9,
+    tm_layout(paste("Incidencia de \nSARS-CoV2 \nen Perú"), title.size = .9,
               legend.title.size = 0.8, 
             legend.text.size = .6, legend.bg.color = NA,
             legend.position = c("left","bottom")) #+ 

@@ -12,7 +12,8 @@ setwd("~/covid19")
 ## Call data
 #covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200403_MD.csv")
 # covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200404_MD.csv")
-covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200405_CA.csv")
+# covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200405_CA.csv")
+covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200406_MD.csv")
 
 ## Checar base
 str(covid_dia) # 34 obs. of  14 variables
@@ -21,7 +22,7 @@ names(covid_dia)
 # [4] "TOTAL_DESCARTADOS"         "POSITIVOS_DIA"             "PRUEBAS_DIA"              
 # [7] "DESCARTADOS_DIA"           "RECUPERADOS"               "FALLECIDOS"               
 # [10] "HOSPITALIZADOS"            "HOSPITALIZADOS_UCI"        "HOSPITALIZADOS_VENTILADOR"
-# [13] "FUENTE"                    "ACTUALIZACI?"N" 
+# [13] "FUENTE"                    "ACTUALIZACION"             "OBSERVACION"
 
 # Mas adelante  Sacar los "S1N0 del nombre de la variable
 
@@ -72,10 +73,10 @@ names(covid_dia)
 # [4] "TOTAL_DESCARTADOS"         "POSITIVOS_DIA"             "PRUEBAS_DIA"              
 # [7] "DESCARTADOS_DIA"           "RECUPERADOS"               "FALLECIDOS"               
 # [10] "HOSPITALIZADOS"            "HOSPITALIZADOS_UCI"        "HOSPITALIZADOS_VENTILADOR"
-# [13] "FUENTE"                    "ACTUALIZACI?"N"            "DIA"                      
-# [16] "MES"                       "ANO"   
+# [13] "FUENTE"                    "ACTUALIZACION"             "OBSERVACION"              
+# [16] "DIA"                       "MES"                       "ANO"   
 
-covid_dia <- covid_dia[,c(1, 15:17, 2:14)]
+covid_dia <- covid_dia[,c(1, 16:18, 2:15)]
 
 
 ### Check NAs and inconsistencies ###
@@ -109,19 +110,19 @@ unique(covid_dia$DESCARTADOS_DIA)
 sum(is.na(covid_dia$DESCARTADOS_DIA)) # 0
 
 unique(covid_dia$RECUPERADOS)
-sum(is.na(covid_dia$RECUPERADOS)) # 10 NAs
+sum(is.na(covid_dia$RECUPERADOS)) # 9 NAs
 
 unique(covid_dia$FALLECIDOS)
-sum(is.na(covid_dia$FALLECIDOS)) # 13 NAs
+sum(is.na(covid_dia$FALLECIDOS)) # 12 NAs
 
 unique(covid_dia$HOSPITALIZADOS)
-sum(is.na(covid_dia$HOSPITALIZADOS)) # 13 NAs
+sum(is.na(covid_dia$HOSPITALIZADOS)) # 12 NAs
 
 unique(covid_dia$HOSPITALIZADOS_UCI)
-sum(is.na(covid_dia$HOSPITALIZADOS_UCI)) # 20 NAs
+sum(is.na(covid_dia$HOSPITALIZADOS_UCI)) # 19 NAs
 
 unique(covid_dia$HOSPITALIZADOS_VENTILADOR)
-sum(is.na(covid_dia$HOSPITALIZADOS_VENTILADOR)) # 16 NAs
+sum(is.na(covid_dia$HOSPITALIZADOS_VENTILADOR)) # 19 NAs
 
 names(covid_dia)
 # [1] "FECHA"                     "DIA"                       "MES"                      
@@ -129,9 +130,10 @@ names(covid_dia)
 # [7] "TOTAL_DESCARTADOS"         "POSITIVOS_DIA"             "PRUEBAS_DIA"              
 # [10] "DESCARTADOS_DIA"           "RECUPERADOS"               "FALLECIDOS"               
 # [13] "HOSPITALIZADOS"            "HOSPITALIZADOS_UCI"        "HOSPITALIZADOS_VENTILADOR"
-# [16] "FUENTE"                    "ACTUALIZACI?"N" 
+# [16] "FUENTE"                    "ACTUALIZACION"             "OBSERVACION" 
 
 # Save csv.
 # CAMBIA EL NOMBRE! NO TE OLVIDES!
-#write.csv(covid_dia, "data/modificadas/covidPE_PORdia_20200405_CA_clean.csv")
+#write.csv(covid_dia, "data/modificadas/covidPE_PORdia_20200406_MD_clean.csv")
+
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!

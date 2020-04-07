@@ -8,7 +8,7 @@ library(directlabels)
 
 ######## ploting national cases with overlaping line ##########
 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200405_CA_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
 
 
 setwd("~/covid19/outputs_covid19/")
@@ -31,7 +31,8 @@ ggplot() +
   #   axis.title.y.right=element_text(color="blue"),
   #   axis.text.y.right=element_text(color="blue")
   # )+
-  labs(title="Peru COVID19", y="Casos positivos y pruebas realizadas", x="Fecha", caption="Source :varios")+
+  labs(title="SARS-CoV2 en Perú", y="Pruebas positivas y pruebas realizadas", 
+       x="Fecha", caption="Source :varios")+
   # theme(axis.line.y.right = element_line(color = "red"), 
   #       axis.ticks.y.right = element_line(color = "red"),
   #       axis.text.y.right = element_text(color = "red"), 
@@ -52,9 +53,9 @@ ggplot() +
    annotate("text", x = "2020-03-15", y = 5500,
             label = " inicio de cuarentena", size = 2.5)+
    annotate("text", x = "2020-03-31", y = 6000,
-           label = " Extension cuarentena", size = 2.5)+
+           label = " Extensión cuarentena", size = 2.5)+
   annotate("text", x = "2020-04-02", y = 7000,
-           label = " Restriccion por sexo", size = 2.5)+
+           label = " Restricción por sexo", size = 2.5)+
    annotate("text", x = "2020-03-31", y = 8000,
             label = " toque de queda 18pm-5am", size = 2.5)+
  # annotate("text", x = "2020-04-02", y = 7000,
