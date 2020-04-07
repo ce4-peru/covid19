@@ -31,7 +31,7 @@ ggplot() +
   #   axis.title.y.right=element_text(color="blue"),
   #   axis.text.y.right=element_text(color="blue")
   # )+
-  labs(title="SARS-CoV2 en Perú", y="Pruebas positivas y pruebas realizadas", 
+  labs(title="SARS-CoV2 en Peru", y="Pruebas positivas y pruebas realizadas", 
        x="Fecha", caption="Source :varios")+
   # theme(axis.line.y.right = element_line(color = "red"), 
   #       axis.ticks.y.right = element_line(color = "red"),
@@ -43,6 +43,7 @@ ggplot() +
   geom_vline(xintercept = "2020-03-12") +
   geom_vline(xintercept = "2020-03-15") +
   geom_vline(xintercept = "2020-03-26") +
+  geom_vline(xintercept = "2020-03-31") +
   geom_vline(xintercept = "2020-04-02") +
   annotate("text", x = "2020-03-07", y = 3000,
            label = " Primer Caso", size = 2.5)+
@@ -50,12 +51,12 @@ ggplot() +
            label = " Cierre colegios", size = 2.5)+
   annotate("text", x = "2020-03-12", y = 5000,
            label = " Cierre universidades", size = 2.5)+
-   annotate("text", x = "2020-03-15", y = 5500,
+   annotate("text", x = "2020-03-15", y = 6000,
             label = " inicio de cuarentena", size = 2.5)+
-   annotate("text", x = "2020-03-31", y = 6000,
-           label = " Extensión cuarentena", size = 2.5)+
-  annotate("text", x = "2020-04-02", y = 7000,
-           label = " Restricción por sexo", size = 2.5)+
+   annotate("text", x = "2020-03-26", y = 7000,
+           label = " Extension cuarentena", size = 2.5)+
+  annotate("text", x = "2020-04-02", y = 9000,
+           label = " Restriccion por sexo", size = 2.5)+
    annotate("text", x = "2020-03-31", y = 8000,
             label = " toque de queda 18pm-5am", size = 2.5)+
  # annotate("text", x = "2020-04-02", y = 7000,
