@@ -241,7 +241,7 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-          paste("outputs_covid19/20200407_Dep_COVID19_Incidencerate",
+          paste("outputs_covid19/20200407_Dep_COVID19_Incidencerate_v2",
                 ".png", sep=""), 
           width=2300, height=1380)
              # Poner el # luego de guardar grafico
