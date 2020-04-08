@@ -26,7 +26,8 @@ sh_peru <- rgdal::readOGR(shpfile_peru)
 # caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200403_MD_clean.csv")
 # caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200404_MD_clean.csv")
 # caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200405_CA_clean.csv")
-caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200406_MD_clean.csv")
+# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200406_MD_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200407_CA_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -81,7 +82,7 @@ unique(sh_peru@data$NAME_1)
 
 ########################################################################
 # Cuando haya tiempo
-# Unir lo que era Lima province (fila 15) con Lima región (fila 16)
+# Unir lo que era Lima province (fila 15) con Lima regi?n (fila 16)
 plot(sh_peru[16,]) 
 plot(sh_peru[15,], add=T, col="red") 
 plot(sh_peru[16,], add=T, col="green") 
@@ -103,12 +104,12 @@ unique(caso_covid$NAME_1)
 
 #### SI ES LAPTOP DE CLAU, PARECE QUE HAY QUE CORRER ESTAS LINEAS ########
 # Eliminar NAs y tildes
-#caso_covid <- caso_covid[caso_covid$NAME_1 != ""]
-#caso_covid$NAME_1[caso_covid$Caso_ID %in% c(10,11)] <- "HUANUCO"
-# no funciona no s[e por que]
-#caso_covid[11,7] <- "HUANUCO"
-#caso_covid[10,7] <- "HUANUCO"
-#unique(caso_covid$NAME_1)
+# caso_covid <- caso_covid[caso_covid$NAME_1 != ""]
+# caso_covid$NAME_1[caso_covid$Caso_ID %in% c(10,11)] <- "HUANUCO"
+# # no funciona no s[e por que]
+# caso_covid[11,7] <- "HUANUCO"
+# caso_covid[10,7] <- "HUANUCO"
+# unique(caso_covid$NAME_1)
 # [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
 # [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
 # [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
@@ -221,7 +222,7 @@ qtm <- qtm(tmp1_map, #fill = "incidencerate_100",
   #         size.lowerbound = .1, bg.color="white", bg.alpha = .15, 
   #         legend.size.show = FALSE) +
     tm_text("NAME_LABEL",size = 0.5)+
-    tm_layout(paste("Incidencia de \nSARS-CoV2 \nen Perú"), title.size = .9,
+    tm_layout(paste("Incidencia de \nSARS-CoV2 \nen Peru"), title.size = .9,
               legend.title.size = 0.8, 
             legend.text.size = .6, legend.bg.color = NA,
             legend.position = c("left","bottom")) #+ 
@@ -232,7 +233,7 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-             paste("outputs_covid19/20200406_Dep_COVID19_Incidencerate",
+             paste("outputs_covid19/20200407_Dep_COVID19_Incidencerate",
                    ".png", sep=""), 
             width=2300, height=1380)
 # Poner el # luego de guardar grafico
