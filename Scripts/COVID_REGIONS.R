@@ -224,7 +224,8 @@ qtm <- qtm(tmp1_map, #fill = "incidencerate_100",
     tm_layout(paste("Incidencia de \nSARS-CoV2 \nen Perú"), title.size = .9,
               legend.title.size = 0.8, 
             legend.text.size = .6, legend.bg.color = NA,
-            legend.position = c("left","bottom")) #+ 
+            legend.position = c("left","bottom"),
+            outer.margins =c(0.5, 0.3, 0.5, 0.3)) #+ 
     #tm_view(set.view = c(lon = 15, lat = 48, zoom = 10))
    # tm_view(set.view = c(zoom = 10))
   
@@ -232,7 +233,7 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-             paste("outputs_covid19/20200406_Dep_COVID19_Incidencerate",
+             paste("outputs_covid19/20200406_Dep_COVID19_Incidencerate_v3",
                    ".png", sep=""), 
             width=2300, height=1380)
 # Poner el # luego de guardar grafico
