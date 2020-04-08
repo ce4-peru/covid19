@@ -113,13 +113,11 @@ unique(covid_ind$FECHA)
 str(covid_ind$REGION) # character
 # Cambiar nombre de variable en googlesheet
 unique(covid_ind$REGION)
-# [1] "LIMA"          "AREQUIPA"      "HUÁNUCO"       "ICA"          
-# [5] "CUSCO"         "ANCASH"        "CALLAO"        "LA LIBERTAD"  
-# [9] "LAMBAYEQUE"    "PIURA"         "LORETO"        "MADRE DE DIOS"
-# [13] "SAN MARTIN"    "JUNIN"         "TUMBES"        "CAJAMARCA"    
-# [17] "HUANUCO"       "PASCO"         "AYACUCHO"      "TACNA"        
-# [21] "HUANCAVELICA"  "APURIMAC"      "MOQUEGUA"      "TRUJILLO"     
-# [25] "PUNO"  
+# [1] "LIMA"          "AREQUIPA"      "HUÁNUCO"       "ICA"           "CUSCO"        
+# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
+# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
+# [16] "CAJAMARCA"     "HUANUCO"       "PASCO"         "AYACUCHO"      "TACNA"        
+# [21] "HUANCAVELICA"  "APURIMAC"      "MOQUEGUA"      "PUNO"
 # "Huánuco" con tilde
 
 # Cambiar Huanuco
@@ -130,13 +128,12 @@ levels(covid_ind$REGION) <- c(levels(covid_ind$REGION),
 covid_ind$REGION[covid_ind$REGION == "HUáNUCO"] <- "HUANUCO"
 covid_ind$REGION[covid_ind$REGION == ""] <- NA
 unique(covid_ind$REGION) # ok
-# [1] "LIMA"          "AREQUIPA"      "HUÁNUCO"       "ICA"          
-# [5] "CUSCO"         "ANCASH"        "CALLAO"        "LA LIBERTAD"  
-# [9] "LAMBAYEQUE"    "PIURA"         "LORETO"        "MADRE DE DIOS"
-# [13] "SAN MARTIN"    "JUNIN"         "TUMBES"        "CAJAMARCA"    
-# [17] "HUANUCO"       "PASCO"         "AYACUCHO"      "TACNA"        
-# [21] "HUANCAVELICA"  "APURIMAC"      "MOQUEGUA"      "TRUJILLO"     
-# [25] "PUNO"
+# [1] "LIMA"          "AREQUIPA"      "HUÁNUCO"       "ICA"           "CUSCO"        
+# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
+# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
+# [16] "CAJAMARCA"     "HUANUCO"       "PASCO"         "AYACUCHO"      "TACNA"        
+# [21] "HUANCAVELICA"  "APURIMAC"      "MOQUEGUA"      "PUNO"         
+# > 
 
 ## Provincia
 str(covid_ind$PROVINCIA) # chr 
@@ -157,8 +154,8 @@ unique(covid_ind$PROVINCIA)
 # [40] "CAYLLOMA"               "ANDAHUAYLAS"            "OXAPAMPA"              
 # [43] "PARINACOCHAS"           "GENERAL SANCHEZ CERRO"  "PISCO"                 
 # [46] "CHANCHAMAYO"            "PACASMAYO"              "PASCO"                 
-# [49] "HUARI"                  "EL PORVENIR"            "DATEM"                 
-# [52] "UCAYALI"                "REQUENA"
+# [49] "HUARI"                  "DATEM"                  "UCAYALI"               
+# [52] "REQUENA"
 # Hay  ""
 #  "FERREñAFE" con n.
 
@@ -219,7 +216,7 @@ unique(covid_ind$DISTRITO)
 # [85] "LS ESPERANZA"                  "PACASMAYO"                    
 # [87] "CHAUPIMARCA"                   "SAN MARCOS"                   
 # [89] "BARRANCA"                      "INAHUAYA"                     
-# [91] "REQUENA"
+# [91] "REQUENA
 # # Hay  ""
 covid_ind$DISTRITO[covid_ind$DISTRITO == "FERREñAFE"] <- "FERRENAFE"
 covid_ind$DISTRITO[covid_ind$DISTRITO == ""] <- NA
@@ -243,22 +240,20 @@ covid_ind$EDAD_A[covid_ind$EDAD_A == ""] <- NA
 str(covid_ind$SEXOM1H0) # int
 table(covid_ind$SEXOM1H0) # 0 and 1
 # 0   1 
-# 168 113 
+# 166 115  
 
 ## Hospitalizado
 str(covid_ind$HOSPITALIZADOS1N0) # int
 table(covid_ind$HOSPITALIZADOS1N0) # 0 and 1
 # 0   1 
-# 193  44 
+# 195  42  
 
 ## AisladoDomicil
 str(covid_ind$AISLADODOMICILS1N0) # int
 table(covid_ind$AISLADODOMICILS1N0) # 0 and 1
-# 0                    1 
-# 2709                   45                  189 
-# CONTAGIO COMUNITARIO 
-# 2 
-## cONTACTO
+# 0   1 
+# 45 191 
+
 str(covid_ind$CONTACTO) # CHR
 unique(covid_ind$CONTACTO) 
 # ya est? desagregado en m?s variables
@@ -340,7 +335,7 @@ unique(covid_ind$DISTRITO)
 sum(is.na(covid_ind$DISTRITO)) # 2524 NAs
 
 unique(covid_ind$DIRECCION)
-sum(is.na(covid_ind$DIRECCION)) # 2943 NAs
+sum(is.na(covid_ind$DIRECCION)) # 2945 NAs
 
 unique(covid_ind$EDAD_A_n)
 sum(is.na(covid_ind$EDAD_A_n)) # 2714 NAs
@@ -352,10 +347,10 @@ unique(covid_ind$HOSPITALIZADOS1N0)
 sum(is.na(covid_ind$HOSPITALIZADOS1N0)) # 2708 NAs
 
 unique(covid_ind$AISLADODOMICILS1N0)
-sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 2327 NAs
+sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 2709 NAs
 
 unique(covid_ind$CONTACTO)
-sum(is.na(covid_ind$CONTACTO)) # 2737 NAs
+sum(is.na(covid_ind$CONTACTO)) # 2735 NAs
 
 unique(covid_ind$IMPORTADO)
 sum(is.na(covid_ind$IMPORTADO)) # 2856 NAs
@@ -364,7 +359,7 @@ unique(covid_ind$ORIGEN_INTERNACIONAL)
 sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 2905 NAs
 
 unique(covid_ind$CASO_CONTACTO)
-sum(is.na(covid_ind$CASO_CONTACTO)) #  2534 NAs
+sum(is.na(covid_ind$CASO_CONTACTO)) #  2902 NAs
 
 unique(covid_ind$RELACION_CONTACTO)
 sum(is.na(covid_ind$RELACION_CONTACTO)) #  2902 NAs
