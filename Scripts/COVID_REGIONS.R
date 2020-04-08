@@ -95,26 +95,28 @@ colnames(caso_covid)[7] <- "NAME_1"
 
 # Checar las variables. Que no haya tildes, espacios innecesarios o ""
 unique(caso_covid$NAME_1)
-# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
-# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
-# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
-# [16] "CAJAMARCA"     "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
-# [21] "APURIMAC"      "MOQUEGUA"
+# [1] "LIMA"          "AREQUIPA"      "HUÃ\u0081NUCO" "ICA"          
+# [5] "CUSCO"         "ANCASH"        "CALLAO"        "LA LIBERTAD"  
+# [9] "LAMBAYEQUE"    "PIURA"         "LORETO"        "MADRE DE DIOS"
+# [13] "SAN MARTIN"    "JUNIN"         "TUMBES"        "CAJAMARCA"    
+# [17] "HUANUCO"       "PASCO"         "AYACUCHO"      "TACNA"        
+# [21] "HUANCAVELICA"  "APURIMAC"      "MOQUEGUA"      "PUNO"    
 # Cuando corre Clau, sale mal Huanuco. En laptop de Mica sale bien.
 
 #### SI ES LAPTOP DE CLAU, PARECE QUE HAY QUE CORRER ESTAS LINEAS ########
 # Eliminar NAs y tildes
-# caso_covid <- caso_covid[caso_covid$NAME_1 != ""]
 # caso_covid$NAME_1[caso_covid$Caso_ID %in% c(10,11)] <- "HUANUCO"
 # # no funciona no s[e por que]
-# caso_covid[11,7] <- "HUANUCO"
-# caso_covid[10,7] <- "HUANUCO"
-# unique(caso_covid$NAME_1)
-# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
-# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
-# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
-# [16] "CAJAMARCA"     "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
-# [21] "APURIMAC"
+caso_covid[11,7] <- "HUANUCO"
+caso_covid[10,7] <- "HUANUCO"
+unique(caso_covid$NAME_1)
+# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"          
+# [5] "CUSCO"         "ANCASH"        "CALLAO"        "LA LIBERTAD"  
+# [9] "LAMBAYEQUE"    "PIURA"         "LORETO"        "MADRE DE DIOS"
+# [13] "SAN MARTIN"    "JUNIN"         "TUMBES"        "CAJAMARCA"    
+# [17] "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
+# [21] "APURIMAC"      "MOQUEGUA"      "PUNO"
+
 
 casos_region <- data.frame(table(caso_covid$NAME_1))
 colnames(casos_region)[1] <- "REGION"
@@ -124,11 +126,13 @@ colnames(casos_region)[2] <- "NUMERO_CASOS"
 names(pob_region) # "REGION"    "POBLACION"
 pob_region[[1]] <- toupper(pob_region[[1]])
 unique(pob_region$REGION) # todo ok
-# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
-# [6] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANCAVELICA"  "HUANUCO"      
-# [11] "ICA"           "JUNIN"         "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"         
-# [16] "LORETO"        "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
-# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"        "UCAYALI"
+# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"     
+# [5] "AYACUCHO"      "CAJAMARCA"     "CALLAO"        "CUSCO"        
+# [9] "HUANCAVELICA"  "HUANUCO"       "ICA"           "JUNIN"        
+# [13] "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"          "LORETO"       
+# [17] "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
+# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"       
+# [25] "UCAYALI" 
 
 ## Merge cases with populations
 region_values <- merge(casos_region, pob_region, by="REGION", 
@@ -147,11 +151,13 @@ region_values$incidencerate_100 <-(region_values$incidencia*100000)
 ## recode the names of the region_values data frame
 setnames(region_values, old = "REGION",new = "NAME_1")
 levels(region_values$NAME_1)
-# [1] "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"      "CAJAMARCA"    
-# [6] "CALLAO"        "CUSCO"         "HUANCAVELICA"  "HUANUCO"       "ICA"          
-# [11] "JUNIN"         "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"          "LORETO"       
-# [16] "MADRE DE DIOS" "PASCO"         "PIURA"         "SAN MARTIN"    "TACNA"        
-# [21] "TUMBES"        "AMAZONAS"      "MOQUEGUA"      "PUNO"          "UCAYALI" 
+# [1] "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
+# [5] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANCAVELICA" 
+# [9] "HUANUCO"       "ICA"           "JUNIN"         "LA LIBERTAD"  
+# [13] "LAMBAYEQUE"    "LIMA"          "LORETO"        "MADRE DE DIOS"
+# [17] "MOQUEGUA"      "PASCO"         "PIURA"         "PUNO"         
+# [21] "SAN MARTIN"    "TACNA"         "TUMBES"        "AMAZONAS"     
+# [25] "UCAYALI"      
 
 ## Create labels that does not occupy 
 region_values$NAME_LABEL <- region_values$NAME_1
@@ -194,7 +200,7 @@ tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
 tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
 tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
-                            breaks=c(-0.1, 0.0, 1, 2, 4, 6, 8, 10, 12, 20), 
+                            breaks=c(-0.1, 0.0, 1, 2, 4, 6, 8, 10, 12, 100), 
                             labels=c("0", "< 1", "1 a 2", 
                                      "2 a 4", "4 a 6", "6 a 8",
                                      "8 a 10", "10 a 12", "> 12"))
@@ -225,8 +231,9 @@ qtm <- qtm(tmp1_map, #fill = "incidencerate_100",
     tm_layout(paste("Incidencia de \nSARS-CoV2 \nen Peru"), title.size = .9,
               legend.title.size = 0.8, 
             legend.text.size = .6, legend.bg.color = NA,
-            legend.position = c("left","bottom"),
-            outer.margins =c(0.5, 0.3, 0.5, 0.3)) #+ 
+            legend.position = c("left","bottom")#,
+            #outer.margins =c(0.5, 0.3, 0.5, 0.3)
+            ) #+ 
     #tm_view(set.view = c(lon = 15, lat = 48, zoom = 10))
    # tm_view(set.view = c(zoom = 10))
   
@@ -234,15 +241,11 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-<<<<<<< HEAD
-             paste("outputs_covid19/20200406_Dep_COVID19_Incidencerate_v3",
-=======
-             paste("outputs_covid19/20200407_Dep_COVID19_Incidencerate",
->>>>>>> 8406018761346dcf81b0046752444b022212f458
-                   ".png", sep=""), 
-            width=2300, height=1380)
-# Poner el # luego de guardar grafico
-
+          paste("outputs_covid19/20200407_Dep_COVID19_Incidencerate",
+                ".png", sep=""), 
+          width=2300, height=1380)
+             # Poner el # luego de guardar grafico
+             
 
 
 # CORRER SOLO HASTA AQUI. LO QUE SIGUE ES PARA PLOTEAR POR DIA.
