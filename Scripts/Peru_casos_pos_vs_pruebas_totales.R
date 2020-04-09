@@ -10,7 +10,8 @@ library(colorspace)
 ######## ploting national cases with overlaping line ##########
 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200407_CA_clean.csv.csv") 
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200407_CA_clean.csv.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200408_MD_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -19,7 +20,8 @@ acumulado1<-filter(acumulado1, variable %in% target)
 
 
 setwd("~/covid19/outputs_covid19/")
-png(filename="20200407_pruebas_vs_positivos_COVID19.png")
+# cambio n[umero
+png(filename="20200408_pruebas_vs_positivos_COVID19.png")
 ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) + 
   geom_line() +
   scale_colour_manual(values=c("red", "blue"))+
