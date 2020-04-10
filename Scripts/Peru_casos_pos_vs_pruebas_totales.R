@@ -11,7 +11,7 @@ library(colorspace)
 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200407_CA_clean.csv.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200408_MD_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200409_CA_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -21,7 +21,7 @@ acumulado1<-filter(acumulado1, variable %in% target)
 
 setwd("~/covid19/outputs_covid19/")
 # cambio n[umero
-png(filename="20200408_pruebas_vs_positivos_COVID19.png")
+png(filename="20200409_pruebas_vs_positivos_COVID19.png")
 ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) + 
   geom_line() +
   scale_colour_manual(values=c("red", "blue"))+
@@ -37,6 +37,7 @@ ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) +
   geom_vline(xintercept = "2020-03-26") +
   geom_vline(xintercept = "2020-03-31") +
   geom_vline(xintercept = "2020-04-02") +
+  geom_vline(xintercept = "2020-04-08") +
   annotate("text", x = "2020-03-07", y = 3000,
            label = " Primer Caso", size = 2.5)+
   annotate("text", x = "2020-03-11", y = 4000,
@@ -50,8 +51,9 @@ ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) +
   annotate("text", x = "2020-04-02", y = 9000,
            label = " Restriccion por sexo", size = 2.5)+
   annotate("text", x = "2020-03-31", y = 8000,
-           label = " toque de queda 18pm-5am", size = 2.5)
-
+           label = " toque de queda 18pm-5am", size = 2.5)+
+  annotate("text", x = "2020-04-07", y = 10000,
+         label = " Extension cuarentena", size = 2.5)
 dev.off()
 
 
