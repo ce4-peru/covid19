@@ -20,7 +20,8 @@ setwd("~/covid19")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200406_MD.csv")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200407_CA.csv")
 # covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200408_MD.csv")
-covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200409_CA.csv")
+# covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200409_CA.csv")
+covid_ind <- fread("~/covid19/data/crudas/covidPE_IND_20200410_MD.csv")
 
 ## Checar base
 str(covid_ind) # 5246 obs. of  20 variables
@@ -125,33 +126,39 @@ levels(covid_ind$REGION) <- c(levels(covid_ind$REGION),
                             c("APURIMAC", "HUANUCO", 
                               "JUNIN", "SAN MARTIN"))
 
-covid_ind$REGION[covid_ind$REGION == "HUÁNUCO"] <- "HUANUCO"
+covid_ind$REGION[covid_ind$REGION == "HUáNUCO"] <- "HUANUCO"
+#covid_ind$REGION[covid_ind$REGION == "HUÁNUCO"] <- "HUANUCO"
 covid_ind$REGION[covid_ind$REGION == ""] <- NA
 unique(covid_ind$REGION) # ok
 # [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
 # [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
 # [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
 # [16] "CAJAMARCA"     "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
-# [21] "APURIMAC"      "MOQUEGUA"      "PUNO"          "AMAZONAS" 
+# [21] "APURIMAC"      "MOQUEGUA"      "PUNO"          "AMAZONAS"      "UCAYALI" 
 
 ## Provincia
 str(covid_ind$PROVINCIA) # chr 
 unique(covid_ind$PROVINCIA)
-# [1] "LIMA"                   "AREQUIPA"               "HUANUCO"                "CHINCHA"               
-# [5] "CUSCO"                  ""                       "SANTA"                  "CALLAO"                
-# [9] "TRUJILLO"               "CHICLAYO"               "PIURA"                  "MAYNAS"                
-# [13] "TAMBOPATA"              "SAN MARTIN"             "HUANCAYO"               "FERRENAFE"             
-# [17] "SULLANA"                "ICA"                    "TUMBES"                 "CAJAMARCA"             
-# [21] "PAITA"                  "DANIEL ALCIDES CARRION" "ZARUMILLA"              "MARISCAL CACERES"      
-# [25] "HUAMANGA"               "CONVENCION"             "FERREÑAFE"              "TACNA"                 
-# [29] "MOYOBAMBA"              "RIOJA"                  "LEONCIO PRADO"          "LAMBAYEQUE"            
-# [33] "HUARAZ"                 "JAEN"                   "ACOBAMABA"              "ASCOPE"                
-# [37] "SECHURA"                "CONTRALMIRANTE VILLAR"  "LORETO"                 "CAYLLOMA"              
-# [41] "ANDAHUAYLAS"            "OXAPAMPA"               "PARINACOCHAS"           "GENERAL SANCHEZ CERRO" 
-# [45] "PISCO"                  "CHANCHAMAYO"            "PACASMAYO"              "PASCO"                 
-# [49] "HUARI"                  "DATEM"                  "UCAYALI"                "REQUENA"               
-# [53] "HUAYLAS"                "BAGUA"                  "CHACHAPOYAS"            "BONGARA"               
-# [57] "CAMANA"  
+# [1] "LIMA"                   "AREQUIPA"               "HUANUCO"               
+# [4] "CHINCHA"                "CUSCO"                  ""                      
+# [7] "SANTA"                  "CALLAO"                 "TRUJILLO"              
+# [10] "CHICLAYO"               "PIURA"                  "MAYNAS"                
+# [13] "TAMBOPATA"              "SAN MARTIN"             "HUANCAYO"              
+# [16] "FERRENAFE"              "SULLANA"                "ICA"                   
+# [19] "TUMBES"                 "CAJAMARCA"              "PAITA"                 
+# [22] "DANIEL ALCIDES CARRION" "ZARUMILLA"              "MARISCAL CACERES"      
+# [25] "HUAMANGA"               "CONVENCION"             "FERREñAFE"            
+# [28] "TACNA"                  "MOYOBAMBA"              "RIOJA"                 
+# [31] "LEONCIO PRADO"          "LAMBAYEQUE"             "HUARAZ"                
+# [34] "JAEN"                   "ACOBAMABA"              "ASCOPE"                
+# [37] "SECHURA"                "CONTRALMIRANTE VILLAR"  "LORETO"                
+# [40] "CAYLLOMA"               "ANDAHUAYLAS"            "OXAPAMPA"              
+# [43] "PARINACOCHAS"           "GENERAL SANCHEZ CERRO"  "PISCO"                 
+# [46] "CHANCHAMAYO"            "PACASMAYO"              "PASCO"                 
+# [49] "HUARI"                  "DATEM"                  "UCAYALI"               
+# [52] "REQUENA"                "HUAYLAS"                "BAGUA"                 
+# [55] "CHACHAPOYAS"            "BONGARA"                "HUARMEY"               
+# [58] "CAMANA"                 "CORORNEL PORTILLO"
 # Hay  ""
 #  "FERREñAFE" con n.
 
@@ -162,99 +169,140 @@ levels(covid_ind$PROVINCIA) <- c(levels(covid_ind$PROVINCIA),
 covid_ind$PROVINCIA[covid_ind$PROVINCIA == "FERREñAFE"] <- "FERRENAFE"
 covid_ind$PROVINCIA[covid_ind$PROVINCIA == ""] <- NA
 unique(covid_ind$PROVINCIA)
-# [1] "LIMA"                   "AREQUIPA"               "HUANUCO"                "CHINCHA"               
-# [5] "CUSCO"                  NA                       "SANTA"                  "CALLAO"                
-# [9] "TRUJILLO"               "CHICLAYO"               "PIURA"                  "MAYNAS"                
-# [13] "TAMBOPATA"              "SAN MARTIN"             "HUANCAYO"               "FERRENAFE"             
-# [17] "SULLANA"                "ICA"                    "TUMBES"                 "CAJAMARCA"             
-# [21] "PAITA"                  "DANIEL ALCIDES CARRION" "ZARUMILLA"              "MARISCAL CACERES"      
-# [25] "HUAMANGA"               "CONVENCION"             "FERREÑAFE"              "TACNA"                 
-# [29] "MOYOBAMBA"              "RIOJA"                  "LEONCIO PRADO"          "LAMBAYEQUE"            
-# [33] "HUARAZ"                 "JAEN"                   "ACOBAMABA"              "ASCOPE"                
-# [37] "SECHURA"                "CONTRALMIRANTE VILLAR"  "LORETO"                 "CAYLLOMA"              
-# [41] "ANDAHUAYLAS"            "OXAPAMPA"               "PARINACOCHAS"           "GENERAL SANCHEZ CERRO" 
-# [45] "PISCO"                  "CHANCHAMAYO"            "PACASMAYO"              "PASCO"                 
-# [49] "HUARI"                  "DATEM"                  "UCAYALI"                "REQUENA"               
-# [53] "HUAYLAS"                "BAGUA"                  "CHACHAPOYAS"            "BONGARA"               
-# [57] "CAMANA" 
-
+# [1] "LIMA"                   "AREQUIPA"               "HUANUCO"               
+# [4] "CHINCHA"                "CUSCO"                  NA                      
+# [7] "SANTA"                  "CALLAO"                 "TRUJILLO"              
+# [10] "CHICLAYO"               "PIURA"                  "MAYNAS"                
+# [13] "TAMBOPATA"              "SAN MARTIN"             "HUANCAYO"              
+# [16] "FERRENAFE"              "SULLANA"                "ICA"                   
+# [19] "TUMBES"                 "CAJAMARCA"              "PAITA"                 
+# [22] "DANIEL ALCIDES CARRION" "ZARUMILLA"              "MARISCAL CACERES"      
+# [25] "HUAMANGA"               "CONVENCION"             "TACNA"                 
+# [28] "MOYOBAMBA"              "RIOJA"                  "LEONCIO PRADO"         
+# [31] "LAMBAYEQUE"             "HUARAZ"                 "JAEN"                  
+# [34] "ACOBAMABA"              "ASCOPE"                 "SECHURA"               
+# [37] "CONTRALMIRANTE VILLAR"  "LORETO"                 "CAYLLOMA"              
+# [40] "ANDAHUAYLAS"            "OXAPAMPA"               "PARINACOCHAS"          
+# [43] "GENERAL SANCHEZ CERRO"  "PISCO"                  "CHANCHAMAYO"           
+# [46] "PACASMAYO"              "PASCO"                  "HUARI"                 
+# [49] "DATEM"                  "UCAYALI"                "REQUENA"               
+# [52] "HUAYLAS"                "BAGUA"                  "CHACHAPOYAS"           
+# [55] "BONGARA"                "HUARMEY"                "CAMANA"                
+# [58] "CORORNEL PORTILLO"  
 
 ## Distrito
 str(covid_ind$DISTRITO) # chr
 unique(covid_ind$DISTRITO)
-# [1] "SURCO"                         "CERRO COLORADO"                "LINCE"                        
-# [4] ""                              "AMARILIS"                      "CHINCHA BAJA"                 
-# [7] "VILLA MARIA DEL TRIUNFO"       "CUSCO"                         "NUEVO CHIMBOTE"               
-# [10] "LA PUNTA"                      "HUANCHACO"                     "LA VICTORIA"                  
-# [13] "CASTILLA"                      "LAS LOMAS"                     "IQUITOS"                      
-# [16] "TRUJILLO"                      "INDIANA"                       "TAMBOPATA"                    
-# [19] "LA BANDA DE SHILCAYO"          "SANTA"                         "JOSE LUIS BUSTAMANTE Y RIBERO"
-# [22] "TAMBO"                         "HUANCAYO"                      "YANAHUARA"                    
-# [25] "CHILCA"                        "MARCAVELICA"                   "VEINTISEIS DE OCTUBRE"        
-# [28] "PIURA"                         "MARIANO MELGAR"                "CARMEN DE LA LEGUA"           
-# [31] "ICA"                           "LAREDO"                        "ANDRES ARUAJO MORAN"          
-# [34] "CERCADO DE TUMBES"             "CAJAMARCA"                     "ATE VITARTE"                  
-# [37] "TAMBO REAL"                    "CHINCHA ALTA"                  "EL PORVENIR"                  
-# [40] "PAITA"                         "HUANUCO"                       "FERRENAFE"                    
-# [43] "TAPUC"                         "AGUAS VERDES"                  "PUEBLO NUEVO"                 
-# [46] "JUANJUI"                       "CARMEN ALTO"                   "SANTA ANA"                    
-# [49] "LA ESPERANZA"                  "CHICLAYO"                      "JOSE LEONARDO ORTIZ"          
-# [52] "SANTA ROSA"                    "TARAPOTO"                      "GREGORIO ALBARRACIN"          
-# [55] "ZARUMILLA"                     "MOYOBAMBA"                     "NUEVA CAJAMARCA"              
-# [58] "RUPA RUPA"                     "VICTOR LARCO"                  "FERREÑAFE"                    
-# [61] "REQUE"                         "LAMBAYEQUE"                    "CIUDAD ETEN"                  
-# [64] "TACNA"                         "INDEPENDENCIA"                 "POMACOCHA"                    
-# [67] "RAZURI"                        "MONSEFU"                       "SECHURA"                      
-# [70] "TUMBES"                        "ZORRITOS"                      "NAUTA"                        
-# [73] "CORRALES"                      "MAJES"                         "KAQUIABAMBA"                  
-# [76] "PUNCHANA"                      "SAN JUAN BAUTISTA"             "ILLIMO"                       
-# [79] "BELEN"                         "VILLA RICA"                    "CHIMBOTE"                     
-# [82] "CORACORA"                      "PUQUINA"                       "AYACUCHO"                     
-# [85] "LS ESPERANZA"                  "PACASMAYO"                     "CHAUPIMARCA"                  
-# [88] "SAN MARCOS"                    "BARRANCA"                      "INAHUAYA"                     
-# [91] "REQUENA"                       "HUARAZ"                        "NEPEÑA"                       
-# [94] "COISHCO"                       "HUARI"                         "PAMPAROMAS"                   
-# [97] "SULLANA"                       "OCOÑA"                         "PAIJAN"                       
-# [100] "MORALES"
+# [1] "SURCO"                         "CERRO COLORADO"               
+# [3] "LINCE"                         ""                             
+# [5] "AMARILIS"                      "CHINCHA BAJA"                 
+# [7] "VILLA MARIA DEL TRIUNFO"       "CUSCO"                        
+# [9] "NUEVO CHIMBOTE"                "LA PUNTA"                     
+# [11] "HUANCHACO"                     "LA VICTORIA"                  
+# [13] "CASTILLA"                      "LAS LOMAS"                    
+# [15] "IQUITOS"                       "TRUJILLO"                     
+# [17] "INDIANA"                       "TAMBOPATA"                    
+# [19] "LA BANDA DE SHILCAYO"          "SANTA"                        
+# [21] "JOSE LUIS BUSTAMANTE Y RIBERO" "TAMBO"                        
+# [23] "HUANCAYO"                      "YANAHUARA"                    
+# [25] "CHILCA"                        "MARCAVELICA"                  
+# [27] "VEINTISEIS DE OCTUBRE"         "PIURA"                        
+# [29] "MARIANO MELGAR"                "CARMEN DE LA LEGUA"           
+# [31] "ICA"                           "LAREDO"                       
+# [33] "ANDRES ARUAJO MORAN"           "CERCADO DE TUMBES"            
+# [35] "CAJAMARCA"                     "ATE VITARTE"                  
+# [37] "TAMBO REAL"                    "CHINCHA ALTA"                 
+# [39] "EL PORVENIR"                   "PAITA"                        
+# [41] "HUANUCO"                       "FERRENAFE"                    
+# [43] "TAPUC"                         "AGUAS VERDES"                 
+# [45] "PUEBLO NUEVO"                  "JUANJUI"                      
+# [47] "CARMEN ALTO"                   "SANTA ANA"                    
+# [49] "LA ESPERANZA"                  "CHICLAYO"                     
+# [51] "JOSE LEONARDO ORTIZ"           "SANTA ROSA"                   
+# [53] "TARAPOTO"                      "GREGORIO ALBARRACIN"          
+# [55] "ZARUMILLA"                     "MOYOBAMBA"                    
+# [57] "NUEVA CAJAMARCA"               "RUPA RUPA"                    
+# [59] "VICTOR LARCO"                  "FERREñAFE"                   
+# [61] "REQUE"                         "LAMBAYEQUE"                   
+# [63] "CIUDAD ETEN"                   "TACNA"                        
+# [65] "INDEPENDENCIA"                 "POMACOCHA"                    
+# [67] "RAZURI"                        "MONSEFU"                      
+# [69] "SECHURA"                       "TUMBES"                       
+# [71] "ZORRITOS"                      "NAUTA"                        
+# [73] "CORRALES"                      "MAJES"                        
+# [75] "KAQUIABAMBA"                   "PUNCHANA"                     
+# [77] "SAN JUAN BAUTISTA"             "ILLIMO"                       
+# [79] "BELEN"                         "VILLA RICA"                   
+# [81] "CHIMBOTE"                      "CORACORA"                     
+# [83] "PUQUINA"                       "AYACUCHO"                     
+# [85] "LS ESPERANZA"                  "PACASMAYO"                    
+# [87] "CHAUPIMARCA"                   "SAN MARCOS"                   
+# [89] "BARRANCA"                      "INAHUAYA"                     
+# [91] "REQUENA"                       "HUARAZ"                       
+# [93] "NEPEñA"                       "COISHCO"                      
+# [95] "HUARI"                         "PAMPAROMAS"                   
+# [97] "SULLANA"                       "HUARMEY"                      
+# [99] "OCOñA"                        "MORALES"                      
+# [101] "PAIJAN"                        "PUCALLPA"                     
+# [103] "YARINACOCHA" 
+
 # # Hay  ""
 covid_ind$DISTRITO[covid_ind$DISTRITO == "FERREñAFE"] <- "FERRENAFE"
 covid_ind$DISTRITO[covid_ind$DISTRITO == "NEPEñA"] <- "NEPENA"
+covid_ind$DISTRITO[covid_ind$DISTRITO == "OCOñA"] <- "OCONA"
 covid_ind$DISTRITO[covid_ind$DISTRITO == ""] <- NA
 unique(covid_ind$DISTRITO)
-# [1] "SURCO"                         "CERRO COLORADO"                "LINCE"                        
-# [4] NA                              "AMARILIS"                      "CHINCHA BAJA"                 
-# [7] "VILLA MARIA DEL TRIUNFO"       "CUSCO"                         "NUEVO CHIMBOTE"               
-# [10] "LA PUNTA"                      "HUANCHACO"                     "LA VICTORIA"                  
-# [13] "CASTILLA"                      "LAS LOMAS"                     "IQUITOS"                      
-# [16] "TRUJILLO"                      "INDIANA"                       "TAMBOPATA"                    
-# [19] "LA BANDA DE SHILCAYO"          "SANTA"                         "JOSE LUIS BUSTAMANTE Y RIBERO"
-# [22] "TAMBO"                         "HUANCAYO"                      "YANAHUARA"                    
-# [25] "CHILCA"                        "MARCAVELICA"                   "VEINTISEIS DE OCTUBRE"        
-# [28] "PIURA"                         "MARIANO MELGAR"                "CARMEN DE LA LEGUA"           
-# [31] "ICA"                           "LAREDO"                        "ANDRES ARUAJO MORAN"          
-# [34] "CERCADO DE TUMBES"             "CAJAMARCA"                     "ATE VITARTE"                  
-# [37] "TAMBO REAL"                    "CHINCHA ALTA"                  "EL PORVENIR"                  
-# [40] "PAITA"                         "HUANUCO"                       "FERRENAFE"                    
-# [43] "TAPUC"                         "AGUAS VERDES"                  "PUEBLO NUEVO"                 
-# [46] "JUANJUI"                       "CARMEN ALTO"                   "SANTA ANA"                    
-# [49] "LA ESPERANZA"                  "CHICLAYO"                      "JOSE LEONARDO ORTIZ"          
-# [52] "SANTA ROSA"                    "TARAPOTO"                      "GREGORIO ALBARRACIN"          
-# [55] "ZARUMILLA"                     "MOYOBAMBA"                     "NUEVA CAJAMARCA"              
-# [58] "RUPA RUPA"                     "VICTOR LARCO"                  "FERREÑAFE"                    
-# [61] "REQUE"                         "LAMBAYEQUE"                    "CIUDAD ETEN"                  
-# [64] "TACNA"                         "INDEPENDENCIA"                 "POMACOCHA"                    
-# [67] "RAZURI"                        "MONSEFU"                       "SECHURA"                      
-# [70] "TUMBES"                        "ZORRITOS"                      "NAUTA"                        
-# [73] "CORRALES"                      "MAJES"                         "KAQUIABAMBA"                  
-# [76] "PUNCHANA"                      "SAN JUAN BAUTISTA"             "ILLIMO"                       
-# [79] "BELEN"                         "VILLA RICA"                    "CHIMBOTE"                     
-# [82] "CORACORA"                      "PUQUINA"                       "AYACUCHO"                     
-# [85] "LS ESPERANZA"                  "PACASMAYO"                     "CHAUPIMARCA"                  
-# [88] "SAN MARCOS"                    "BARRANCA"                      "INAHUAYA"                     
-# [91] "REQUENA"                       "HUARAZ"                        "NEPEÑA"                       
-# [94] "COISHCO"                       "HUARI"                         "PAMPAROMAS"                   
-# [97] "SULLANA"                       "OCOÑA"                         "PAIJAN"                       
-# [100] "MORALES"
+# [1] "SURCO"                         "CERRO COLORADO"               
+# [3] "LINCE"                         NA                             
+# [5] "AMARILIS"                      "CHINCHA BAJA"                 
+# [7] "VILLA MARIA DEL TRIUNFO"       "CUSCO"                        
+# [9] "NUEVO CHIMBOTE"                "LA PUNTA"                     
+# [11] "HUANCHACO"                     "LA VICTORIA"                  
+# [13] "CASTILLA"                      "LAS LOMAS"                    
+# [15] "IQUITOS"                       "TRUJILLO"                     
+# [17] "INDIANA"                       "TAMBOPATA"                    
+# [19] "LA BANDA DE SHILCAYO"          "SANTA"                        
+# [21] "JOSE LUIS BUSTAMANTE Y RIBERO" "TAMBO"                        
+# [23] "HUANCAYO"                      "YANAHUARA"                    
+# [25] "CHILCA"                        "MARCAVELICA"                  
+# [27] "VEINTISEIS DE OCTUBRE"         "PIURA"                        
+# [29] "MARIANO MELGAR"                "CARMEN DE LA LEGUA"           
+# [31] "ICA"                           "LAREDO"                       
+# [33] "ANDRES ARUAJO MORAN"           "CERCADO DE TUMBES"            
+# [35] "CAJAMARCA"                     "ATE VITARTE"                  
+# [37] "TAMBO REAL"                    "CHINCHA ALTA"                 
+# [39] "EL PORVENIR"                   "PAITA"                        
+# [41] "HUANUCO"                       "FERRENAFE"                    
+# [43] "TAPUC"                         "AGUAS VERDES"                 
+# [45] "PUEBLO NUEVO"                  "JUANJUI"                      
+# [47] "CARMEN ALTO"                   "SANTA ANA"                    
+# [49] "LA ESPERANZA"                  "CHICLAYO"                     
+# [51] "JOSE LEONARDO ORTIZ"           "SANTA ROSA"                   
+# [53] "TARAPOTO"                      "GREGORIO ALBARRACIN"          
+# [55] "ZARUMILLA"                     "MOYOBAMBA"                    
+# [57] "NUEVA CAJAMARCA"               "RUPA RUPA"                    
+# [59] "VICTOR LARCO"                  "REQUE"                        
+# [61] "LAMBAYEQUE"                    "CIUDAD ETEN"                  
+# [63] "TACNA"                         "INDEPENDENCIA"                
+# [65] "POMACOCHA"                     "RAZURI"                       
+# [67] "MONSEFU"                       "SECHURA"                      
+# [69] "TUMBES"                        "ZORRITOS"                     
+# [71] "NAUTA"                         "CORRALES"                     
+# [73] "MAJES"                         "KAQUIABAMBA"                  
+# [75] "PUNCHANA"                      "SAN JUAN BAUTISTA"            
+# [77] "ILLIMO"                        "BELEN"                        
+# [79] "VILLA RICA"                    "CHIMBOTE"                     
+# [81] "CORACORA"                      "PUQUINA"                      
+# [83] "AYACUCHO"                      "LS ESPERANZA"                 
+# [85] "PACASMAYO"                     "CHAUPIMARCA"                  
+# [87] "SAN MARCOS"                    "BARRANCA"                     
+# [89] "INAHUAYA"                      "REQUENA"                      
+# [91] "HUARAZ"                        "NEPENA"                       
+# [93] "COISHCO"                       "HUARI"                        
+# [95] "PAMPAROMAS"                    "SULLANA"                      
+# [97] "HUARMEY"                       "OCONA"                        
+# [99] "MORALES"                       "PAIJAN"                       
+# [101] "PUCALLPA"                      "YARINACOCHA" 
 ## Direccion
 str(covid_ind$DIRECCION) # logi 
 unique(covid_ind$DIRECCION) # NA
@@ -272,19 +320,19 @@ covid_ind$EDAD_A[covid_ind$EDAD_A == ""] <- NA
 str(covid_ind$SEXOM1H0) # int
 table(covid_ind$SEXOM1H0) # 0 and 1
 # 0   1 
-# 195 143 
+# 202 146  
 
 ## Hospitalizado
 str(covid_ind$HOSPITALIZADOS1N0) # int
 table(covid_ind$HOSPITALIZADOS1N0) # 0 and 1
 # 0   1 
-# 241  49   
+# 247  52 
 
 ## AisladoDomicil
 str(covid_ind$AISLADODOMICILS1N0) # int
 table(covid_ind$AISLADODOMICILS1N0) # 0 and 1
 # 0   1 
-# 53 236 
+# 56 242 
 
 str(covid_ind$CONTACTO) # chr
 unique(covid_ind$CONTACTO) 
@@ -343,7 +391,7 @@ covid_ind$ORIGEN_NACIONAL[covid_ind$ORIGEN_NACIONAL == ""] <- NA
 
 ## Double check "" and count NAs
 unique(covid_ind$CASO_ID)
-sum(is.na(covid_ind$CASO_ID)) # 5212 NAs
+sum(is.na(covid_ind$CASO_ID)) # 5853 NAs
 
 unique(covid_ind$FECHA)
 sum(is.na(covid_ind$FECHA)) # 0 NAs
@@ -361,43 +409,43 @@ unique(covid_ind$REGION)
 sum(is.na(covid_ind$REGION)) # 0 NAs
 
 unique(covid_ind$PROVINCIA)
-sum(is.na(covid_ind$PROVINCIA)) # 4303 NAs
+sum(is.na(covid_ind$PROVINCIA)) # 4844 NAs
 
 unique(covid_ind$DISTRITO)
-sum(is.na(covid_ind$DISTRITO)) #  4636 NAs
+sum(is.na(covid_ind$DISTRITO)) # 5249 NAs
 
 unique(covid_ind$DIRECCION)
-sum(is.na(covid_ind$DIRECCION)) # 5246 NAs
+sum(is.na(covid_ind$DIRECCION)) # 5887NAs
 
 unique(covid_ind$EDAD_A_n)
-sum(is.na(covid_ind$EDAD_A_n)) # 4972 NAs
+sum(is.na(covid_ind$EDAD_A_n)) # 5605 NAs
 
 unique(covid_ind$SEXOM1H0)
-sum(is.na(covid_ind$SEXOM1H0)) # 4908 NAs
+sum(is.na(covid_ind$SEXOM1H0)) # 5539 NAs
 
 unique(covid_ind$HOSPITALIZADOS1N0)
 sum(is.na(covid_ind$HOSPITALIZADOS1N0)) # 4956 NAs
 
 unique(covid_ind$AISLADODOMICILS1N0)
-sum(is.na(covid_ind$AISLADODOMICILS1N0)) #4957 NAs
+sum(is.na(covid_ind$AISLADODOMICILS1N0)) # 5588 NAs
 
 unique(covid_ind$CONTACTO)
-sum(is.na(covid_ind$CONTACTO)) # 4985 NAs
+sum(is.na(covid_ind$CONTACTO)) # 5619 NAs
 
 unique(covid_ind$IMPORTADO)
-sum(is.na(covid_ind$IMPORTADO)) # 5157 NAs
+sum(is.na(covid_ind$IMPORTADO)) # 5798 NAs
 
 unique(covid_ind$ORIGEN_INTERNACIONAL)
-sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 5206 NAs
+sum(is.na(covid_ind$ORIGEN_INTERNACIONAL)) # 5847 NAs
 
 unique(covid_ind$CASO_CONTACTO)
-sum(is.na(covid_ind$CASO_CONTACTO)) #  5203 NAs
+sum(is.na(covid_ind$CASO_CONTACTO)) #  5844 NAs
 
 unique(covid_ind$RELACION_CONTACTO)
-sum(is.na(covid_ind$RELACION_CONTACTO)) #  5203 NAs
+sum(is.na(covid_ind$RELACION_CONTACTO)) #  5844 NAs
 
 unique(covid_ind$ORIGEN_NACIONAL)
-sum(is.na(covid_ind$ORIGEN_NACIONAL)) # 5163 NAs
+sum(is.na(covid_ind$ORIGEN_NACIONAL)) # 5804 NAs
 
 
 # Save dataset
@@ -430,7 +478,8 @@ names(covid_ind)
 #write.csv(covid_ind, "data/modificadas/covidPE_IND_20200406_CA_clean.csv")
 #write.csv(covid_ind, "data/modificadas/covidPE_IND_20200407_CA_clean.csv")
 #write.csv(covid_ind, "data/modificadas/covidPE_IND_20200408_MD_clean.csv")
-# write.csv(covid_ind, "data/modificadas/covidPE_IND_20200409_CA_clean.csv")
+#write.csv(covid_ind, "data/modificadas/covidPE_IND_20200409_CA_clean.csv")
+write.csv(covid_ind, "data/modificadas/covidPE_IND_20200410_MD_clean.csv")
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
