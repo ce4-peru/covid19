@@ -9,18 +9,19 @@ library(lubridate)
 setwd("~/covid19")
 
 ## Call data
-covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200412_MD.csv")
+# covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200412_MD.csv")
+covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200413_CA.csv")
 
 ## Checar base
-str(covid_dep) # 38 obs. of  31 variables
+str(covid_dep) # 39 obs. of  31 variables
 names(covid_dep)
-# [1] "DÃ?a"        "Fecha"       "LIM"         "ARE"         "HUC"        
-# [6] "ICA"         "CUS"         "PIU"         "LAM"         "CAL"        
-# [11] "LAL"         "ANC"         "LOR"         "SAM"         "MDD"        
-# [16] "JUN"         "TUM"         "CAJ"         "PAS"         "TAC"        
-# [21] "AYA"         "HUA"         "APU"         "MOQ"         "PUN"        
-# [26] "AMA"         "UCA"         "Total"       "Acumulado"   "Descartados"
-# [31] "Fuente
+# [1] "DÃ­a"         "Fecha"       "LIM"         "ARE"         "HUC"         "ICA"        
+# [7] "CUS"         "PIU"         "LAM"         "CAL"         "LAL"         "ANC"        
+# [13] "LOR"         "SAM"         "MDD"         "JUN"         "TUM"         "CAJ"        
+# [19] "PAS"         "TAC"         "AYA"         "HUA"         "APU"         "MOQ"        
+# [25] "PUN"         "AMA"         "UCA"         "Total"       "Acumulado"   "Descartados"
+# [31] "Fuente"     
+# > 
 
 # Eliminar primera columna
 covid_dep <- covid_dep[-38,-c(1,28:31)]
@@ -33,28 +34,28 @@ head(covid_dep)
 # No me sale
 covid_dep <- mutate_if(covid_dep, is.character, toupper)
 sapply(covid_dep, class)
-# CASO_ID                FECHA               REGION            PROVINCIA 
-# "integer"          "character"          "character"          "character" 
-# DISTRITO            DIRECCION               EDAD_A             SEXOM1H0 
-# "character"            "logical"          "character"            "integer" 
-# HOSPITALIZADOS1N0   AISLADODOMICILS1N0             CONTACTO            IMPORTADO 
-# "integer"            "integer"          "character"            "integer" 
-# ORIGEN_INTERNACIONAL        CASO_CONTACTO    RELACION_CONTACTO      ORIGEN_NACIONAL 
-# "character"            "integer"          "character"          "character" 
-# ENLACES1             ENLACES2             ENLACES3        OBSERVACIONES 
-# "character"          "character"          "character"          "character"
-
+# Fecha         LIM         ARE         HUC         ICA         CUS         PIU 
+# "character"   "integer"   "integer"   "integer"   "integer"   "integer"   "integer" 
+# LAM         CAL         LAL         ANC         LOR         SAM         MDD 
+# "integer"   "integer"   "integer"   "integer"   "integer"   "integer"   "integer" 
+# JUN         TUM         CAJ         PAS         TAC         AYA         HUA 
+# "integer"   "integer"   "integer"   "integer"   "integer"   "integer"   "integer" 
+# APU         MOQ         PUN         AMA         UCA 
+# "integer"   "integer"   "integer"   "integer"   "integer" 
+# > 
 
 ### variableby variable
 table(covid_dep$Fecha)
-# 1-ABR  10-ABR  10-MAR  11-ABR  11-MAR  12-MAR  13-MAR  14-MAR  15-MAR  16-MAR  17-MAR  18-MAR 
-# 1       1       1       1       1       1       1       1       1       1       1       1 
-# 19-MAR   2-ABR  20-MAR  21-MAR  22-MAR  23-MAR  24-MAR  25-MAR  26-MAR  27-MAR  28-MAR  29-MAR 
-# 1       1       1       1       1       1       1       1       1       1       1       1 
-# 3-ABR  30-MAR  31-MAR   4-ABR 5 ABRIL   6-ABR   6-MAR   7-ABR   7-MAR   8-ABR   8-MAR   9-ABR 
-# 1       1       1       1       1       1       1       1       1       1       1       1 
-# 9-MAR TOTALES 
-# 1       1 
+# 01/04/2020 02/04/2020 03/04/2020 04/04/2020 05/04/2020 06/03/2020 06/04/2020 07/03/2020 
+# 1          1          1          1          1          1          1          1 
+# 07/04/2020 08/03/2020 08/04/2020 09/03/2020 09/04/2020 10/03/2020 10/04/2020 11/03/2020 
+# 1          1          1          1          1          1          1          1 
+# 11/04/2020 12/03/2020 13/03/2020 14/03/2020 15/03/2020 16/03/2020 17/03/2020 18/03/2020 
+# 1          1          1          1          1          1          1          1 
+# 19/03/2020 20/03/2020 21/03/2020 22/03/2020 23/03/2020 24/03/2020 25/03/2020 26/03/2020 
+# 1          1          1          1          1          1          1          1 
+# 27/03/2020 28/03/2020 29/03/2020 30/03/2020 31/03/2020    TOTALES 
+# 1          1          1          1          1          1 
 
 #### separando caracteres en varias columnas ######
 # covid_ind$FECHA2 <- covid_ind$FECHA
@@ -93,7 +94,8 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 
 # Save csv.
 # CAMBIA EL NOMBRE! NO TE OLVIDES!
-write.csv(covid_dep2, "data/modificadas/covidPE_IND_20200412_MD_clean.csv")
+# write.csv(covid_dep2, "data/modificadas/covidPE_IND_20200412_MD_clean.csv")
+write.csv(covid_dep2, "data/modificadas/covidPE_IND_20200413_CA_clean.csv")
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
