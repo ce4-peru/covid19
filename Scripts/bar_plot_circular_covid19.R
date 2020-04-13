@@ -4,7 +4,7 @@ library(data.table)
 library(plyr)
 ######### abriendo los datos ########
 setwd("~/covid19/data/modificadas")
-df0 <- read.csv("covidPE_IND_20200408_MD_clean.csv")
+    df0 <- read.csv("covidPE_IND_20200411_CA_clean.csv")
 table(df0$REGION)
 #Format data frame
 df0 <- df0[2:17]
@@ -18,7 +18,7 @@ df0 <- df0[1:6]
 df0$count<-unlist(1)
 
 dfag<- aggregate(count ~ Region, data = df0, sum)
-dfag$id=seq(1,24)
+dfag$id=seq(1,25)
 target <- c("LIMA")
 dfag<-filter(dfag, !Region %in% target) 
 
