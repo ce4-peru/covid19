@@ -12,7 +12,8 @@ library(colorspace)
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200407_CA_clean.csv.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200410_MD_clean.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200411_CA_clean.csv") 
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200411_CA_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200412_MD_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -22,7 +23,7 @@ acumulado1<-filter(acumulado1, variable %in% target)
 
 setwd("~/covid19/outputs_covid19/")
 # cambio n[umero
-png(filename="20200411_pruebas_vs_positivos_COVID19.png")
+png(filename="20200412_pruebas_vs_positivos_COVID19.png")
 ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) + 
   geom_line() +
   scale_colour_manual(values=c("red", "blue"))+
@@ -120,19 +121,4 @@ dev.off()
 #         legend.justification = c("right","top"))+
 #   theme(axis.text.x = element_text(angle=90)
 #   )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
