@@ -94,7 +94,7 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 # Save csv.
 # CAMBIA EL NOMBRE! NO TE OLVIDES!
 # write.csv(covid_dep2, "data/modificadas/covidPE_IND_20200412_MD_clean.csv")
-write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200413_CA_clean.csv", row.names = FALSE)
+#write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200413_CA_clean.csv", row.names = FALSE)
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 

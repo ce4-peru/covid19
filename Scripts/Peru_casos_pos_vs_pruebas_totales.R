@@ -8,13 +8,15 @@ library(directlabels)
 library(reshape)
 library(colorspace)
 library(plotly)
+library(ggplot2)
 ######## ploting national cases with overlaping line ##########
 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200407_CA_clean.csv.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200410_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200411_CA_clean.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200412_MD_clean.csv") 
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200412_MD_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200413_CA_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -24,7 +26,7 @@ acumulado1<-filter(acumulado1, variable %in% target)
 
 setwd("~/covid19/outputs_covid19/")
 # cambio n[umero
-png(filename="20200412_pruebas_vs_positivos_COVID19.png")
+png(filename="20200413_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
 p<-ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) + 
   geom_line() +
   scale_colour_manual(values=c("red", "blue"))+
@@ -57,7 +59,8 @@ p<-ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) +
            label = " toque de queda 18pm-5am", size = 2.5)+
   annotate("text", x = "2020-04-07", y = 10000,
          label = " Extension cuarentena", size = 2.5)
-ggplotly(p)
+#ggplotly(p)
+plot(p)
 dev.off()
 
 

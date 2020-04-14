@@ -22,16 +22,7 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200402_MD_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200403_MD_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200404_MD_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200405_CA_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200406_MD_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200407_CA_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200408_MD_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200409_CA_clean.csv")
-# caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200410_MD_clean.csv")
-caso_covid <- fread("~/covid19/data/modificadas/covidPE_IND_20200411_CA_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200413_CA_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -90,35 +81,51 @@ plot(sh_peru[16,], add=T, col="green")
 
 ## Check data of cases
 names(caso_covid)
-colnames(caso_covid)[1] <- "CE4_ID"
-colnames(caso_covid)[7] <- "NAME_1"
+colnames(caso_covid)[2] <- "NAME_1"
 
 # Checar las variables. Que no haya tildes, espacios innecesarios o ""
 unique(caso_covid$NAME_1)
-# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
-# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
-# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
-# [16] "CAJAMARCA"     "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
-# [21] "APURIMAC"      "MOQUEGUA"      "PUNO"          "AMAZONAS"  
-# Cuando corre Clau, sale mal Huanuco. En laptop de Mica sale bien.
-
-#### SI ES LAPTOP DE CLAU, PARECE QUE HAY QUE CORRER ESTAS LINEAS ########
-# Eliminar NAs y tildes
-# caso_covid$NAME_1[caso_covid$Caso_ID %in% c(10,11)] <- "HUANUCO"
-# # no funciona no s[e por que]
-caso_covid[11,7] <- "HUANUCO"
-caso_covid[10,7] <- "HUANUCO"
-unique(caso_covid$NAME_1)
-# [1] "LIMA"          "AREQUIPA"      "HUANUCO"       "ICA"           "CUSCO"        
-# [6] "ANCASH"        "CALLAO"        "LA LIBERTAD"   "LAMBAYEQUE"    "PIURA"        
-# [11] "LORETO"        "MADRE DE DIOS" "SAN MARTIN"    "JUNIN"         "TUMBES"       
-# [16] "CAJAMARCA"     "PASCO"         "AYACUCHO"      "TACNA"         "HUANCAVELICA" 
-# [21] "APURIMAC"      "MOQUEGUA"      "PUNO"          "AMAZONAS"      "UCAYALI" 
+# [1] "LIM" "ARE" "HUC" "ICA" "CUS" "PIU" "LAM" "CAL" "LAL" "ANC" "LOR"
+# [12] "SAM" "MDD" "JUN" "TUM" "CAJ" "PAS" "TAC" "AYA" "HUA" "APU" "MOQ"
+# [23] "PUN" "AMA" "UCA"
 
 
-casos_region <- data.frame(table(caso_covid$NAME_1))
-colnames(casos_region)[1] <- "REGION"
+mt <- tapply(caso_covid$CASOS, list(caso_covid$NAME_1), sum)
+
+casos_region <- as.data.frame(mt)
+casos_region <- cbind(NAME_LABEL = rownames(casos_region), casos_region)
 colnames(casos_region)[2] <- "NUMERO_CASOS"
+unique(casos_region$NAME_LABEL)
+# [1] AMA ANC APU ARE AYA CAJ CAL CUS HUA HUC ICA JUN LAL LAM LIM
+# [16] LOR MDD MOQ PAS PIU PUN SAM TAC TUM UCA
+
+casos_region$REGION <- revalue(casos_region$NAME_LABEL, 
+                                    c("ANC"="ANCASH", 
+                                      "ARE"="AREQUIPA",
+                                      "AYA"="AYACUCHO",
+                                      "CAJ"="CAJAMARCA",
+                                      "CAL"="CALLAO",
+                                      "CUS"="CUSCO",
+                                      "HUC"="HUANUCO",
+                                      "ICA" ="ICA",
+                                      "JUN"="JUNIN",
+                                      "LAL"= "LA LIBERTAD",
+                                      "LAM"="LAMBAYEQUE",
+                                      "LIM"="LIMA",
+                                      "LOR"="LORETO",
+                                      "MDD"="MADRE DE DIOS",
+                                      "PAS"="PASCO",
+                                      "PIU"="PIURA",
+                                      "SAM"="SAN MARTIN", 
+                                      "TAC"="TACNA",
+                                      "TUM"="TUMBES", 
+                                      "AMA"="AMAZONAS", 
+                                      "MOQ"="MOQUEGUA", 
+                                      "APU"="APURIMAC", 
+                                      "HUA"="HUANCAVELICA", 
+                                      "PUN"="PUNO", 
+                                      "UCA"="UCAYALI"))
+
 
 ## Checar csv de poblaciones regionales
 names(pob_region) # "REGION"    "POBLACION"
@@ -147,15 +154,14 @@ region_values$incidencerate_100 <-(region_values$incidencia*100000)
 ## recode the names of the region_values data frame
 setnames(region_values, old = "REGION",new = "NAME_1")
 levels(region_values$NAME_1)
-# [1] "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
-# [5] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANCAVELICA" 
-# [9] "HUANUCO"       "ICA"           "JUNIN"         "LA LIBERTAD"  
-# [13] "LAMBAYEQUE"    "LIMA"          "LORETO"        "MADRE DE DIOS"
-# [17] "MOQUEGUA"      "PASCO"         "PIURA"         "PUNO"         
-# [21] "SAN MARTIN"    "TACNA"         "TUMBES"        "AMAZONAS"     
-# [25] "UCAYALI"      
+# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
+# [6] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANCAVELICA"  "HUANUCO"      
+# [11] "ICA"           "JUNIN"         "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"         
+# [16] "LORETO"        "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
+# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"        "UCAYALI"
 
 ## Create labels that does not occupy 
+region_values <- region_values[,-2]
 region_values$NAME_LABEL <- region_values$NAME_1
 str(region_values$NAME_LABEL)
 
@@ -196,17 +202,17 @@ tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
 tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
 tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
-                            breaks=c(-0.1, 0.0, 1, 2, 4, 8, 12, 16, 100), 
-                            labels=c("0", "< 1", "1 a 2", 
-                                     "2 a 4", "4 a 8", "8 a 12",
+                            breaks=c(0.0, 1, 2, 5, 10, 20, 40, 100), 
+                            labels=c("< 1", "1 a 2", 
+                                     "2 a 5", "5 a 10", "10 a 20",
                                      #"8 a 10", 
-                                     "12 a 16", "> 16"))
+                                     "20 a 40", "> 40"))
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
 
 # Create the map qtm
-col <- c("white", "ivory2", "lightcyan1", "lightblue2", 
+col <- c("ivory2", "lightcyan1", "lightblue2", 
          #"lightskyblue", 
           "royalblue", "blue2", "navyblue", "black")
 
@@ -240,7 +246,7 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-          paste("outputs_covid19/20200411_Dep_COVID19_Incidencerate",
+          paste("outputs_covid19/20200413_Dep_COVID19_Incidencerate",
                 ".png", sep=""), 
           width=2300, height=1380)
              # Poner el # luego de guardar grafico
