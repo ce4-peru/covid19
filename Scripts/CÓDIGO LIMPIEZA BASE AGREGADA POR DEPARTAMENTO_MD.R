@@ -24,7 +24,7 @@ names(covid_dep)
 # > 
 
 # Eliminar primera columna
-covid_dep <- covid_dep[-38,-c(1,28:31)]
+covid_dep <- covid_dep[-39,-c(1,28:31)]
 # Mas adelante  Sacar los "S1N0 del nombre de la variable
 
 head(covid_dep)
@@ -65,28 +65,27 @@ table(covid_dep$Fecha)
 #          sep = "/")
 
 # ##### fecha to as.date format ####
-# covid_ind<-covid_ind %>%
-#   mutate(FECHA = as.Date(as.character(FECHA), format = "%d/%m/%y"))
+ covid_dep<-covid_dep %>%
+  mutate(Fecha1 = as.Date(as.character(Fecha), format = "%d/%m/%y"))
 
-# ### ordenar base ###
-# names(covid_dep)
-# # [1] "CASO_ID"              "FECHA"                "REGION"              
-# # [4] "PROVINCIA"            "DISTRITO"             "DIRECCION"           
-# # [7] "EDAD_A"               "SEXOM1H0"             "HOSPITALIZADOS1N0"   
-# # [10] "AISLADODOMICILS1N0"   "CONTACTO"             "IMPORTADO"           
-# # [13] "ORIGEN_INTERNACIONAL" "CASO_CONTACTO"        "RELACION_CONTACTO"   
-# # [16] "ORIGEN_NACIONAL"      "ENLACES1"             "ENLACES2"            
-# # [19] "ENLACES3"             "OBSERVACIONES"        "DIA"                 
-# # [22] "MES"                  "ANO"  
-# 
+ ### ordenar base ###
+ names(covid_dep)
+#  [1] "Fecha"  "LIM"    "ARE"    "HUC"    "ICA"    "CUS"    "PIU"    "LAM"    "CAL"   
+#  [10] "LAL"    "ANC"    "LOR"    "SAM"    "MDD"    "JUN"    "TUM"    "CAJ"    "PAS"   
+#  [19] "TAC"    "AYA"    "HUA"    "APU"    "MOQ"    "PUN"    "AMA"    "UCA"    "Fecha1"
+# # 
 # covid_dep <- covid_dep[,c(1, 2, 21:23, 3:20)]
 
-
-# Tidy data to work with it
+covid_dep<- covid_dep%>%
+   select(-Fecha)
+ 
+ 
+ 
+ # Tidy data to work with it
 covid_dep2 <- gather(covid_dep,
                    key = "REGION",
                    value = "CASOS",
-                   -Fecha)
+                   -Fecha1)
 covid_dep2
 
 covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
