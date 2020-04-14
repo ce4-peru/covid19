@@ -27,8 +27,8 @@ acumulado1<-filter(acumulado1, variable %in% target)
 
 setwd("~/covid19/outputs_covid19/")
 # cambio n[umero
-png(filename="20200413_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
-p<-ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) + 
+png(filename="20200414_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) + 
   geom_line() +
   scale_colour_manual(values=c("red", "blue"))+
   theme(legend.position = c(0.35,0.95),
