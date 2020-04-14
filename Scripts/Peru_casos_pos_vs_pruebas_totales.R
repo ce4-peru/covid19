@@ -59,54 +59,60 @@ p<-ggplot(acumulado1, aes(FECHA, value, colour=variable,group=variable)) +
            label = " toque de queda 18pm-5am", size = 2.5)+
   annotate("text", x = "2020-04-07", y = 10000,
          label = " Extension cuarentena", size = 2.5)
-#ggplotly(p)
-plot(p)
+# ggplotly(p)
+# plot(p)
 dev.off()
 
 
 
 
-# ######## dibujando graficos interactivos #########
-# df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200413_CA_clean.csv") 
-# palM <- c("maroon", "darkorange3", "goldenrod3", "darkgreen", "navy", "plum4", "black",
-#           "lightcoral", "peachpuff2", "khaki1", "olivedrab3", "steelblue1", "thistle", "snow2",
-#           "red3", "orange", "gold", "springgreen4", "dodgerblue3", "mediumpurple", "gray")
-# 
-# pal1 <- palM[1:length(unique(df_dep$REGION))]
-# 
-# p<-ggplot(df_dep, aes(Fecha1, CASOS, colour=REGION,group=REGION)) + 
-#   geom_line() +
-#   scale_colour_manual(values=pal1)+
-#   theme(legend.position = c(0.35,0.95),
-#         legend.justification = c("right","top"))+
-#   theme(axis.text.x = element_text(angle=90))+
-#   labs(title="SARS-CoV2 en Peru", y="Casos por region", 
-#        x="Fecha", caption="Source :varios")+
-#   geom_vline(xintercept = "2020-03-06") +
-#   geom_vline(xintercept = "2020-03-11") +
-#   geom_vline(xintercept = "2020-03-12") +
-#   geom_vline(xintercept = "2020-03-15") +
-#   geom_vline(xintercept = "2020-03-26") +
-#   geom_vline(xintercept = "2020-03-31") +
-#   geom_vline(xintercept = "2020-04-02") +
-#   geom_vline(xintercept = "2020-04-08") +
-#   annotate("text", x = "2020-03-06", y = 300,
-#            label = " Primer Caso", size = 2.5)+
-#   annotate("text", x = "2020-03-11", y = 400,
-#            label = " Cierre colegios", size = 2.5)+
-#   annotate("text", x = "2020-03-12", y = 500,
-#            label = " Cierre universidades", size = 2.5)+
-#   annotate("text", x = "2020-03-15", y = 600,
-#            label = " inicio de cuarentena", size = 2.5)+
-#   annotate("text", x = "2020-03-26", y = 700,
-#            label = " Extension cuarentena", size = 2.5)+
-#   annotate("text", x = "2020-03-31", y = 900,
-#            label = " Restriccion por sexo", size = 2.5)+
-#   annotate("text", x = "2020-04-02", y = 800,
-#            label = " toque de queda 18pm-5am", size = 2.5)+
-#   annotate("text", x = "2020-04-07", y = 1000,
-#            label = " Extension cuarentena", size = 2.5)
-# ggplotly(p)
+# ######## dibujando graficos interactivos casos por departamentos  #########
+
+df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200413_CA_clean.csv") 
+palM <- c("maroon", "darkorange3", "goldenrod3", "darkgreen", "navy", "plum4", "black",
+           "lightcoral", "peachpuff2", "khaki1", "olivedrab3", "steelblue1", "thistle", "snow2",
+           "red3", "orange", "gold", "springgreen4", "dodgerblue3", "mediumpurple", "gray")
+ 
+ pal1 <- palM[1:length(unique(df_dep$REGION))]
+
+p<-ggplot(df_dep, aes(Fecha1, CASOS, colour=REGION,group=REGION)) + 
+  geom_line() +
+  scale_colour_manual(values=pal1)+
+   theme(legend.position = c(0.35,0.95),
+         legend.justification = c("right","top"))+
+   theme(axis.text.x = element_text(angle=90))+
+  labs(title="SARS-CoV2 en Peru", y="Casos por region", 
+       x="Fecha", caption="Source :varios")+
+  geom_vline(xintercept = "2020-03-06") +
+  geom_vline(xintercept = "2020-03-11") +
+  geom_vline(xintercept = "2020-03-12") +
+  geom_vline(xintercept = "2020-03-15") +
+   geom_vline(xintercept = "2020-03-26") +
+  geom_vline(xintercept = "2020-03-31") +
+  geom_vline(xintercept = "2020-04-02") +
+  geom_vline(xintercept = "2020-04-08") +
+  annotate("text", x = "2020-03-06", y = 300,
+           label = " Primer Caso", size = 2.5)+
+  annotate("text", x = "2020-03-11", y = 400,
+          label = " Cierre colegios", size = 2.5)+
+  annotate("text", x = "2020-03-12", y = 500,
+           label = " Cierre universidades", size = 2.5)+
+  annotate("text", x = "2020-03-15", y = 600,
+          label = " inicio de cuarentena", size = 2.5)+
+ annotate("text", x = "2020-03-26", y = 700,
+           label = " Extension cuarentena", size = 2.5)+
+ annotate("text", x = "2020-03-31", y = 900,
+           label = " Restriccion por sexo", size = 2.5)+
+  annotate("text", x = "2020-04-02", y = 800,
+          label = " toque de queda 18pm-5am", size = 2.5)+
+  annotate("text", x = "2020-04-07", y = 1000,
+           label = " Extension cuarentena", size = 2.5)
+p<-ggplotly(p)
+htmlwidgets::saveWidget(p,"~/covid19/outputs_covid19/20200413_casos_diarios_por_departamento_COVID19.html")
+
+
+
+
 
 
       
@@ -170,4 +176,8 @@ dev.off()
 #         legend.justification = c("right","top"))+
 #   theme(axis.text.x = element_text(angle=90)
 #   )
+
+
+
+
 
