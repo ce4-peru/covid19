@@ -20,10 +20,11 @@ setwd("~/covid19")
 # covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200410_MD.csv")
 # covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200411_CA.csv")
 # covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200412_MD.csv")
-covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200413_CA.csv")
+# covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200413_CA.csv")
+covid_dia <- fread("~/covid19/data/crudas/covidPE_pordia_20200414_CA.csv")
 
 ## Checar base
-str(covid_dia) # 38 obs. of  14 variables
+str(covid_dia) # 39 obs. of  14 variables
 names(covid_dia)
 # [1] "FECHA"              "TOTAL_POSITIVOS"    "TOTAL_PRUEBAS"      "TOTAL_DESCARTADOS" 
 # [5] "POSITIVOS_DIA"      "PRUEBAS_DIA"        "DESCARTADOS_DIA"    "RECUPERADOS"       
@@ -134,6 +135,6 @@ names(covid_dia)
 
 # Save csv.
 # CAMBIA EL NOMBRE! NO TE OLVIDES!
-write.csv(covid_dia, "data/modificadas/covidPE_PORdia_20200413_CA_clean.csv")
+write.csv(covid_dia, "data/modificadas/covidPE_PORdia_20200414_CA_clean.csv")
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!

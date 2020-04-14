@@ -16,7 +16,8 @@ library(ggplot2)
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200410_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200411_CA_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200412_MD_clean.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200413_CA_clean.csv") 
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200413_CA_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -68,7 +69,7 @@ dev.off()
 
 # ######## dibujando graficos interactivos casos por departamentos  #########
 
-df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200413_CA_clean.csv") 
+df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200414_CA_clean.csv") 
 palM <- c("maroon", "darkorange3", "goldenrod3", "darkgreen", "navy", "plum4", "black",
            "lightcoral", "peachpuff2", "khaki1", "olivedrab3", "steelblue1", "thistle", "snow2",
            "red3", "orange", "gold", "springgreen4", "dodgerblue3", "mediumpurple", "gray")
