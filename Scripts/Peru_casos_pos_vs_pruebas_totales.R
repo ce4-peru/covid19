@@ -202,7 +202,7 @@ f1 <- dat1_acumulado %>%
     theme_minimal() +
     theme(legend.position="bottom")
 
-#### haciendo interactivo el grafico 
+#### GUARDANDO EL GRAFICO INTERACTIVO COMO HTML ###### 
 inter1<-ggplotly(f1)
 htmlwidgets::saveWidget(inter,"~/covid19/outputs_covid19/grafico_interactivo_casos_totales.html")
 
@@ -218,7 +218,7 @@ htmlwidgets::saveWidget(inter,"~/covid19/outputs_covid19/grafico_interactivo_cas
          title = paste0("Proporcion de positivos del total \nde muestras analizadas hasta: ", Sys.Date())) +
     theme_bw() +
     theme(legend.position="bottom")
- #### haciendo el grafico interactivo 
+ #### guradando el grafico interactivo como HTML#####
   inter2<-ggplotly(f2)
   htmlwidgets::saveWidget(inter,"~/covid19/outputs_covid19/grafico_interactivo_casos_totales.html")
   
