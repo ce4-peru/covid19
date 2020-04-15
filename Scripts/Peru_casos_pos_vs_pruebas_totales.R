@@ -102,6 +102,10 @@ dev.off()
 
 
 ######### curvas nacionales de positivos y pruebas totales ##################
+### leer esta data de los puntos de corte para ambos dibujos ####
+d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-15", "2020-03-26","2020-03-31","2020-04-02","2020-04-07")), event=c(" Primer Caso", " Cierre colegios", "Cierre universidades", " Inicio de cuarentena", " Extensión cuarentena", " Restricción por sexo","Toque de queda 18pm-5am","Extensión cuarentena"))
+
+
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200407_CA_clean.csv.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200410_MD_clean.csv") 
@@ -152,20 +156,18 @@ df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200414_CA_clean.csv")
 df_dep<-df_dep %>%
   mutate(Fecha = as.Date(Fecha1))
 
-
-palM <- c("maroon", "darkorange3", "goldenrod3", "darkgreen", "navy", "plum4", "black",
-           "lightcoral", "peachpuff2", "khaki1", "olivedrab3", "steelblue1", "thistle", "snow2",
-           "turquoise", "orange", "gold", "springgreen4", "dodgerblue3", "mediumpurple", "gray")
- 
+# 
+# palM <- c("maroon", "darkorange3", "goldenrod3", "darkgreen", "navy", "plum4", "black",
+#            "lightcoral", "peachpuff2", "khaki1", "olivedrab3", "steelblue1", "thistle", "snow2",
+#            "turquoise", "orange", "gold", "springgreen4", "dodgerblue3", "mediumpurple", "gray")
+#  
 palM1 <- c("red", "blue", "yellow", "purple", "green", "gray15", "gray34",
           "blue3", "pink", "green3", "brown", "orange2", "skyblue2", "gray33",
           "turquoise", "orange3", "gold", "springgreen", "dodgerblue", "purple", "gray32","black",
           "blue2","red4","green3")
 
- pal1 <- palM[1:length(unique(df_dep$REGION))]
+ # pal1 <- palM[1:length(unique(df_dep$REGION))]
  pal2 <- palM1[1:length(unique(df_dep$REGION))]
- 
- 
 
 ggplot()+
   geom_line( data=df_dep,mapping = aes(x = Fecha,y = CASOS,colour=REGION,group=REGION)) +
