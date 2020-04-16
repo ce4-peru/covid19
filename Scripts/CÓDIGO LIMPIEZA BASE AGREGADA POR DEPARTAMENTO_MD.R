@@ -11,7 +11,8 @@ setwd("~/covid19")
 ## Call data
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200412_MD.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200413_CA.csv")
-covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200414_CA.csv")
+#covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200414_CA.csv")
+covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200415_GF.csv")
 
 ## Checar base
 str(covid_dep) # 40 obs. of  31 variables
