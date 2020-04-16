@@ -40,7 +40,7 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 png(filename="20200416_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
-p<-ggplot() + 
+ggplot() + 
   geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
   scale_colour_manual(values=c("red", "blue"))+
   scale_x_date(labels = date_format("%d-%b"),breaks = as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-15", "2020-03-26","2020-03-31","2020-04-02","2020-04-07")),
@@ -57,7 +57,7 @@ p<-ggplot() +
        x="Fecha", caption="Source :varios")+
   theme(plot.title = element_text(face = "bold.italic",size = 5) )+
   bbc_style()
-  print(p)
+  # print(p)
 dev.off()
 
  
