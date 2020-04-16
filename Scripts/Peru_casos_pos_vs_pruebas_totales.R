@@ -112,7 +112,8 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200411_CA_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200412_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200413_CA_clean.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200415_GF_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -123,7 +124,7 @@ acumulado1<-acumulado1 %>%
 
 setwd("~/covid19/outputs_covid19/")
 # 
-png(filename="20200414_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+png(filename="20200415_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
 p<-ggplot() + 
   geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
   scale_colour_manual(values=c("red", "blue"))+
@@ -136,11 +137,12 @@ p<-ggplot() +
         theme(panel.background = element_rect(fill = "white"),
               legend.position = c(0.35,0.95),
               legend.justification = c("right","top"),
-            axis.text.x = element_text(vjust =0.60,angle=60,face = "bold.italic", size = 10),)+
+            axis.text.x = element_text(vjust =0.60,angle=60,face = "bold.italic", size = 10))+
   labs(title="SARS-CoV-2 en Perú", y="Pruebas positivas y pruebas realizadas", 
        x="Fecha", caption="Source :varios")+
   theme(plot.title = element_text(face = "bold.italic",size = 5) )+
   bbc_style()
+  print(p)
 dev.off()
 
  
