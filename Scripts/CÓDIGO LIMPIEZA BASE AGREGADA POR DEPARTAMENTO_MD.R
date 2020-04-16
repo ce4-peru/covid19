@@ -12,10 +12,11 @@ setwd("~/covid19")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200412_MD.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200413_CA.csv")
 #covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200414_CA.csv")
-covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200415_GF.csv")
+# covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200415_GF.csv")
+covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200416_CA.csv")
 
 ## Checar base
-str(covid_dep) # 41 obs. of  31 variables
+str(covid_dep) # 42 obs. of  31 variables
 names(covid_dep)
 # [1] "Día"         "Fecha"       "LIM"         "ARE"         "HUC"         "ICA"        
 # [7] "CUS"         "PIU"         "LAM"         "CAL"         "LAL"         "ANC"        
@@ -27,7 +28,7 @@ names(covid_dep)
 
 # Eliminar primera columna
 #Recuerde aqui quitar la ultima columna "totales"
-covid_dep <- covid_dep[-41,-c(1,28:31)] #OJO
+covid_dep <- covid_dep[-42,-c(1,28:31)] #OJO
 # Mas adelante  Sacar los "S1N0 del nombre de la variable
 
 head(covid_dep)
@@ -53,12 +54,14 @@ table(covid_dep$Fecha)
 # 1          1          1          1          1          1          1          1 
 # 07/04/2020 08/03/2020 08/04/2020 09/03/2020 09/04/2020 10/03/2020 10/04/2020 11/03/2020 
 # 1          1          1          1          1          1          1          1 
-# 11/04/2020 12/03/2020 12/04/2020 13/03/2020 13/04/2020 14/03/2020 15/03/2020 16/03/2020 
+# 11/04/2020 12/03/2020 12/04/2020 13/03/2020 13/04/2020 14/03/2020 14/04/2020 15/03/2020 
 # 1          1          1          1          1          1          1          1 
-# 17/03/2020 18/03/2020 19/03/2020 20/03/2020 21/03/2020 22/03/2020 23/03/2020 24/03/2020 
+# 15/04/2020 16/03/2020 17/03/2020 18/03/2020 19/03/2020 20/03/2020 21/03/2020 22/03/2020 
 # 1          1          1          1          1          1          1          1 
-# 25/03/2020 26/03/2020 27/03/2020 28/03/2020 29/03/2020 30/03/2020 31/03/2020 
-# 1          1          1          1          1          1          1 
+# 23/03/2020 24/03/2020 25/03/2020 26/03/2020 27/03/2020 28/03/2020 29/03/2020 30/03/2020 
+# 1          1          1          1          1          1          1          1 
+# 31/03/2020 
+# 1 
 #### separando caracteres en varias columnas ######
 # covid_ind$FECHA2 <- covid_ind$FECHA
 # covid_ind <- separate(covid_ind,
@@ -98,7 +101,8 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 # write.csv(covid_dep2, "data/modificadas/covidPE_IND_20200412_MD_clean.csv")
 #write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200413_CA_clean.csv", row.names = FALSE)
 #write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200414_CA_clean.csv", row.names = FALSE)
-write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200415_GF_clean.csv", row.names = FALSE)
+# write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200415_GF_clean.csv", row.names = FALSE)
+write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200416_CA_clean.csv", row.names = FALSE)
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 

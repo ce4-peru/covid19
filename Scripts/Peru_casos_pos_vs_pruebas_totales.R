@@ -27,7 +27,8 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200412_MD_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200413_CA_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200415_GF_clean.csv") 
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200415_GF_clean.csv") 
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200416_CA_clean.csv") 
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
@@ -38,7 +39,7 @@ acumulado1<-acumulado1 %>%
 
 setwd("~/covid19/outputs_covid19/")
 # 
-png(filename="20200415_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+png(filename="20200416_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
 p<-ggplot() + 
   geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
   scale_colour_manual(values=c("red", "blue"))+
@@ -60,7 +61,7 @@ p<-ggplot() +
 dev.off()
 
  
-ggplotly(p)
+# ggplotly(p)
 # plot(p)
 
 
@@ -68,7 +69,7 @@ ggplotly(p)
 # ######## dibujando graficos  casos por departamentos  #########
 # install.packages('devtools')
 
-df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200414_CA_clean.csv") 
+df_dep<-fread("~/covid19/data/modificadas/covidPE_DEP_20200416_CA_clean.csv") 
 df_dep<-df_dep %>%
   mutate(Fecha = as.Date(Fecha1))
 
@@ -114,7 +115,7 @@ df_lima<-filter(df_dep,REGION%in% target)
 
 p1<-ggplot()+
   geom_line( data=df_otros,mapping = aes(x = Fecha,y = CASOS,colour=REGION,group=REGION)) +
-   scale_colour_manual(values=pal1)+ 
+   scale_colour_manual(values=pal2)+ 
   scale_x_date(labels = date_format("%d-%b"),breaks = as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-15", "2020-03-26","2020-03-31","2020-04-02","2020-04-07")),
                minor_breaks = NULL)+
   geom_vline(data=d, mapping=aes(xintercept=Fecha), color="gray") +
@@ -148,7 +149,7 @@ bbc_style()
 
 
 ##### poniendo los dos plots en grupo #######
-png(filename="20200415_pruebas_vs_positivos_COVID19_lima_vs_provincias.png", width=1100, height=600)
+png(filename="20200416_pruebas_vs_positivos_COVID19_lima_vs_provincias.png", width=1100, height=600)
 grid.arrange(p1, p2, 
              ncol = 2, nrow = 2)
 dev.off()
