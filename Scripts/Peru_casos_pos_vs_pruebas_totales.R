@@ -29,10 +29,12 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200415_GF_clean.csv") 
 acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200416_CA_clean.csv") 
+setnames(acumulado,"TOTAL_POSITIVOS","Casos positivos")
+setnames(acumulado,"TOTAL_PRUEBAS","Pruebas realizadas")
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
-target <- c("TOTAL_POSITIVOS", "TOTAL_PRUEBAS")
+target <- c("Casos positivos", "Pruebas realizadas")
 acumulado1<-filter(acumulado1, variable %in% target)  
 acumulado1<-acumulado1 %>%
   mutate(Fecha = as.Date(FECHA))
