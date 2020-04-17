@@ -13,10 +13,11 @@ setwd("~/covid19")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200413_CA.csv")
 #covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200414_CA.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200415_GF.csv")
-covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200416_CA.csv")
+# covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200416_CA.csv")
+covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200417_AL.csv")
 
 ## Checar base
-str(covid_dep) # 42 obs. of  31 variables
+str(covid_dep) # 43 obs. of  31 variables
 names(covid_dep)
 # [1] "Día"         "Fecha"       "LIM"         "ARE"         "HUC"         "ICA"        
 # [7] "CUS"         "PIU"         "LAM"         "CAL"         "LAL"         "ANC"        
@@ -102,8 +103,8 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 #write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200413_CA_clean.csv", row.names = FALSE)
 #write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200414_CA_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200415_GF_clean.csv", row.names = FALSE)
-write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200416_CA_clean.csv", row.names = FALSE)
+write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200417_AL_clean.csv", row.names = FALSE)
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
-##########################################################################################
+###########################################################################################
