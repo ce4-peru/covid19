@@ -1,0 +1,215 @@
+---
+title: "Template CE4-Covid19"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(DT)
+```
+
+# Nacional
+
+Column 1 {.tabset}
+-------------------------------------
+
+### Tab 1 
+
+#### Column 1 - Chart 1 - Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+#### Column 1 - Chart 2 - Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+### Tab 2 {.tabset}
+
+#### Column 1 - Chart 1 - Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+#### Column 1 - Chart 2 - Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+Column 2
+-------------------------------------
+
+### Column 2 - Chart 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+### Column 2 - Chart 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+Column 3 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+#### Column 3 - Chart 1 - Tab 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+#### Column 3 - Chart 2 - Tab 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```   
+
+### Tab 2
+
+#### Column 3 - Chart 1 - Tab 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+#### Column 3 - Chart 2 - Tab 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+``` 
+
+# Regional
+
+Column 1 {.tabset}
+-------------------------------------
+
+### Tab 1 
+
+#### Column 1 - Chart 1 - Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 1 - Chart 2 - Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Tab 2 {.tabset}
+
+#### Column 1 - Chart 1 - Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 1 - Chart 2 - Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+Column 2
+-------------------------------------
+
+### Column 2 - Chart 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Column 2 - Chart 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+Column 3 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+#### Column 3 - Chart 1 - Tab 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 3 - Chart 2 - Tab 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```   
+
+### Tab 2
+
+#### Column 3 - Chart 1 - Tab 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 3 - Chart 2 - Tab 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+``` 
+
+# Contexto
+
+Column 1 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+Column 2 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
