@@ -1,0 +1,328 @@
+---
+title: "Template CE4-Covid19"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(rio)
+library(tidyverse)
+library(XML)
+library(httr)
+library(RCurl)
+library(sf)
+library(lubridate)
+library(leaflet)
+library(colorspace)
+
+dep <- read.csv(text = getURL("https://raw.githubusercontent.com/ce4-peru/covid19/master/data/modificadas/covidPE_DEP_20200413_CA_clean.csv"), stringsAsFactors = F)
+dep <- dep %>% 
+  rename(Fecha = Fecha1,
+         Departamento = REGION,
+         Casos = CASOS) %>% 
+  mutate(Fecha = ymd(Fecha),
+         Departamento = replace(Departamento, Departamento == 'LIM', 'LIMA'),
+         Departamento = replace(Departamento, Departamento == 'ARE', 'AREQUIPA'),
+         Departamento = replace(Departamento, Departamento == 'HUC', 'HUANUCO'),
+         Departamento = replace(Departamento, Departamento == 'ICA', 'ICA'),
+         Departamento = replace(Departamento, Departamento == 'CUS', 'CUSCO'),
+         Departamento = replace(Departamento, Departamento == 'PIU', 'PIURA'),
+         Departamento = replace(Departamento, Departamento == 'LAM', 'LAMBAYEQUE'),
+         Departamento = replace(Departamento, Departamento == 'CAL', 'CALLAO'),
+         Departamento = replace(Departamento, Departamento == 'LAL', 'LA LIBERTAD'),
+         Departamento = replace(Departamento, Departamento == 'ANC', 'ANCASH'),
+         Departamento = replace(Departamento, Departamento == 'LOR', 'LORETO'),
+         Departamento = replace(Departamento, Departamento == 'SAM', 'SAN MARTIN'),
+         Departamento = replace(Departamento, Departamento == 'MDD', 'MADRE DE DIOS'),
+         Departamento = replace(Departamento, Departamento == 'JUN', 'JUNIN'),
+         Departamento = replace(Departamento, Departamento == 'TUM', 'TUMBES'),
+         Departamento = replace(Departamento, Departamento == 'CAJ', 'CAJAMARCA'),
+         Departamento = replace(Departamento, Departamento == 'PAS', 'PASCO'),
+         Departamento = replace(Departamento, Departamento == 'TAC', 'TACNA'),
+         Departamento = replace(Departamento, Departamento == 'AYA', 'AYACUCHO'),
+         Departamento = replace(Departamento, Departamento == 'PAS', 'PASCO'),
+         Departamento = replace(Departamento, Departamento == 'HUA', 'HUANCAVELICA'),
+         Departamento = replace(Departamento, Departamento == 'APU', 'APURIMAC'),
+         Departamento = replace(Departamento, Departamento == 'MOQ', 'MOQUEGUA'),
+         Departamento = replace(Departamento, Departamento == 'PUN', 'PUNO'),
+         Departamento = replace(Departamento, Departamento == 'AMA', 'AMAZONAS'),
+         Departamento = replace(Departamento, Departamento == 'UCA', 'UCAYALI'))
+
+## Regions geometry
+shp <- st_read("Limite_departamental", stringsAsFactors = F)
+shp <- shp %>% 
+  st_transform(4326) %>% 
+  select(Departamento = NOMBDEP)
+
+# Append
+dep <- merge(dep, shp, by = 'Departamento', all.x = T)
+dep <- st_as_sf(dep, sf_column_name = 'geometry')
+
+
+## casos totales
+total.cases <- dep %>% 
+  rename(new.cases = Casos) %>% 
+  group_by(Departamento) %>% 
+  mutate(cases = cumsum(new.cases)) %>%
+  ungroup() %>% 
+  select(Departamento, Fecha, cases) %>% 
+  spread(key = Fecha, value = cases) %>% 
+  select(Departamento, `2020-04-11`)
+colnames(total.cases)[2]<- 'value'
+
+## Casos nuevos
+new.cases <- dep %>% 
+  rename(new.cases = Casos) %>% 
+  select(Departamento, Fecha, new.cases) %>% 
+  spread(key = Fecha, value = new.cases) %>% 
+  select(Departamento, `2020-04-11`)
+colnames(new.cases)[2]<- 'value'
+
+## aes
+pal_fun <- colorQuantile("YlOrRd", NULL, n = 5)
+labels.total <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      total.cases$Departamento, total.cases$value) %>% lapply(htmltools::HTML)
+
+labels.new <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      new.cases$Departamento, new.cases$value) %>% lapply(htmltools::HTML)
+
+# Plots other
+library(data.table)
+library(directlabels)
+library(plotly)
+library(bbplot)
+library(scales)
+library(gridExtra)
+library(cowplot)
+
+dat_acumulado<-fread("../data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
+
+###### data sets para hacer la grafica de casos positivos y pruebas negativas nacionales 
+dat_acumulado<-dat_acumulado %>%
+  mutate(Fecha = as.Date(FECHA))
+
+dat1_acumulado <- dat_acumulado %>%
+  mutate(pos_new = TOTAL_POSITIVOS-lag(TOTAL_POSITIVOS,default = 0),
+         des_new = TOTAL_DESCARTADOS-lag(TOTAL_DESCARTADOS,default = 0),
+         tot_pruebas = pos_new+des_new) 
+
+#### sumarizando por FECHA pero asegurate que lees primero  
+## el paquete dyplyr y despues tydir si no no funciona
+dat1_acumulado <- 
+  dat1_acumulado %>% 
+  group_by(Fecha) %>%
+  summarise(pos_new = sum(pos_new), des_new = sum(des_new)) %>%
+  mutate(cum_pos = cumsum(pos_new),
+         tot_pruebas = pos_new+des_new)
+
+
+##### data set dos para hacer grafico de proporciones de positivos y negativos 
+dat2_acumulado <- dat1_acumulado %>%
+  mutate(neg_new = tot_pruebas-pos_new) %>%
+  dplyr::select(Fecha, pos_new, neg_new) 
+setnames(dat2_acumulado,old = "pos_new",new = "Positivo")
+setnames(dat2_acumulado,old = "neg_new",new = "Negativo")
+dat2_acumulado<-dat2_acumulado%>%gather(res, count, -Fecha) %>%
+  uncount(count)
+
+```
+
+# Nacional
+
+Column 1 {.tabset}
+-------------------------------------
+
+### Casos totales
+
+```{r}
+leaflet(total.cases) %>%
+  addTiles(urlTemplate = 'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+  addPolygons(stroke = F,
+              fillColor = ~pal_fun(total.cases$value), # set fill color with function from above and value
+              fillOpacity = 0.8, smoothFactor = 0.5, # make it nicer
+              popup = labels.total) %>%
+  addLegend("bottomleft", pal=pal_fun, values=total.cases$value, title= 'Cantidad de casos')
+```
+
+
+### Casos nuevos
+
+```{r}
+leaflet(new.cases) %>%
+  addTiles(urlTemplate = 'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png') %>%
+  addPolygons(stroke = F,
+              fillColor = ~pal_fun(new.cases$value), # set fill color with function from above and value
+              fillOpacity = 0.8, smoothFactor = 0.5, # make it nicer
+              popup = labels.new) %>%
+  addLegend("bottomleft", pal=pal_fun, values=new.cases$value, title= 'Cantidad de casos')
+```
+
+
+Column 2
+-------------------------------------
+
+### Column 2 - Chart 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+### Column 2 - Chart 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+Column 3 
+-------------------------------------
+
+```{r}
+###### graficando casos totales y pruebas negativas nacionales
+dat1_acumulado %>%
+  ggplot(aes(x = Fecha)) +
+  geom_bar(aes(y = pos_new, fill = "Nuevos"), stat = "identity", alpha=.5) + 
+  geom_line(aes(y = cum_pos, col = "Acumulados"), size=1) +
+  geom_point(aes(y = cum_pos), col = "#8B1C62") +
+  labs(y = "Numero de casos reportados", 
+       color = " Casos",
+       fill = " ", title = "Casos confirmados") +
+  scale_fill_manual(values = c("Nuevos" = "#43CD80")) +
+  scale_color_manual(values = c("Acumulados" = "#8B1C62")) +
+  scale_x_date(labels = date_format("%d-%m")) +
+  scale_y_continuous(sec.axis = sec_axis(~ .)) +
+  theme_minimal() +
+  theme(legend.position="bottom")
+```
+
+```{r}
+#### Graficando proporcciones negativos y positivos
+dat2_acumulado %>%
+  ggplot(aes(x = Fecha, fill = res)) +
+  geom_bar(position = "fill") +
+  scale_fill_discrete_sequential(palette="BluGrn") +
+  labs(y = "proportion", fill = "Resultado", title = "Pruebas positivas") +
+  theme_bw() +
+  theme(legend.position="bottom")
+```   
+
+# Regional
+
+Column 1 {.tabset}
+-------------------------------------
+
+### Tab 1 
+
+#### Column 1 - Chart 1 - Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 1 - Chart 2 - Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Tab 2 {.tabset}
+
+#### Column 1 - Chart 1 - Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 1 - Chart 2 - Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+Column 2
+-------------------------------------
+
+### Column 2 - Chart 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Column 2 - Chart 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+Column 3 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+#### Column 3 - Chart 1 - Tab 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 3 - Chart 2 - Tab 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```   
+
+### Tab 2
+
+#### Column 3 - Chart 1 - Tab 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+#### Column 3 - Chart 2 - Tab 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+``` 
+
+# Contexto
+
+Column 1 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+```{r}
+
+```
+
+### Tab 2
+
+```{r}
+
+```
+
+Column 2 {.tabset}
+-------------------------------------
+
+### Tab 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
+
+### Tab 2
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_line()
+```
