@@ -23,6 +23,7 @@ library(cowplot)
 ######## ploting national cases with overlaping line ##########
 d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-15", "2020-03-26","2020-03-31","2020-04-02","2020-04-07")), event=c(" Primer Caso", " Cierre colegios", "Cierre universidades", " Inicio de cuarentena", " Extensión cuarentena", " Restricción por sexo","Toque de queda 18pm-5am","Extensión cuarentena"))
 
+dat_acumulado<-fread("../data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
 
 
 ###### data sets para hacer la grafica de casos positivos y pruebas negativas nacionales 
