@@ -22,7 +22,7 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-  caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200417_AL_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200418_MD_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -203,11 +203,11 @@ tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
 tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
 tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
-                            breaks=c(0.0, 1, 2, 5, 10, 20, 40, 100), 
+                            breaks=c(0.0, 1, 2, 5, 10, 20, 50, 150), 
                             labels=c("< 1", "1 a 2", 
                                      "2 a 5", "5 a 10", "10 a 20",
                                      #"8 a 10", 
-                                     "20 a 40", "> 40"))
+                                     "20 a 50", "> 50"))
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
@@ -247,7 +247,7 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-          paste("outputs_covid19/20200417_Dep_COVID19_Incidencerate",
+          paste("outputs_covid19/20200418_Dep_COVID19_Incidencerate",
                 ".png", sep=""), 
           width=2300, height=1380)
              # Poner el # luego de guardar grafico
