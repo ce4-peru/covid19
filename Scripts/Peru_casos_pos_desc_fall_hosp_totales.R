@@ -31,7 +31,13 @@ library("gridExtra")
 library(cowplot)
 ######### curvas nacionales de positivos y pruebas totales ##################
 ### leer esta data de los puntos de corte para ambos dibujos ####
-d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-15", "2020-03-26","2020-03-31","2020-04-02","2020-04-07")), event=c(" Primer Caso", " Cierre colegios", "Cierre universidades", " Inicio de cuarentena", " ExtensiÃ³n cuarentena", " RestricciÃ³n por sexo","Toque de queda 18pm-5am","ExtensiÃ³n cuarentena"))
+d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", 
+                             "2020-03-12", "2020-03-15", "2020-03-26",
+                             "2020-03-31","2020-04-02","2020-04-07")), 
+             event=c(" Primer Caso", " Cierre colegios", "Cierre universidades", 
+                     " Inicio de cuarentena", " Extensión cuarentena", 
+                     " Restriccó³n por sexo","Toque de queda 18pm-5am",
+                     "Extensión de cuarentena"))
 
 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200406_MD_clean.csv") 
@@ -47,13 +53,17 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200419_GF_clean.csv")
 acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200420_MD_clean.csv")
 
-
+names(acumulado)
 setnames(acumulado,"TOTAL_POSITIVOS","Casos positivos")
-setnames(acumulado,"TOTAL_PRUEBAS","Pruebas realizadas")
+setnames(acumulado,"POSITIVOS_DIA","Nuevos positivos")
+setnames(acumulado,"FALLECIDOS","Fallecidos")
+setnames(acumulado,"RECUPERADOS","Recuperados")
+setnames(acumulado,"HOSPITALIZADOS","Hospitalizados")
 
 acumulado1<-melt(acumulado,id="FECHA")
 acumulado1$value<-as.numeric(acumulado1$value)
-target <- c("Casos positivos", "Pruebas realizadas")
+target <- c("Casos positivos", "Nuevos positivos", "Fallecidos",
+            "Recuperados", "Hospitalizados")
 acumulado1<-filter(acumulado1, variable %in% target)  
 acumulado1<-acumulado1 %>%
   mutate(Fecha = as.Date(FECHA))
@@ -61,15 +71,17 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 #Cambiar el nombre
-png(filename="20200420_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+png(filename="20200420_dailynews_COVID19.png", width=1100, height=600)
 ggplot() + 
-  geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
-  scale_colour_manual(values=c("red", "blue"))+
+  geom_line(data = acumulado1, 
+            aes(Fecha, value, 
+                colour=variable,group=variable),alpha =1.6) +
+  scale_colour_manual(values=c("red", "orange", "green", "black", "blue"))+
   scale_x_date(labels = date_format("%d-%b"),
                breaks = as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", 
                                   "2020-03-15", "2020-03-26","2020-03-31",
                                   "2020-04-02","2020-04-07")),
-               minor_breaks = NULL)+
+               minor_breaks = NULL) +
   # scale_x_date() +
   geom_vline(data=d, mapping=aes(xintercept=Fecha), color="gray") +
   geom_text(data=d, mapping=aes(x=Fecha, y =0,label=event), size=4, angle=90, vjust=-0.4, hjust=0)+
@@ -77,8 +89,10 @@ ggplot() +
         theme(panel.background = element_rect(fill = "white"),
               legend.position = c(0.35,0.95),
               legend.justification = c("right","top"),
-            axis.text.x = element_text(vjust =0.60,angle=60,face = "bold.italic", size = 10))+
-  labs(title="SARS-CoV-2 en PerÃº", y="Pruebas positivas y pruebas realizadas", 
+            axis.text.x = element_text(vjust =0.60,
+                                       angle=60,face = "bold.italic", size = 10))+
+  labs(title="SARS-CoV-2 en Perú", 
+       y="Número de personas", 
        x="Fecha", caption="Source :varios")+
   theme(plot.title = element_text(face = "bold.italic",size = 5) )+
   bbc_style()
