@@ -8,17 +8,24 @@ library(directlabels)
 library(reshape)
 library(colorspace)
 library(plotly)
-library(JLutils)
 #### si no tienes el paquete bbplot 
 library(devtools)
 library(rlang)
 library(digest)
 library(glue)
+
+# install devtools
+library(devtools)
+
 devtools::install_github('bbc/bbplot')
-devtools::install_github('bbc')# Esto no va a funcionar
+#devtools::install_github('JLutils')# Esto no va a funcionar
+
+#install.packages('JLutils', repos = 'https://cloud.r-project.org')
 
 library(bbplot)
-library(bbc)#Me parece que esta libreria esta por las puras
+#library(bbc)# Me parece que esta libreria esta por las puras
+#library(JLutils)
+
 library(scales)
 library("gridExtra")
 library(cowplot)
@@ -37,7 +44,8 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200415_GF_clean.csv") 
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200416_CA_clean.csv")
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200418_MD_clean.csv")
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200419_GF_clean.csv")
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200419_GF_clean.csv")
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200420_MD_clean.csv")
 
 
 setnames(acumulado,"TOTAL_POSITIVOS","Casos positivos")
@@ -53,11 +61,14 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 #Cambiar el nombre
-png(filename="20200419_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+png(filename="20200420_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
 ggplot() + 
   geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
   scale_colour_manual(values=c("red", "blue"))+
-  scale_x_date(labels = date_format("%d-%b"),breaks = as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-15", "2020-03-26","2020-03-31","2020-04-02","2020-04-07")),
+  scale_x_date(labels = date_format("%d-%b"),
+               breaks = as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", 
+                                  "2020-03-15", "2020-03-26","2020-03-31",
+                                  "2020-04-02","2020-04-07")),
                minor_breaks = NULL)+
   # scale_x_date() +
   geom_vline(data=d, mapping=aes(xintercept=Fecha), color="gray") +
@@ -73,10 +84,6 @@ ggplot() +
   bbc_style()
   #print(p)
 dev.off()
-
- 
-# ggplotly(p)
-# plot(p)
 
 
 

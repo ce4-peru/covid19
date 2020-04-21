@@ -12,7 +12,7 @@ library(rgdal)
 library(sp)
 library(plyr)
 library(tmap)
-library(dplyr)
+library(dplyr) 
 
 setwd("~/covid19/")
 
@@ -22,7 +22,7 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200419_GF_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200420_MD_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -203,22 +203,19 @@ tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
 tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
 tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
-                            breaks=c(0.0, 1, 2, 5, 10, 20, 50, 150), 
+                            breaks=c(0.0, 1, 2, 5, 10, 20, 50, 100, 200), 
                             labels=c("< 1", "1 a 2", 
                                      "2 a 5", "5 a 10", "10 a 20",
-                                     #"8 a 10", 
-                                     "20 a 50", "> 50"))
+                                      "20 a 50", "50 a 100", "> 100"))
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
 
 # Create the map qtm
 col <- c("ivory2", "lightcyan1", "lightblue2", 
-         #"lightskyblue", 
+         "lightskyblue", 
           "royalblue", "blue2", "navyblue", "black")
 
-# col <- c("ivory2", "lightcyan1", "lightblue2", "lightskyblue", 
-#           "royalblue", "blue2", "navyblue", "black")
 # try snow2 too
 
 # interactive view
@@ -247,7 +244,7 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-          paste("outputs_covid19/20200419_Dep_COVID19_Incidencerate",
+          paste("outputs_covid19/20200420_Dep_COVID19_Incidencerate",
                 ".png", sep=""), 
           width=2300, height=1380)
              # Poner el # luego de guardar grafico
