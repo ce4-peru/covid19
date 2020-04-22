@@ -18,10 +18,11 @@ setwd("~/covid19")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200418_MD.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200419_GF.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200420_MD.csv")
-covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200421_CA.csv")
+# covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200421_CA.csv")
+covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200422_GF.csv")
 
 ## Checar base
-str(covid_dep) # 47 obs. of  31 variables
+str(covid_dep) # 48 obs. of  31 variables
 names(covid_dep)
 # [1] "Día"         "Fecha"       "LIM"         "ARE"         "HUC"         "ICA"        
 # [7] "CUS"         "PIU"         "LAM"         "CAL"         "LAL"         "ANC"        
@@ -34,8 +35,8 @@ names(covid_dep)
 # Eliminar columnas y filas
 #Recuerde aqui quitar la ultima columna y las columna y fila de "totales"
 # Hasta la corrida de hoy 19 de abril era quitar la fila 46.
-# Ma?ana 21 hay que sacar la fila 47.
-covid_dep <- covid_dep[-47,-c(1,28:31)] #OJO
+# Ma?ana 23 hay que sacar la fila 49.
+covid_dep <- covid_dep[-48,-c(1,28:31)] #OJO
 # Mas adelante  Sacar los "S1N0 del nombre de la variable
 
 head(covid_dep)
@@ -116,6 +117,7 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200419_GF_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200420_MD_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200421_CA_clean.csv", row.names = FALSE)
+# write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200422_GF_clean.csv", row.names = FALSE)
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
