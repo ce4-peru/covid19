@@ -22,7 +22,7 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200425_MD_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200426_GF_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
