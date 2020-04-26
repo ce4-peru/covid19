@@ -65,7 +65,7 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 #Cambiar el nombre
-png(filename="20200424_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+png(filename="20200425_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
 ggplot() + 
   geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
   scale_colour_manual(values=c("red", "blue"))+
