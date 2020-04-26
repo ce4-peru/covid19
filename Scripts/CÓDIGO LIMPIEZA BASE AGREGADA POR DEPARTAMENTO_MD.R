@@ -20,10 +20,11 @@ setwd("~/covid19")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200420_MD.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200421_CA.csv")
 # covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200422_GF.csv")
-covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200423_CA.csv")
+# covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200423_CA.csv")
+covid_dep <- fread("~/covid19/data/crudas/covidPE_DEP_20200424_AL.csv")
 
 ## Checar base
-str(covid_dep) # 49 obs. of  31 variables
+str(covid_dep) # 50 obs. of  31 variables
 names(covid_dep)
 # [1] "Día"         "Fecha"       "LIM"         "ARE"         "HUC"         "ICA"        
 # [7] "CUS"         "PIU"         "LAM"         "CAL"         "LAL"         "ANC"        
@@ -37,7 +38,8 @@ names(covid_dep)
 #Recuerde aqui quitar la ultima columna y las columna y fila de "totales"
 # Hasta la corrida de hoy 19 de abril era quitar la fila 46.
 # Ma?ana 23 hay que sacar la fila 49.
-covid_dep <- covid_dep[-49,-c(1,28:31)] #OJO
+# Dia 24/04 se saco la fila 50.
+covid_dep <- covid_dep[-50,-c(1,28:31)] #OJO
 # Mas adelante  Sacar los "S1N0 del nombre de la variable
 
 head(covid_dep)
@@ -69,8 +71,11 @@ table(covid_dep$Fecha)
 # 1          1          1          1          1          1          1          1 
 # 19/04/2020 20/03/2020 20/04/2020 21/03/2020 21/04/2020 22/03/2020 22/04/2020 23/03/2020 
 # 1          1          1          1          1          1          1          1 
-# 24/03/2020 25/03/2020 26/03/2020 27/03/2020 28/03/2020 29/03/2020 30/03/2020 31/03/2020 
+# 23/04/2020 24/03/2020 25/03/2020 26/03/2020 27/03/2020 28/03/2020 29/03/2020 30/03/2020 
 # 1          1          1          1          1          1          1          1
+# 31/03/2020
+# 1
+
 # # 1 
 #### separando caracteres en varias columnas ######
 # covid_ind$FECHA2 <- covid_ind$FECHA
@@ -119,7 +124,8 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200421_CA_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200422_GF_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200423_CA_clean.csv", row.names = FALSE)
+# write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200424_AL_clean.csv", row.names = FALSE)
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
-###########################################################################################
+############################################################################################
