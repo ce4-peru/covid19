@@ -51,7 +51,8 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11",
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200416_CA_clean.csv")
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200418_MD_clean.csv")
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200419_GF_clean.csv")
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200425_MD_clean.csv")
+# acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200425_MD_clean.csv")
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200427_MD_clean.csv")
 
 names(acumulado)
 setnames(acumulado,"TOTAL_POSITIVOS","Casos positivos")
@@ -71,7 +72,7 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 #Cambiar el nombre
-png(filename="20200425_dailynews_COVID19.png", width=1100, height=600)
+png(filename="20200427_dailynews_COVID19.png", width=1100, height=600)
 ggplot() + 
   geom_line(data = acumulado1, 
             aes(Fecha, value, 
