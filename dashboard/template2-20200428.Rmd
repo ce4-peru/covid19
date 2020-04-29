@@ -1,0 +1,286 @@
+---
+title: "Template CE4-Covid19"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+<style>                     
+.navbar {
+  background-color:black;
+  border-color:grey;
+}
+.navbar-brand {
+color:white!important;
+}
+.bg {
+  background-color: black;
+}
+.body {
+  color: black;
+}
+</style>
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(rio)
+library(tidyverse)
+library(XML)
+library(httr)
+library(RCurl)
+library(sf)
+library(lubridate)
+library(leaflet)
+library(colorspace)
+library(DT)
+
+dat <- rio::import("https://github.com/jincio/COVID_19_PERU/blob/master/docs/reportes_minsa.xlsx?raw=true")
+
+dep <- rio::import("https://github.com/jincio/COVID_19_PERU/blob/master/docs/reportes_minsa.xlsx?raw=true", sheet = 2)
+c.date <- max(dep$Fecha)
+
+dep <- 
+  dep %>% 
+  dplyr::select(dat = Fecha,
+                dep = REGION, 
+                pos = Positivos_totales, 
+                pos.imp = PositivosImputados_totales,
+                pas =Fallecidos, 
+                smp =Total_muestras) %>% 
+  mutate(pas = pas %>% if_else(is.na(.), 0, .)) %>% 
+  group_by(dep) %>% 
+  mutate(pos.lag = lag(pos, n = 1),
+         pos.imp.lag = lag(pos.imp, n = 1),
+         pas.lag = lag(pas, n = 1),
+         smp.lag = lag(smp, n = 1)) %>%
+  filter(dat == c.date) %>% 
+  mutate(pos.new = abs(pos - pos.lag),
+         pos.imp.new = abs(pos.imp - pos.imp.lag),
+         pas.new = abs(pas - pas.lag),
+         smp.new = abs(smp - smp.lag))
+  
+
+## Regions geometry
+shp <- st_read("Limite_departamental", stringsAsFactors = F)
+shp <- shp %>% 
+  st_transform(4326) %>% 
+  select(Departamento = NOMBDEP)
+
+# Append
+dep <- merge(dep, shp, by.y = 'Departamento', by.x = 'dep', all.x = T)
+dep <- st_as_sf(dep, sf_column_name = 'geometry')
+
+## aes
+pal_fun <- colorQuantile("YlOrRd", NULL, n = 5)
+pal_smp <- colorQuantile("Blues", NULL, n = 5)
+
+pal.cases <- colorNumeric( palette="YlOrRd", domain = dep$pos, na.color="transparent")
+
+labels.total <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      dep$dep, dep$pos) %>% lapply(htmltools::HTML)
+
+labels.new <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      dep$dep, dep$pos.new) %>% lapply(htmltools::HTML)
+
+labels.pas <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      dep[dep$pas > 0,]$dep, dep[dep$pas > 0,]$pas) %>% lapply(htmltools::HTML)
+
+labels.smp <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      dep$dep, dep$smp) %>% lapply(htmltools::HTML)
+
+labels.smp.new <- sprintf(
+      "<strong>%s</strong><br/<strong>Value: </strong>%s",
+      dep$dep, dep$smp.new) %>% lapply(htmltools::HTML)
+```
+
+# Regional {.bg}
+
+Column 1 {.tabset} 
+-------------------------------------
+
+### Casos totales 
+
+```{r}
+leaflet(dep) %>%
+  addTiles(urlTemplate = 'http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png') %>%
+  addPolygons(fillColor = pal.cases(dep$pos),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "",
+              fillOpacity = 0.7,
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = labels.total,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend("bottomleft", pal =pal.cases, values = dep$pos, title= 'Cantidad de casos')
+```
+
+### Casos nuevos 
+
+```{r}
+leaflet(dep) %>%
+  addTiles(urlTemplate = 'http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png') %>%
+  addPolygons(fillColor = pal_fun(dep$pos.new),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "",
+              fillOpacity = 0.7,
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = labels.new,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend("bottomleft", pal=pal_fun, values = dep$pos.new, title= 'Cantidad de casos')
+```
+
+### Fallecidos 
+
+```{r}
+leaflet(dep[dep$pas > 0,]) %>%
+  addTiles(urlTemplate = 'http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png') %>%
+  addPolygons(fillColor = pal_fun(dep[dep$pas > 0,]$pas),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "",
+              fillOpacity = 0.7,
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = labels.pas,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend("bottomleft", pal=pal_fun, values = dep[dep$pas > 0,]$pas, title= 'Cantidad de fallecidos')
+```
+
+### Pruebas realizadas 
+
+```{r}
+leaflet(dep) %>%
+  addTiles(urlTemplate = 'http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png') %>%
+  addPolygons(fillColor = pal_smp(dep$smp),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "",
+              fillOpacity = 0.7,
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = labels.smp,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend("bottomleft", pal=pal_smp, values = dep$smp, title= 'Cantidad de pruebas totales')
+```
+
+### Nuevas pruebas realizadas 
+
+```{r}
+leaflet(dep) %>%
+  addTiles(urlTemplate = 'http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png') %>%
+  addPolygons(fillColor = pal_smp(dep$smp.new),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "",
+              fillOpacity = 0.7,
+              highlight = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = labels.smp.new,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend("bottomleft", pal=pal_smp, values = dep$smp.new, title= 'Cantidad de pruebas totales')
+```
+
+Column 2 
+-------------------------------------
+
+### Datos actualizados al:
+```{r}
+valueBox(c.date, icon = "fa-calendar")
+```
+
+### Total de casos
+
+```{r}
+valueBox(sum(dep$pos), icon = "fa-pencil")
+```
+
+### Nuevos casos
+
+```{r}
+valueBox(sum(dep$pos.new), icon = "fa-pencil")
+```
+
+### Column 2 - Chart 1
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+### Column 2 - Chart 2
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```
+
+Column 3 
+-------------------------------------
+
+### Ranking de casos
+```{r}
+DT::datatable(dep %>% 
+                select(Region = dep,
+                       `Total de casos` = pos,
+                       `Total de fallecidos` = pas,
+                       `Total de muestras` = smp) %>% 
+                arrange(desc(`Total de casos`)) %>% 
+                st_set_geometry(NULL), 
+              options = list(
+                bPaginate = FALSE
+))
+```
+
+### Column 3 - Chart 1
+
+```{r}
+ggplot(mtcars, aes(x = mpg, y = disp)) +
+  geom_point()
+```   
+

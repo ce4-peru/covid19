@@ -61,7 +61,6 @@ shp <- shp %>%
 dep <- merge(dep, shp, by = 'Departamento', all.x = T)
 dep <- st_as_sf(dep, sf_column_name = 'geometry')
 
-
 ## casos totales
 total.cases <- dep %>% 
   rename(new.cases = Casos) %>% 
@@ -102,7 +101,7 @@ library(cowplot)
 
 dat_acumulado<-fread("../data/modificadas/covidPE_PORdia_20200414_CA_clean.csv") 
 
-###### data sets para hacer la grafica de casos positivos y pruebas negativas nacionales 
+# data sets para hacer la grafica de casos positivos y pruebas negativas nacionales 
 dat_acumulado<-dat_acumulado %>%
   mutate(Fecha = as.Date(FECHA))
 
@@ -111,8 +110,8 @@ dat1_acumulado <- dat_acumulado %>%
          des_new = TOTAL_DESCARTADOS-lag(TOTAL_DESCARTADOS,default = 0),
          tot_pruebas = pos_new+des_new) 
 
-#### sumarizando por FECHA pero asegurate que lees primero  
-## el paquete dyplyr y despues tydir si no no funciona
+# sumarizando por FECHA pero asegurate que lees primero  
+# el paquete dyplyr y despues tydir si no no funciona
 dat1_acumulado <- 
   dat1_acumulado %>% 
   group_by(Fecha) %>%
@@ -121,7 +120,7 @@ dat1_acumulado <-
          tot_pruebas = pos_new+des_new)
 
 
-##### data set dos para hacer grafico de proporciones de positivos y negativos 
+# data set dos para hacer grafico de proporciones de positivos y negativos 
 dat2_acumulado <- dat1_acumulado %>%
   mutate(neg_new = tot_pruebas-pos_new) %>%
   dplyr::select(Fecha, pos_new, neg_new) 
@@ -129,7 +128,6 @@ setnames(dat2_acumulado,old = "pos_new",new = "Positivo")
 setnames(dat2_acumulado,old = "neg_new",new = "Negativo")
 dat2_acumulado<-dat2_acumulado%>%gather(res, count, -Fecha) %>%
   uncount(count)
-
 ```
 
 # Nacional
@@ -149,7 +147,6 @@ leaflet(total.cases) %>%
   addLegend("bottomleft", pal=pal_fun, values=total.cases$value, title= 'Cantidad de casos')
 ```
 
-
 ### Casos nuevos
 
 ```{r}
@@ -161,7 +158,6 @@ leaflet(new.cases) %>%
               popup = labels.new) %>%
   addLegend("bottomleft", pal=pal_fun, values=new.cases$value, title= 'Cantidad de casos')
 ```
-
 
 Column 2
 -------------------------------------
