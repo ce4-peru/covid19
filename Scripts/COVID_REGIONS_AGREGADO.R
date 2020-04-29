@@ -12,7 +12,7 @@ library(rgdal)
 library(sp)
 library(plyr)
 library(tmap)
-library(dplyr)
+library(dplyr) 
 
 setwd("~/covid19/")
 
@@ -22,7 +22,7 @@ shpfile_peru <- "data/gadm0-1-2-3/peru_1.shp"
 sh_peru <- rgdal::readOGR(shpfile_peru)
 
 # casos de covid
-  caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200417_AL_clean.csv")
+caso_covid <- fread("~/covid19/data/modificadas/covidPE_DEP_20200428_AL_clean.csv")
 
 # tabla de poblacion por regiones
 pob_region <- read.csv("~/covid19/data/Poblacion por region.csv")
@@ -75,9 +75,9 @@ unique(sh_peru@data$NAME_1)
 ########################################################################
 # Cuando haya tiempo
 # Unir lo que era Lima province (fila 15) con Lima regi?n (fila 16)
-plot(sh_peru[16,]) 
-plot(sh_peru[15,], add=T, col="red") 
-plot(sh_peru[16,], add=T, col="green") 
+# plot(sh_peru[16,]) 
+# plot(sh_peru[15,], add=T, col="red") 
+# plot(sh_peru[16,], add=T, col="green") 
 #########################################################################
 
 ## Check data of cases
@@ -97,8 +97,8 @@ casos_region <- as.data.frame(mt)
 casos_region <- cbind(NAME_LABEL = rownames(casos_region), casos_region)
 colnames(casos_region)[2] <- "NUMERO_CASOS"
 unique(casos_region$NAME_LABEL)
-# [1] AMA ANC APU ARE AYA CAJ CAL CUS HUA HUC ICA JUN LAL LAM LIM
-# [16] LOR MDD MOQ PAS PIU PUN SAM TAC TUM UCA
+# [1] AMA ANC APU ARE AYA CAJ CAL CUS HUA HUC ICA JUN LAL LAM LIM LOR MDD
+# [18] MOQ PAS PIU PUN SAM TAC TUM UCA
 
 casos_region$REGION <- revalue(casos_region$NAME_LABEL, 
                                     c("ANC"="ANCASH", 
@@ -132,11 +132,13 @@ casos_region$REGION <- revalue(casos_region$NAME_LABEL,
 names(pob_region) # "REGION"    "POBLACION"
 pob_region[[1]] <- toupper(pob_region[[1]])
 unique(pob_region$REGION) # todo ok
-# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
-# [6] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANCAVELICA"  "HUANUCO"      
-# [11] "ICA"           "JUNIN"         "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"         
-# [16] "LORETO"        "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
-# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"        "UCAYALI"
+# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"     
+# [5] "AYACUCHO"      "CAJAMARCA"     "CALLAO"        "CUSCO"        
+# [9] "HUANCAVELICA"  "HUANUCO"       "ICA"           "JUNIN"        
+# [13] "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"          "LORETO"       
+# [17] "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
+# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"       
+# [25] "UCAYALI"
 
 ## Merge cases with populations
 region_values <- merge(casos_region, pob_region, by="REGION", 
@@ -155,11 +157,13 @@ region_values$incidencerate_100 <-(region_values$incidencia*100000)
 ## recode the names of the region_values data frame
 setnames(region_values, old = "REGION",new = "NAME_1")
 levels(region_values$NAME_1)
-# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"      "AYACUCHO"     
-# [6] "CAJAMARCA"     "CALLAO"        "CUSCO"         "HUANCAVELICA"  "HUANUCO"      
-# [11] "ICA"           "JUNIN"         "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"         
-# [16] "LORETO"        "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
-# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"        "UCAYALI"
+# [1] "AMAZONAS"      "ANCASH"        "APURIMAC"      "AREQUIPA"     
+# [5] "AYACUCHO"      "CAJAMARCA"     "CALLAO"        "CUSCO"        
+# [9] "HUANCAVELICA"  "HUANUCO"       "ICA"           "JUNIN"        
+# [13] "LA LIBERTAD"   "LAMBAYEQUE"    "LIMA"          "LORETO"       
+# [17] "MADRE DE DIOS" "MOQUEGUA"      "PASCO"         "PIURA"        
+# [21] "PUNO"          "SAN MARTIN"    "TACNA"         "TUMBES"       
+# [25] "UCAYALI"
 
 ## Create labels that does not occupy 
 region_values <- region_values[,-2]
@@ -203,22 +207,24 @@ tmp1_map@data$incidencia[is.na(tmp1_map@data$incidencia)]<-0
 tmp1_map@data$incidencerate_100[is.na(tmp1_map@data$incidencerate_100)]<-0
 tmp1_map_df <- tmp1_map@data
 tmp1_map@data$brks <- cut(tmp1_map@data$incidencerate_100, 
-                            breaks=c(0.0, 1, 2, 5, 10, 20, 40, 100), 
-                            labels=c("< 1", "1 a 2", 
-                                     "2 a 5", "5 a 10", "10 a 20",
-                                     #"8 a 10", 
-                                     "20 a 40", "> 40"))
+                            breaks=c(0.0, 5, 10, 20, 50, 
+                                     100, 150, 200, 1000), 
+                            labels=c("< 5", 
+                                     #"1 a 2", "2 a 5", 
+                                     "5 a 10", "10 a 20",
+                                      "20 a 50", "50 a 100", 
+                                     "100 a 150",
+                                     "150 a 200", 
+                                     "> 200"))
 names(tmp1_map@data) # check variables
 tmp1_map_df <- tmp1_map@data
 
 
 # Create the map qtm
 col <- c("ivory2", "lightcyan1", "lightblue2", 
-         #"lightskyblue", 
+         "lightskyblue", 
           "royalblue", "blue2", "navyblue", "black")
 
-# col <- c("ivory2", "lightcyan1", "lightblue2", "lightskyblue", 
-#           "royalblue", "blue2", "navyblue", "black")
 # try snow2 too
 
 # interactive view
@@ -247,12 +253,12 @@ print(qtm)
 
 # RECUERDA CAMBIAR EL NOMBRE DEL ARCHIVO!
 tmap_save(qtm, 
-          paste("outputs_covid19/20200417_Dep_COVID19_Incidencerate",
+          paste("outputs_covid19/20200428_Dep_COVID19_Incidencerate",
                 ".png", sep=""), 
           width=2300, height=1380)
              # Poner el # luego de guardar grafico
              
-#
+###
 
 # CORRER SOLO HASTA AQUI. LO QUE SIGUE ES PARA PLOTEAR POR DIA.
 ###################################################################################
