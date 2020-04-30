@@ -133,7 +133,7 @@ covid_dep2$CASOS[is.na(covid_dep2$CASOS)] <- 0
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200426_GF_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200427_MD_clean.csv", row.names = FALSE)
 # write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200428_AL_clean.csv", row.names = FALSE)
-# write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200430_GF_clean.csv", row.names = FALSE)
+# write.csv(covid_dep2, "data/modificadas/covidPE_DEP_20200429_GF_clean.csv", row.names = FALSE)
 
 # Y PONLE UN # ANTES DE GUARDAR EL SCRIPT!
 
