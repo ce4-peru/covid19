@@ -72,7 +72,7 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 #Cambiar el nombre
-png(filename="20200504_dailynews_COVID19.png", width=1100, height=600)
+png(filename="20200509_dailynews_COVID19.png", width=1100, height=600)
 ggplot() + 
   geom_line(data = acumulado1, 
             aes(Fecha, value, 

@@ -61,7 +61,7 @@ d=data.frame(Fecha=as.Date(c("2020-03-06", "2020-03-11", "2020-03-12", "2020-03-
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200505_CA_clean.csv")
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200506_GF_clean.csv")
 # acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200507_CA_clean.csv")
-acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200508_AL_clean.csv")
+acumulado<-fread("~/covid19/data/modificadas/covidPE_PORdia_20200509_MD_clean.csv")
 
 setnames(acumulado,"TOTAL_POSITIVOS","Casos positivos")
 setnames(acumulado,"TOTAL_PRUEBAS","Pruebas realizadas")
@@ -76,7 +76,7 @@ acumulado1<-acumulado1 %>%
 setwd("~/covid19/outputs_covid19/")
 # 
 #Cambiar el nombre
-png(filename="20200508_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
+png(filename="20200509_pruebas_vs_positivos_COVID19.png", width=1100, height=600)
 ggplot() + 
   geom_line(data = acumulado1, aes(Fecha, value, colour=variable,group=variable),alpha =1.6) +
   scale_colour_manual(values=c("red", "blue"))+
@@ -93,7 +93,7 @@ ggplot() +
               legend.position = c(0.35,0.95),
               legend.justification = c("right","top"),
             axis.text.x = element_text(vjust =0.60,angle=60,face = "bold.italic", size = 10))+
-  labs(title="SARS-CoV-2 en PerÃº", y="Pruebas positivas y pruebas realizadas", 
+  labs(title="SARS-CoV-2 en Perú", y="Pruebas positivas y pruebas realizadas", 
        x="Fecha", caption="Source :varios")+
   theme(plot.title = element_text(face = "bold.italic",size = 5) )+
   bbc_style()
